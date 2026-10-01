@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-01",
+  "repository": "https://github.com/roowe/ejoy2d",
+  "upstreamRepository": "https://github.com/cloudwu/ejoy2d",
+  "localRepository": "/Users/luoliwei/github/ejoy2d",
+  "commit": "8cd0ac791b13128c1e51ffa29358ed8eda40c894",
+  "sourceWorkingTreeClean": true,
+  "assetIntroductionCommit": "5cf5d914e14968d121db1f4aa2923c332ed40b17",
+  "license": {
+    "repositoryLicense": "MIT",
+    "copiedLicense": "LICENSE",
+    "artworkLicenseStatus": "unverified",
+    "note": "源码许可证已保留；所复制文件与本地文档中未找到独立的美术来源或授权声明。"
+  },
+  "pixelEncoding": {
+    "sourceRGB": "premultiplied",
+    "sourceAlpha": "8bitPGM",
+    "runtimeAlpha": "straight",
+    "evidence": [
+      "lib/shader.c:88 uses ONE / ONE_MINUS_SRC_ALPHA",
+      "All 8132 partially transparent pixels have RGB channels <= alpha; all alpha-zero pixels have zero RGB"
+    ]
+  },
+  "files": [
+    {
+      "file": "birds.1.ppm",
+      "sourcePath": "examples/asset/birds.1.ppm",
+      "bytes": 3145745,
+      "sha256": "e428e2419bad52efa105a2cabc2899ec80f3542a439bd44d7c576ac13df82d8b"
+    },
+    {
+      "file": "birds.1.pgm",
+      "sourcePath": "examples/asset/birds.1.pgm",
+      "bytes": 1048593,
+      "sha256": "63721a9bb31bd5653b7e304efe25ac70de22f5bc35784bb3bfbd5e69262b8976"
+    },
+    {
+      "file": "birds.lua",
+      "sourcePath": "examples/asset/birds.lua",
+      "bytes": 9809,
+      "sha256": "19a12e3c830ce1dec02dc99fa69bd1991c3ec038492ba57ebffdff02527974c9"
+    },
+    {
+      "file": "bird_config.lua",
+      "sourcePath": "examples/asset/bird_config.lua",
+      "bytes": 124,
+      "sha256": "af4f1ad4fca2845ade959d921a0c338f7986efbd679add3fd46294eb8f9a79ed"
+    },
+    {
+      "file": "flappybird.lua",
+      "sourcePath": "examples/flappybird.lua",
+      "bytes": 9873,
+      "sha256": "1a083c91b87d52fc5a59b1954b875ffa40e03a7d550a1b67a68c82764a96e077"
+    },
+    {
+      "file": "LICENSE",
+      "sourcePath": "LICENSE",
+      "bytes": 1079,
+      "sha256": "a119ae997cd94556a0defec1c502c462c38be217506fa44b19dabd4105f122be"
+    }
+  ]
+}

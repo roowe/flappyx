@@ -7,7 +7,7 @@ phases:
     status: done
   - id: 2
     content: M1 资源与规则：确认引擎环境，合成 RGBA PNG、恢复贴图方向、记录来源，建立共享玩法配置和验收数据。
-    status: pending
+    status: done
   - id: 3
     content: M2 Phaser 基准版：实现 TS 内核与可玩闭环，验证缩放、暂停和最高分，冻结手感并记录基准。
     status: pending
@@ -27,11 +27,18 @@ phases:
     content: M7 统一验收：完成五引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
     status: pending
 notes:
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；本次仅完成计划，游戏代码尚未建立。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0、M1 已完成，下一阶段为 M2 Phaser 基准版。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
   - content: 首轮采用 1024×768 横屏、30 Hz 固定逻辑步长，Phaser 先形成基准；Godot 首版采用 C#，ejoy2d 不计入实现引擎。
   - content: 当前资源包没有音效。仓库含 MIT 许可证，素材的单独来源与授权在资源阶段记录，对外发布前确认。
   - content: TypeScript 使用 bun，Python 使用 uv；原参考工程只读，文件清理遵守系统回收站策略。
+  - content: M1 交付见 docs/m1-resources-and-rules.md；shared/assets/runtime 含九张 upright straight-alpha RGBA 精灵及元数据，source 含六个原文件、MIT 声明、提交和 SHA-256 来源记录。
+  - content: 原 PPM 为预乘 Alpha，转换已还原颜色并保持 PGM 的 Alpha；下方水管头和身体逆时针旋转 90 度。13 个派生输出可逐字节重现，源哈希未变。
+  - content: shared/config/gameplay.json 和 shared/fixtures 的边界用例、150 tick 回放及随机向量已建立；review 修订后的 just check-m1 和五项测试通过，Bun 独立 uint32 随机向量一致。
+  - content: 本机已确认 Creator 3.8.8、Godot 4.7.2 .NET、Unity 6000.5.6f1；参考工程安装 Phaser 4.2.1、Three.js 0.186.0。Godot 导出模板目录为空，M6 补齐；实际引擎工程运行、构建与回放由 M2-M6 验证。
+  - content: Python 工具为 tools/ 下的独立 uv 项目，pyproject.toml、uv.lock 和 .venv 均位于 tools/；根目录 justfile 通过 uv run --project tools 调用，供后续引擎项目并列组织。
+  - content: M1 review 已收口：地面、顶部、上管、下管依次判碰撞，地面当 tick 直接结算；计分使用碰撞盒左边缘。逐 tick 参考模型验证全部快照、死亡事件、偏移、七组队列回收、暂停和补 tick，生产 TS/C# 内核仍须独立执行 fixtures。
+  - content: 水管身体元数据必须传入边界求得的高度，位置统一表示中心锚点；资源布局用例锁定背景和身体的定位。入口直接调用 uv；重现检查在内存完成，先前四个校验临时目录已移入系统回收站。
 summary: null

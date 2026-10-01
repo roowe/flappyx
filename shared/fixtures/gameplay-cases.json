@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "config": "../config/gameplay.json",
+  "tickConvention": "tick0IsInitialState;InputsAppliedBeforeMovement;SnapshotsAfterWholeTick",
+  "trajectory": {
+    "id": "first-flap-and-ground",
+    "initial": {"state": "ready", "y": 464, "velocityY": 0, "score": 0},
+    "flapTicks": [1],
+    "pipes": [],
+    "snapshots": [
+      {"tick": 1, "state": "playing", "y": 450.5, "velocityY": -12},
+      {"tick": 10, "state": "playing", "y": 396.5, "velocityY": 1.5},
+      {"tick": 20, "state": "playing", "y": 479, "velocityY": 16.5},
+      {"tick": 22, "state": "playing", "y": 513.5, "velocityY": 19.5},
+      {"tick": 23, "state": "gameOver", "y": 514, "velocityY": 0}
+    ],
+    "expected": {"deathTick": 23, "deathReason": "ground", "gameOverTick": 23, "score": 0, "restartAllowedTick": 38}
+  },
+  "collisionQueries": [
+    {"id": "inside-gap", "birdY": 300, "pipeX": 350, "gapCenterY": 300, "expected": false},
+    {"id": "upper-edge-touch", "birdY": 222, "pipeX": 350, "gapCenterY": 300, "expected": true},
+    {"id": "lower-edge-touch", "birdY": 378, "pipeX": 350, "gapCenterY": 300, "expected": true},
+    {"id": "horizontal-edge-touch", "birdY": 222, "pipeX": 419.5, "gapCenterY": 300, "expected": true},
+    {"id": "horizontal-separation", "birdY": 222, "pipeX": 419.501, "gapCenterY": 300, "expected": false},
+    {"id": "offset-edge-touch", "birdY": 227, "pipeX": 429.5, "gapCenterY": 300, "hitboxOffset": {"x": 10, "y": -5}, "expected": true}
+  ],
+  "scoreQueries": [
+    {"id": "equal-edge-no-score", "state": "playing", "pipeX": 280.5, "passed": false, "collided": false, "expectedDelta": 0},
+    {"id": "complete-pass", "state": "playing", "pipeX": 280, "passed": false, "collided": false, "expectedDelta": 1},
+    {"id": "already-counted", "state": "playing", "pipeX": 280, "passed": true, "collided": false, "expectedDelta": 0},
+    {"id": "death-priority", "state": "playing", "pipeX": 280, "passed": false, "collided": true, "expectedDelta": 0},
+    {"id": "dying-no-score", "state": "dying", "pipeX": 280, "passed": false, "collided": false, "expectedDelta": 0},
+    {"id": "offset-complete-pass", "state": "playing", "pipeX": 288, "hitboxOffsetX": 10, "passed": false, "collided": false, "expectedDelta": 1}
+  ],
+  "restart": {
+    "initial": {"state": "gameOver", "tick": 37, "deathTick": 23, "score": 2, "bestScore": 5},
+    "actions": [
+      {"tick": 37, "action": "restart", "expectedAccepted": false},
+      {"tick": 38, "action": "restart", "expectedAccepted": true}
+    ],
+    "expected": {"tick": 0, "state": "ready", "y": 464, "velocityY": 0, "score": 0, "bestScore": 5, "pipesPassed": false, "firstPipeX": 1224}
+  },
+  "stepCases": [
+    {
+      "id": "ground-wins-over-lower-pipe-and-score",
+      "initial": {"state": "playing", "y": 450, "velocityY": 70},
+      "flapTicks": [],
+      "pipes": [{"x": 358, "gapCenterY": 384}, {"x": 288, "gapCenterY": 300}],
+      "snapshots": [{"tick": 1, "state": "gameOver", "y": 514, "velocityY": 0, "score": 0}],
+      "expected": {"deathTick": 1, "deathReason": "ground", "gameOverTick": 1, "scoreTicks": [], "restartAllowedTick": 16}
+    },
+    {
+      "id": "ceiling-enters-dying",
+      "initial": {"state": "playing", "y": 40, "velocityY": -20},
+      "flapTicks": [],
+      "pipes": [],
+      "snapshots": [{"tick": 1, "state": "dying", "y": 20, "velocityY": 0, "score": 0}],
+      "expected": {"deathTick": 1, "deathReason": "ceiling", "gameOverTick": null}
+    },
+    {
+      "id": "flap-overwrites-speed-once",
+      "initial": {"state": "playing", "y": 300, "velocityY": 5},
+      "flapTicks": [1, 1],
+      "pipes": [],
+      "snapshots": [{"tick": 1, "state": "playing", "y": 286.5, "velocityY": -12, "score": 0}],
+      "expected": {"deathTick": null, "score": 0}
+    },
+    {
+      "id": "zero-right-edge-is-not-recycled",
+      "initial": {"state": "playing", "y": 300, "velocityY": 0, "firstPipeX": -29.5, "pipesPassed": true},
+      "flapTicks": [],
+      "pipeGapCenters": [300, 300, 300, 300, 300, 300, 300, 384],
+      "snapshots": [
+        {"tick": 1, "firstPipeX": -37.5, "pipeCount": 7, "consumedGapCenters": 7, "pipeIds": [0, 1, 2, 3, 4, 5, 6]},
+        {"tick": 2, "firstPipeX": 219.5, "pipeCount": 7, "consumedGapCenters": 8, "pipeIds": [1, 2, 3, 4, 5, 6, 0], "pipeXs": [219.5, 484.5, 749.5, 1014.5, 1279.5, 1544.5, 1809.5]}
+      ],
+      "expected": {"deathTick": null, "score": 0}
+    }
+  ],
+  "recycle": {
+    "id": "seven-pipes-consume-eighth-height-on-recycle",
+    "initial": {"state": "playing", "y": 300, "velocityY": 0, "firstPipeX": -33.5, "pipesPassed": true},
+    "flapTicks": [],
+    "pipeGapCenters": [300, 300, 300, 300, 300, 300, 300, 384],
+    "snapshots": [
+      {"tick": 0, "pipeCount": 7, "consumedGapCenters": 7},
+      {"tick": 1, "state": "playing", "y": 300, "velocityY": 1.5, "score": 0, "pipeCount": 7, "consumedGapCenters": 8, "pipeIds": [1, 2, 3, 4, 5, 6, 0], "pipeXs": [223.5, 488.5, 753.5, 1018.5, 1283.5, 1548.5, 1813.5], "pipeGapCenters": [300, 300, 300, 300, 300, 300, 384], "pipePassed": [true, true, true, true, true, true, false]}
+    ],
+    "expected": {"deathTick": null, "score": 0}
+  },
+  "random": {
+    "seed": 123456789,
+    "uint32Sequence": [2714967881, 2238813396, 1250077441, 3820100336, 3177519686],
+    "gapCenters": [336, 376, 331, 341, 186]
+  }
+}

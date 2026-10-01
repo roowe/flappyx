@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "pause-resume-and-catch-up",
+  "initial": {"state": "playing", "y": 300, "velocityY": 0},
+  "steps": [
+    {"elapsedMilliseconds": 20, "expected": {"tick": 0, "processedTicks": 0, "accumulatedTicks": 0.6, "paused": false}},
+    {"event": "blur", "expected": {"tick": 0, "paused": true}},
+    {"elapsedMilliseconds": 1000, "expected": {"tick": 0, "processedTicks": 0, "accumulatedTicks": 0.6, "paused": true, "y": 300}},
+    {"event": "focus", "expected": {"tick": 0, "paused": true}},
+    {"elapsedMilliseconds": 500, "expected": {"tick": 0, "processedTicks": 0, "paused": true}},
+    {"event": "resume", "expected": {"tick": 0, "accumulatedTicks": 0, "paused": false}},
+    {"elapsedMilliseconds": 10, "expected": {"tick": 0, "processedTicks": 0, "accumulatedTicks": 0.3}},
+    {"elapsedMilliseconds": 340, "expected": {"tick": 5, "processedTicks": 5, "accumulatedTicks": 0.5, "y": 315, "velocityY": 7.5}},
+    {"elapsedMilliseconds": 50, "expected": {"tick": 7, "processedTicks": 2, "accumulatedTicks": 0, "y": 331.5, "velocityY": 10.5}}
+  ]
+}

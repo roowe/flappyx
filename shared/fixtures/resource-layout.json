@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "cases": [
+    {"spriteId": "background.land", "position": [336, 656], "expectedSize": [672, 224], "expectedTopLeft": [0, 544]},
+    {"spriteId": "background.sky", "position": [276, 439], "expectedSize": [552, 210], "expectedTopLeft": [0, 334]},
+    {"spriteId": "pipe.upper.body", "position": [600, 75], "verticalBounds": [0, 150], "expectedSize": [75, 150], "expectedTopLeft": [562.5, 0]},
+    {"spriteId": "pipe.upper.head", "position": [600, 175], "expectedSize": [75, 50], "expectedTopLeft": [562.5, 150]},
+    {"spriteId": "pipe.lower.head", "position": [600, 425], "expectedSize": [75, 50], "expectedTopLeft": [562.5, 400]},
+    {"spriteId": "pipe.lower.body", "position": [600, 497], "verticalBounds": [450, 544], "expectedSize": [75, 94], "expectedTopLeft": [562.5, 450]}
+  ]
+}

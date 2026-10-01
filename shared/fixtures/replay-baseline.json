@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "one-score-then-upper-pipe",
+  "config": "../config/gameplay.json",
+  "totalTicks": 150,
+  "renderFps": [30, 60, 120],
+  "initialState": "ready",
+  "initialBestScore": 0,
+  "seed": 123456789,
+  "flapTicks": [1, 18, 35, 52, 69, 86, 103, 120, 137],
+  "pipeGapCenters": [300, 350, 300, 330, 250, 360, 280, 320],
+  "snapshots": [
+    {"tick": 1, "state": "playing", "birdY": 450.5, "velocityY": -12, "score": 0, "firstPipeX": 1216},
+    {"tick": 102, "state": "playing", "birdY": 311, "velocityY": 12, "score": 0, "firstPipeX": 408},
+    {"tick": 118, "state": "playing", "birdY": 275, "velocityY": 10.5, "score": 1, "firstPipeX": 280},
+    {"tick": 134, "state": "dying", "birdY": 240.5, "velocityY": 0, "score": 1, "firstPipeX": 152},
+    {"tick": 141, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 152},
+    {"tick": 150, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 152}
+  ],
+  "expected": {"scoreTicks": [118], "deathTick": 134, "deathReason": "upperPipe", "gameOverTick": 141, "restartAllowedTick": 149, "finalScore": 1, "bestScore": 1, "ignoredFlapTicks": [137], "pipeCount": 7, "consumedGapCenters": 7},
+  "evidence": "Reviewed analytical expectations, checked by a sequential Python reference model at 30/60/120 render FPS; independent TS/C# engine runners are added in M2-M6."
+}

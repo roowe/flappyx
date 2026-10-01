@@ -1,0 +1,340 @@
+{
+  "schemaVersion": 1,
+  "alphaMode": "straight",
+  "filter": "nearest",
+  "mipmaps": false,
+  "sourceUnits": {
+    "screenScale": 16,
+    "matrixScale": 1024
+  },
+  "sourceAtlasSize": {
+    "width": 1024,
+    "height": 1024
+  },
+  "sprites": [
+    {
+      "id": "bird.frame1",
+      "file": "bird-01.png",
+      "sourceExport": "bird-01.png",
+      "sourceBox": {
+        "x": 979,
+        "y": 110,
+        "width": 34,
+        "height": 24
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -17.0,
+        "top": -12.0,
+        "right": 17.0,
+        "bottom": 12.0
+      },
+      "pixelSize": {
+        "width": 34,
+        "height": 24
+      },
+      "displaySize": {
+        "width": 85.0,
+        "height": 60.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "bird.frame2",
+      "file": "bird-02.png",
+      "sourceExport": "bird-02.png",
+      "sourceBox": {
+        "x": 979,
+        "y": 138,
+        "width": 34,
+        "height": 24
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -17.0,
+        "top": -12.0,
+        "right": 17.0,
+        "bottom": 12.0
+      },
+      "pixelSize": {
+        "width": 34,
+        "height": 24
+      },
+      "displaySize": {
+        "width": 85.0,
+        "height": 60.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "bird.frame3",
+      "file": "bird-03.png",
+      "sourceExport": "bird-03.png",
+      "sourceBox": {
+        "x": 979,
+        "y": 166,
+        "width": 34,
+        "height": 24
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -17.0,
+        "top": -12.0,
+        "right": 17.0,
+        "bottom": 12.0
+      },
+      "pixelSize": {
+        "width": 34,
+        "height": 24
+      },
+      "displaySize": {
+        "width": 85.0,
+        "height": 60.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "background.sky",
+      "file": "sky.png",
+      "sourceExport": "sky.png",
+      "sourceBox": {
+        "x": 739,
+        "y": 1,
+        "width": 276,
+        "height": 105
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -138.0,
+        "top": -52.5,
+        "right": 138.0,
+        "bottom": 52.5
+      },
+      "pixelSize": {
+        "width": 276,
+        "height": 105
+      },
+      "displaySize": {
+        "width": 552.0,
+        "height": 210.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "background.land",
+      "file": "land.png",
+      "sourceExport": "land.png",
+      "sourceBox": {
+        "x": 399,
+        "y": 1,
+        "width": 336,
+        "height": 112
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -168.0,
+        "top": -56.0,
+        "right": 168.0,
+        "bottom": 56.0
+      },
+      "pixelSize": {
+        "width": 336,
+        "height": 112
+      },
+      "displaySize": {
+        "width": 672.0,
+        "height": 224.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "pipe.upper.head",
+      "file": "pipe-upper-head.png",
+      "sourceExport": "pipedown_header",
+      "sourceBox": {
+        "x": 979,
+        "y": 334,
+        "width": 30,
+        "height": 20
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -37.5,
+        "top": -150.0,
+        "right": 37.5,
+        "bottom": -100.0
+      },
+      "pixelSize": {
+        "width": 30,
+        "height": 20
+      },
+      "displaySize": {
+        "width": 75.0,
+        "height": 50.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "pipe.upper.body",
+      "file": "pipe-upper-body.png",
+      "sourceExport": "pipedown_tail",
+      "sourceBox": {
+        "x": 979,
+        "y": 194,
+        "width": 30,
+        "height": 100
+      },
+      "orientation": "identity",
+      "sourceScreenBounds": {
+        "left": -37.5,
+        "top": -400.0,
+        "right": 37.5,
+        "bottom": -150.0
+      },
+      "pixelSize": {
+        "width": 30,
+        "height": 100
+      },
+      "displaySize": {
+        "width": 75.0,
+        "height": null
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "stretchBetweenBoundaries",
+        "axis": "y"
+      },
+      "referenceSize": {
+        "width": 75.0,
+        "height": 250.0
+      }
+    },
+    {
+      "id": "pipe.lower.head",
+      "file": "pipe-lower-head.png",
+      "sourceExport": "pipeup_header",
+      "sourceBox": {
+        "x": 539,
+        "y": 117,
+        "width": 20,
+        "height": 30
+      },
+      "orientation": "rotate90ccw",
+      "sourceScreenBounds": {
+        "left": -37.5,
+        "top": 100.0,
+        "right": 37.5,
+        "bottom": 150.0
+      },
+      "pixelSize": {
+        "width": 30,
+        "height": 20
+      },
+      "displaySize": {
+        "width": 75.0,
+        "height": 50.0
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "fixed"
+      }
+    },
+    {
+      "id": "pipe.lower.body",
+      "file": "pipe-lower-body.png",
+      "sourceExport": "pipeup_tail",
+      "sourceBox": {
+        "x": 399,
+        "y": 117,
+        "width": 100,
+        "height": 30
+      },
+      "orientation": "rotate90ccw",
+      "sourceScreenBounds": {
+        "left": -37.5,
+        "top": 150.0,
+        "right": 37.5,
+        "bottom": 400.0
+      },
+      "pixelSize": {
+        "width": 30,
+        "height": 100
+      },
+      "displaySize": {
+        "width": 75.0,
+        "height": null
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "sizing": {
+        "mode": "stretchBetweenBoundaries",
+        "axis": "y"
+      },
+      "referenceSize": {
+        "width": 75.0,
+        "height": 250.0
+      }
+    }
+  ],
+  "animations": {
+    "bird.flap": {
+      "frames": [
+        "bird.frame1",
+        "bird.frame2",
+        "bird.frame3",
+        "bird.frame2"
+      ],
+      "ticksPerFrame": 3,
+      "loop": true
+    }
+  },
+  "placement": {
+    "positionIs": "pivotInLogicalCoordinates",
+    "topLeftToPivot": "position = topLeft + displaySize * pivot",
+    "horizontalTileStep": "displayWidth"
+  }
+}
