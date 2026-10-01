@@ -1,0 +1,37 @@
+goal: 使用 Cocos Creator、Godot、Phaser、Three.js 和 Unity 实现玩法与资源一致的 Flappy Bird，完成五引擎可玩验收。
+created_at: '2026-10-01'
+updated_at: '2026-10-01'
+phases:
+  - id: 1
+    content: M0 参考核对：检查 CrossGameEngine 结构和 ejoy2d 示例、定位资源并写入 docs/plan.md。
+    status: done
+  - id: 2
+    content: M1 资源与规则：确认引擎环境，合成 RGBA PNG、恢复贴图方向、记录来源，建立共享玩法配置和验收数据。
+    status: pending
+  - id: 3
+    content: M2 Phaser 基准版：实现 TS 内核与可玩闭环，验证缩放、暂停和最高分，冻结手感并记录基准。
+    status: pending
+  - id: 4
+    content: M3 Three.js 版：复用 TS 内核，以正交相机渲染，完成浏览器玩法一致性验证。
+    status: pending
+  - id: 5
+    content: M4 Cocos 版：接入共享 TS、资源和场景适配，验证编辑器及 Web 构建。
+    status: pending
+  - id: 6
+    content: M5 Unity 版：实现纯 C# 内核和 Unity 适配，通过跨语言用例与桌面构建验证。
+    status: pending
+  - id: 7
+    content: M6 Godot 版：使用 .NET 版 Godot 复用 C# 内核，完成节点适配和桌面导出验证。
+    status: pending
+  - id: 8
+    content: M7 统一验收：完成五引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
+    status: pending
+notes:
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；本次仅完成计划，游戏代码尚未建立。
+  - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
+  - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
+  - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
+  - content: 首轮采用 1024×768 横屏、30 Hz 固定逻辑步长，Phaser 先形成基准；Godot 首版采用 C#，ejoy2d 不计入实现引擎。
+  - content: 当前资源包没有音效。仓库含 MIT 许可证，素材的单独来源与授权在资源阶段记录，对外发布前确认。
+  - content: TypeScript 使用 bun，Python 使用 uv；原参考工程只读，文件清理遵守系统回收站策略。
+summary: null
