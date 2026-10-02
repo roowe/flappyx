@@ -1,0 +1,28 @@
+{
+  "name": "Flappyx",
+  "platform": "web-desktop",
+  "buildPath": "project://build",
+  "outputName": "web-desktop",
+  "debug": false,
+  "startScene": "ad08a105-38b6-49ef-9c68-9f3dbb0e6dd8",
+  "scenes": [
+    {
+      "url": "db://assets/scenes/Boot.scene",
+      "uuid": "ad08a105-38b6-49ef-9c68-9f3dbb0e6dd8"
+    }
+  ],
+  "sourceMaps": false,
+  "md5Cache": false,
+  "polyfills": {
+    "asyncFunctions": true
+  },
+  "packages": {
+    "web-desktop": {
+      "resolution": {
+        "designWidth": 1024,
+        "designHeight": 768
+      },
+      "useWebGPU": false
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "flappyx-cocos",
+  "version": "0.1.0",
+  "private": true,
+  "uuid": "c9c0a820-0af6-4902-905b-125f75af1bc4",
+  "creator": { "version": "3.8.8" },
+  "scripts": {
+    "prepare": "bun scripts/sync-shared.ts",
+    "editor": "bun run prepare && bun scripts/editor.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "typecheck:core": "tsc --noEmit -p ../../shared/core-ts/tsconfig.json",
+    "test": "bun run prepare && bun test tests ../../shared/core-ts/contract.test.ts",
+    "build": "bun run prepare && bun scripts/build.ts",
+    "preview": "bun scripts/preview.ts",
+    "check:browser": "bun scripts/browser-check.ts",
+    "check:production": "bun scripts/production-check.ts",
+    "check:editor": "bun scripts/editor-check.ts"
+  },
+  "devDependencies": { "@types/bun": "1.3.10", "playwright-core": "1.62.1", "typescript": "5.9.3" }
+}
