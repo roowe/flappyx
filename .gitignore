@@ -6,3 +6,11 @@ __pycache__/
 /phaser/dist/
 /threejs/node_modules/
 /threejs/dist/
+/cocos/game/node_modules/
+/cocos/game/library/
+/cocos/game/temp/
+/cocos/game/local/
+/cocos/game/profiles/
+/cocos/game/build/
+/cocos/game/assets/scripts/shared/
+/cocos/game/assets/resources/images/

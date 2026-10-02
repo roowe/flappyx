@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "recordedAtUnixMilliseconds": 1790939078977,
+  "recordedAtUnixMilliseconds": 1790950476549,
   "engine": "cocos",
   "creatorVersion": "3.8.8",
   "browserVersion": "154.0.8037.93",
-  "configSha256": "4e42ef1978a4f2b096450012137fd3006175e5d6514181eba85c5e6b09d8d433",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
   "url": "http://127.0.0.1:7456",
-  "pairedTicks": 151,
+  "pairedTicks": 211,
   "frames": [
     "bird.frame1",
     "bird.frame1",
@@ -18,18 +18,18 @@
   ],
   "snapshots": [
     {
-      "tick": 118,
+      "tick": 158,
       "state": "playing",
-      "y": 275,
-      "birdY": 275,
-      "velocityY": 10.5,
+      "y": 280,
+      "birdY": 280,
+      "velocityY": 4,
       "score": 1,
       "bestScore": 0,
       "deathTick": null,
       "deathReason": null,
       "gameOverTick": null,
       "restartAllowedTick": null,
-      "firstPipeX": 280,
+      "firstPipeX": 276,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -41,21 +41,21 @@
         6
       ],
       "pipeXs": [
-        280,
-        545,
-        810,
-        1075,
-        1340,
-        1605,
-        1870
+        276,
+        571,
+        866,
+        1161,
+        1456,
+        1751,
+        2046
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -69,16 +69,16 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 118,
+      "flightTicks": 158,
       "paused": false,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame2",
+        "birdFrame": "bird.frame1",
         "birdX": 350,
-        "birdY": 275,
-        "birdLocalY": 109,
-        "birdAngleDegrees": 31.5,
+        "birdY": 280,
+        "birdLocalY": 104,
+        "birdAngleDegrees": 12,
         "roundPixels": false,
         "objectCount": 35,
         "texture": {
@@ -93,103 +93,25 @@
         "pipes": [
           [
             {
-              "x": 280,
-              "y": 75,
+              "x": 276,
+              "y": 60,
               "width": 75,
-              "height": 150
+              "height": 120
             },
             {
-              "x": 280,
-              "y": 175,
+              "x": 276,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 280,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 280,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 545,
-              "y": 100,
-              "width": 75,
-              "height": 200
-            },
-            {
-              "x": 545,
-              "y": 225,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 545,
-              "y": 522,
-              "width": 75,
-              "height": 44
-            },
-            {
-              "x": 545,
-              "y": 475,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 810,
-              "y": 75,
-              "width": 75,
-              "height": 150
-            },
-            {
-              "x": 810,
-              "y": 175,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 810,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 810,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 1075,
-              "y": 90,
-              "width": 75,
-              "height": 180
-            },
-            {
-              "x": 1075,
-              "y": 205,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 1075,
+              "x": 276,
               "y": 512,
               "width": 75,
               "height": 64
             },
             {
-              "x": 1075,
+              "x": 276,
               "y": 455,
               "width": 75,
               "height": 50
@@ -197,51 +119,77 @@
           ],
           [
             {
-              "x": 1340,
-              "y": 50,
+              "x": 571,
+              "y": 87,
               "width": 75,
-              "height": 100
+              "height": 174
             },
             {
-              "x": 1340,
-              "y": 125,
+              "x": 571,
+              "y": 199,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1340,
-              "y": 472,
+              "x": 571,
+              "y": 539,
               "width": 75,
-              "height": 144
+              "height": 10
             },
             {
-              "x": 1340,
-              "y": 375,
+              "x": 571,
+              "y": 509,
               "width": 75,
               "height": 50
             }
           ],
           [
             {
-              "x": 1605,
-              "y": 105,
+              "x": 866,
+              "y": 60,
               "width": 75,
-              "height": 210
+              "height": 120
             },
             {
-              "x": 1605,
-              "y": 235,
+              "x": 866,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1605,
+              "x": 866,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 866,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1161,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1161,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1161,
               "y": 527,
               "width": 75,
               "height": 34
             },
             {
-              "x": 1605,
+              "x": 1161,
               "y": 485,
               "width": 75,
               "height": 50
@@ -249,26 +197,78 @@
           ],
           [
             {
-              "x": 1870,
-              "y": 65,
+              "x": 1456,
+              "y": 35,
               "width": 75,
-              "height": 130
+              "height": 70
             },
             {
-              "x": 1870,
-              "y": 155,
+              "x": 1456,
+              "y": 95,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1870,
+              "x": 1456,
               "y": 487,
               "width": 75,
               "height": 114
             },
             {
-              "x": 1870,
+              "x": 1456,
               "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1751,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1751,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1751,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1751,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 2046,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 2046,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 2046,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 2046,
+              "y": 435,
               "width": 75,
               "height": 50
             }
@@ -284,7 +284,7 @@
         "actionEnabled": true,
         "actionWorld": {
           "x": 512,
-          "y": 424.00000000000006
+          "y": 490
         },
         "pauseWorld": {
           "x": 950,
@@ -306,18 +306,18 @@
       }
     },
     {
-      "tick": 134,
+      "tick": 184,
       "state": "dying",
-      "y": 240.5,
-      "birdY": 240.5,
+      "y": 224,
+      "birdY": 224,
       "velocityY": 0,
       "score": 1,
       "bestScore": 0,
-      "deathTick": 134,
+      "deathTick": 184,
       "deathReason": "upperPipe",
       "gameOverTick": null,
-      "restartAllowedTick": 149,
-      "firstPipeX": 152,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -329,21 +329,21 @@
         6
       ],
       "pipeXs": [
-        152,
-        417,
-        682,
-        947,
-        1212,
-        1477,
-        1742
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -357,15 +357,15 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 134,
+      "flightTicks": 184,
       "paused": false,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame1",
+        "birdFrame": "bird.frame2",
         "birdX": 350,
-        "birdY": 240.5,
-        "birdLocalY": 143.5,
+        "birdY": 224,
+        "birdLocalY": 160,
         "birdAngleDegrees": 0,
         "roundPixels": false,
         "objectCount": 35,
@@ -381,103 +381,25 @@
         "pipes": [
           [
             {
-              "x": 152,
-              "y": 75,
+              "x": 120,
+              "y": 60,
               "width": 75,
-              "height": 150
+              "height": 120
             },
             {
-              "x": 152,
-              "y": 175,
+              "x": 120,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 152,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 152,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 417,
-              "y": 100,
-              "width": 75,
-              "height": 200
-            },
-            {
-              "x": 417,
-              "y": 225,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 417,
-              "y": 522,
-              "width": 75,
-              "height": 44
-            },
-            {
-              "x": 417,
-              "y": 475,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 682,
-              "y": 75,
-              "width": 75,
-              "height": 150
-            },
-            {
-              "x": 682,
-              "y": 175,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 682,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 682,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 947,
-              "y": 90,
-              "width": 75,
-              "height": 180
-            },
-            {
-              "x": 947,
-              "y": 205,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 947,
+              "x": 120,
               "y": 512,
               "width": 75,
               "height": 64
             },
             {
-              "x": 947,
+              "x": 120,
               "y": 455,
               "width": 75,
               "height": 50
@@ -485,51 +407,77 @@
           ],
           [
             {
-              "x": 1212,
-              "y": 50,
+              "x": 415,
+              "y": 87,
               "width": 75,
-              "height": 100
+              "height": 174
             },
             {
-              "x": 1212,
-              "y": 125,
+              "x": 415,
+              "y": 199,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1212,
-              "y": 472,
+              "x": 415,
+              "y": 539,
               "width": 75,
-              "height": 144
+              "height": 10
             },
             {
-              "x": 1212,
-              "y": 375,
+              "x": 415,
+              "y": 509,
               "width": 75,
               "height": 50
             }
           ],
           [
             {
-              "x": 1477,
-              "y": 105,
+              "x": 710,
+              "y": 60,
               "width": 75,
-              "height": 210
+              "height": 120
             },
             {
-              "x": 1477,
-              "y": 235,
+              "x": 710,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1477,
+              "x": 710,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 710,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1005,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1005,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1005,
               "y": 527,
               "width": 75,
               "height": 34
             },
             {
-              "x": 1477,
+              "x": 1005,
               "y": 485,
               "width": 75,
               "height": 50
@@ -537,26 +485,78 @@
           ],
           [
             {
-              "x": 1742,
-              "y": 65,
+              "x": 1300,
+              "y": 35,
               "width": 75,
-              "height": 130
+              "height": 70
             },
             {
-              "x": 1742,
-              "y": 155,
+              "x": 1300,
+              "y": 95,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1742,
+              "x": 1300,
               "y": 487,
               "width": 75,
               "height": 114
             },
             {
-              "x": 1742,
+              "x": 1300,
               "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1595,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1595,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1595,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1595,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1890,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 1890,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1890,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 1890,
+              "y": 435,
               "width": 75,
               "height": 50
             }
@@ -572,7 +572,7 @@
         "actionEnabled": true,
         "actionWorld": {
           "x": 512,
-          "y": 424.00000000000006
+          "y": 490
         },
         "pauseWorld": {
           "x": 950,
@@ -594,18 +594,18 @@
       }
     },
     {
-      "tick": 141,
+      "tick": 191,
       "state": "gameOver",
       "y": 514,
       "birdY": 514,
       "velocityY": 0,
       "score": 1,
       "bestScore": 7,
-      "deathTick": 134,
+      "deathTick": 184,
       "deathReason": "upperPipe",
-      "gameOverTick": 141,
-      "restartAllowedTick": 149,
-      "firstPipeX": 152,
+      "gameOverTick": 191,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -617,21 +617,21 @@
         6
       ],
       "pipeXs": [
-        152,
-        417,
-        682,
-        947,
-        1212,
-        1477,
-        1742
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -645,12 +645,12 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 134,
+      "flightTicks": 184,
       "paused": false,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame1",
+        "birdFrame": "bird.frame2",
         "birdX": 350,
         "birdY": 514,
         "birdLocalY": -130,
@@ -669,103 +669,25 @@
         "pipes": [
           [
             {
-              "x": 152,
-              "y": 75,
+              "x": 120,
+              "y": 60,
               "width": 75,
-              "height": 150
+              "height": 120
             },
             {
-              "x": 152,
-              "y": 175,
+              "x": 120,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 152,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 152,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 417,
-              "y": 100,
-              "width": 75,
-              "height": 200
-            },
-            {
-              "x": 417,
-              "y": 225,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 417,
-              "y": 522,
-              "width": 75,
-              "height": 44
-            },
-            {
-              "x": 417,
-              "y": 475,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 682,
-              "y": 75,
-              "width": 75,
-              "height": 150
-            },
-            {
-              "x": 682,
-              "y": 175,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 682,
-              "y": 497,
-              "width": 75,
-              "height": 94
-            },
-            {
-              "x": 682,
-              "y": 425,
-              "width": 75,
-              "height": 50
-            }
-          ],
-          [
-            {
-              "x": 947,
-              "y": 90,
-              "width": 75,
-              "height": 180
-            },
-            {
-              "x": 947,
-              "y": 205,
-              "width": 75,
-              "height": 50
-            },
-            {
-              "x": 947,
+              "x": 120,
               "y": 512,
               "width": 75,
               "height": 64
             },
             {
-              "x": 947,
+              "x": 120,
               "y": 455,
               "width": 75,
               "height": 50
@@ -773,51 +695,77 @@
           ],
           [
             {
-              "x": 1212,
-              "y": 50,
+              "x": 415,
+              "y": 87,
               "width": 75,
-              "height": 100
+              "height": 174
             },
             {
-              "x": 1212,
-              "y": 125,
+              "x": 415,
+              "y": 199,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1212,
-              "y": 472,
+              "x": 415,
+              "y": 539,
               "width": 75,
-              "height": 144
+              "height": 10
             },
             {
-              "x": 1212,
-              "y": 375,
+              "x": 415,
+              "y": 509,
               "width": 75,
               "height": 50
             }
           ],
           [
             {
-              "x": 1477,
-              "y": 105,
+              "x": 710,
+              "y": 60,
               "width": 75,
-              "height": 210
+              "height": 120
             },
             {
-              "x": 1477,
-              "y": 235,
+              "x": 710,
+              "y": 145,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1477,
+              "x": 710,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 710,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1005,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1005,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1005,
               "y": 527,
               "width": 75,
               "height": 34
             },
             {
-              "x": 1477,
+              "x": 1005,
               "y": 485,
               "width": 75,
               "height": 50
@@ -825,26 +773,78 @@
           ],
           [
             {
-              "x": 1742,
-              "y": 65,
+              "x": 1300,
+              "y": 35,
               "width": 75,
-              "height": 130
+              "height": 70
             },
             {
-              "x": 1742,
-              "y": 155,
+              "x": 1300,
+              "y": 95,
               "width": 75,
               "height": 50
             },
             {
-              "x": 1742,
+              "x": 1300,
               "y": 487,
               "width": 75,
               "height": 114
             },
             {
-              "x": 1742,
+              "x": 1300,
               "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1595,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1595,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1595,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1595,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1890,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 1890,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1890,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 1890,
+              "y": 435,
               "width": 75,
               "height": 50
             }
@@ -860,7 +860,7 @@
         "actionEnabled": false,
         "actionWorld": {
           "x": 512,
-          "y": 424.00000000000006
+          "y": 490
         },
         "pauseWorld": {
           "x": 950,

@@ -25,5 +25,17 @@ check-m3:
 preview-threejs:
     bun run --cwd threejs preview
 
-compare-web-frames:
-    uv run --project tools --locked python tools/compare_web_frames.py
+cocos:
+    bun run --cwd cocos/game editor
+
+assets-cocos:
+    bun run --cwd cocos/game prepare
+
+check-m4:
+    bun run --cwd cocos/game test
+    bun run --cwd cocos/game typecheck:core
+    bun run --cwd cocos/game build
+    bun run --cwd cocos/game typecheck
+
+preview-cocos:
+    bun run --cwd cocos/game preview

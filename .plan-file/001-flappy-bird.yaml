@@ -16,7 +16,7 @@ phases:
     status: done
   - id: 5
     content: M4 Cocos 版：接入共享 TS、资源和场景适配，验证编辑器及 Web 构建。
-    status: pending
+    status: done
   - id: 6
     content: M5 Unity 版：实现纯 C# 内核和 Unity 适配，通过跨语言用例与桌面构建验证。
     status: pending
@@ -27,7 +27,8 @@ phases:
     content: M7 统一验收：完成五引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
     status: pending
 notes:
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M3 已完成，下一阶段为 M4 Cocos 版。
+  - content: 当前共享难度为 easyV1：起点 y=420，拍翅 -12、重力 1，水管/地面速度 6、天空 1.5，开口 260、净间距 220、中心范围 210–354。共享回放改为 210 tick，158 得分、184 撞管、191 落地。以下 M2–M4 的 phaser-v1 数值属于历史验收记录。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M4 已完成，下一阶段为 M5 Unity 版。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
@@ -39,7 +40,7 @@ notes:
   - content: shared/config/gameplay.json 和 shared/fixtures 的边界用例、150 tick 回放及随机向量已建立；review 修订后的 just check-m1 和五项测试通过，Bun 独立 uint32 随机向量一致。
   - content: 本机已确认 Creator 3.8.8、Godot 4.7.2 .NET、Unity 6000.5.6f1；参考工程安装 Phaser 4.2.1、Three.js 0.186.0。Godot 导出模板目录为空，M6 补齐；实际引擎工程运行、构建与回放由 M2-M6 验证。
   - content: Python 工具为 tools/ 下的独立 uv 项目，pyproject.toml、uv.lock 和 .venv 均位于 tools/；根目录 justfile 通过 uv run --project tools 调用，供后续引擎项目并列组织。
-  - content: M1 review 已收口：地面、顶部、上管、下管依次判碰撞，地面当 tick 直接结算；计分使用碰撞盒左边缘。逐 tick 参考模型验证全部快照、死亡事件、偏移、七组队列回收、暂停和补 tick，生产 TS/C# 内核仍须独立执行 fixtures。
+  - content: M1 review 已收口：地面、顶部、上管、下管依次判碰撞，地面当 tick 直接结算；计分使用碰撞盒左边缘。共享 fixtures 覆盖全部快照、死亡事件、偏移、七组队列回收、暂停和补 tick，由真实 TS/C# 内核直接执行；早期 Python 玩法模型已移除。
   - content: 水管身体元数据必须传入边界求得的高度，位置统一表示中心锚点；资源布局用例锁定背景和身体的定位。入口直接调用 uv；重现检查在内存完成，先前四个校验临时目录已移入系统回收站。
   - content: M2 已完成 shared/core-ts 纯 TS 内核、FixedClock 和 phaser 独立 Bun 工程；just phaser 启动 5174，just preview-phaser 预览 5175，just check-m2 执行五项测试、605 个断言、独立无 DOM 内核类型检查和生产构建。
   - content: gameplay.json 冻结为 frozenPhaserV1，M1 的运动与碰撞参数未变，视觉倾角进入共享 render.birdTilt。真实 TS 运行 M1 fixtures，30/60/120 FPS 均得分 118、死亡 134、结算 141，与 Python 参考一致。
@@ -49,6 +50,11 @@ notes:
   - content: M3 已完成 threejs 独立 Bun 工程，Three.js 0.186.0 复用 shared/core-ts，以固定 1024×768 正交投影渲染，y 与倾角只在渲染层转换；just threejs 启动 5176，just preview-threejs 预览 5177，just check-m3 通过五项测试、606 个断言、类型检查和生产构建。
   - content: Phaser 与 Three.js 的 DOM 节点、样式及存档格式共用 shared/web-ts，数值内核仍无 DOM；两个引擎指定独立存档键。Phaser 的 M2 测试和两项实际浏览器回归通过，旧样式副本已进入系统回收站。
   - content: M3 浏览器从 tick 0 到 150 对照两版全部模型字段和鸟帧，得分 118、撞管 134、落地 141 一致；输入、暂停、补 tick、三种窗口、十次重开和存档隔离通过，35 个平面、1 份几何和 9 张 GPU 纹理有界。独立 Chrome 正常退出再启动后最高分仍为 1。
-  - content: M3 交付见 docs/m3-threejs.md；docs/baselines/threejs 保存六张截图、开发/生产浏览器、进程重启及像素比较 JSON。just compare-web-frames 对照 Phaser，玩法区域约 0.09%–0.10% 像素有差异；允许渲染器栅格化差异，逻辑与显示坐标一致。共享玩法配置和 fixtures 未改。
+  - content: M3 交付见 docs/m3-threejs.md；docs/baselines/threejs 保存六张截图、开发/生产浏览器、进程重启及历史像素比较 JSON。当时对照 Phaser 的玩法区域约 0.09%–0.10% 像素有差异，逻辑与显示坐标一致。像素比较脚本已移除，共享玩法配置和 fixtures 保留。
   - content: M3 review 修订：加载错误按贴图文件、页面节点和 WebGL 初始化分别提示并保留异常；Three.js 读取 roundPixels，在逻辑坐标系取整显示中心，物理状态不变。共享 UI 通过 Vite 导入 favicon，修复开发端状态 200 却返回 HTML；生产原地址已正确打包。三项浏览器回归、24 个断言验证失败原因、取整往返及 PNG 内容，像素记录补充最大通道差 169/171/194。
+  - content: M4 已完成 cocos/game 独立 Creator 3.8.8 工程；just cocos 打开 Boot 场景，just preview-cocos 预览 Web Release 5178。启动和构建前同步 17 个共享 TS、配置、fixture 和 PNG 文件，稳定导入 UUID，核心及存档源码保持一致。
+  - content: just check-m4 通过五项测试、804 个断言、无 DOM 内核与 Creator 类型检查，以及实际 Web Desktop Release 构建；Creator CLI 退出码 36，发布入口存在。实际编辑器资源数据库、Boot 场景和组件导入验证通过。
+  - content: M4 编辑器浏览器预览比较 tick 0–150 的全部模型字段，118 得分、134 撞管、141 落地不变；原生 Sprite、Button、触摸/主键/空格、输入合并、暂停清空、五 tick 上限、十局重开及七管/35 个 Sprite 有界检查通过。
+  - content: M4 Release 的实际更新、空格与按钮闭环、真实失焦及显式恢复、自动回放和三种窗口比例通过；回放前后已有最高分 7 未变，普通随机局实际得一分，独立 Chrome 正常退出并重启后仍读取一分。
+  - content: M4 交付见 docs/m4-cocos.md、cocos/README.md 和 docs/baselines/cocos；Creator 网页全屏预览在窗口改变后需重载，Release 连续 resize 无需重载。缩放同时检查逻辑视口、Canvas CSS/像素比例及窗口边界，配置和 fixtures 未改。
 summary: null

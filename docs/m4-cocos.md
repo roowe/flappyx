@@ -1,5 +1,7 @@
 # M4 Cocos Creator 版
 
+当前已调为 `easyV1`，参数与回放事件见 [当前玩法配置](./m1-resources-and-rules.md#3-玩法配置契约)。本文中的 `phaser-v1` 数值及 118/134/141 关键帧为原始验收记录；浏览器检查 JSON、ready/缩放截图及新增的 158/184/191 关键帧已按当前配置更新。
+
 完成日期：2026-10-02（东八区）。独立 Creator 3.8.8 工程位于 `cocos/game/`，沿用冻结的 `phaser-v1`，共享配置和 fixtures 未改。
 
 Cocos 已完成准备、起飞、过管计分、死亡、结算、重开、最高分、暂停恢复与等比缩放。编辑器打开 Boot 场景后，实际浏览器预览从 tick 0 到 150 对照共享内核全部字段；Web Desktop Release 则通过真实更新循环和自动回放验收。启动与复现命令见 [Cocos README](../cocos/README.md)。

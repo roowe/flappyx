@@ -1,5 +1,7 @@
 # Cocos Creator Flappy Bird
 
+当前统一使用 `easyV1`：更宽的水管开口、更慢的滚动与下落，以及更高的开局位置。参数见 [共享配置](../shared/config/gameplay.json)。
+
 工程位于 `cocos/game/`，入口为 `assets/scenes/Boot.scene`。Creator 3.8.8 的编辑器浏览器预览和 Web Desktop Release 均已验收，详见 [M4 记录](../docs/m4-cocos.md)。
 
 在仓库根目录运行：
@@ -19,7 +21,7 @@ Dashboard 也可添加 `cocos/game`。第一次打开或共享源码改变后，
 
 正式发布页随窗口等比缩放。Creator 的设备预览保留加载时的容器尺寸，选择「网页全屏」后，改变窗口大小需要刷新预览。
 
-发布页支持 `/?replay=baseline` 自动回放，也支持 `/?replay=baseline&tick=134` 静态对照。回放显示「回放最高」，不读取或写入玩家纪录。
+发布页支持 `/?replay=baseline` 自动回放，也支持 `/?replay=baseline&tick=184` 静态对照。回放显示「回放最高」，不读取或写入玩家纪录。
 
 ## 浏览器验收
 

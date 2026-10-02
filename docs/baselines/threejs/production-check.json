@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "recordedAtUnixMilliseconds": 1790908450479,
+  "recordedAtUnixMilliseconds": 1790950345303,
   "browserVersion": "154.0.8037.93",
-  "configSha256": "4e42ef1978a4f2b096450012137fd3006175e5d6514181eba85c5e6b09d8d433",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
   "engine": "threejs",
   "surface": {
     "width": 1024,

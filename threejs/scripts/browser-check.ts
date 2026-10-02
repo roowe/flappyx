@@ -3,6 +3,8 @@ import { strict as assert } from 'node:assert';
 import { mkdir } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import baseline from '../../shared/fixtures/replay-baseline.json';
+import cases from '../../shared/fixtures/gameplay-cases.json';
+import { config } from '../../shared/core-ts';
 import { bestScoreKey } from '../src/storage';
 import type {} from '../src/game';
 
@@ -14,6 +16,7 @@ const output = fileURLToPath(new URL('../../docs/baselines/threejs/', import.met
 await mkdir(output, { recursive: true });
 const context = await browser.newContext({ viewport: { width: 1024, height: 768 }, deviceScaleFactor: 1 });
 const existingBestScore = 7;
+const replayTicks = [baseline.expected.scoreTicks[0], baseline.expected.deathTick, baseline.expected.gameOverTick];
 await context.addInitScript(({ origin, key, bestScore }) => {
   if (location.origin === origin && localStorage.getItem(key) === null) {
     localStorage.setItem(key, JSON.stringify({ schemaVersion: 1, bestScore }));
@@ -60,14 +63,14 @@ try {
   await page.evaluate(() => window.flappyxTest!.reset());
   await page.keyboard.down('Space');
   await frame();
-  assert.equal((await snapshot()).y, 450.5);
+  assert.equal((await snapshot()).y, config.bird.initialY + config.bird.flapVelocityPerTick);
   await page.keyboard.down('Space'); // key repeat is ignored even across ticks
   await frame();
-  assert.equal((await snapshot()).y, 438.5);
+  assert.equal((await snapshot()).y, config.bird.initialY + 2 * config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
   await page.keyboard.up('Space');
   await page.locator('canvas').click({ position: { x: 850, y: 450 } });
   await frame();
-  assert.equal((await snapshot()).velocityY, -12);
+  assert.equal((await snapshot()).velocityY, config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
 
   // A queued flap must be cleared by pause, and focus alone must not resume.
   await page.keyboard.press('Space');
@@ -120,14 +123,16 @@ try {
 
   // Execute the reviewed scoring/death replay through the actual Scene and storage adapter.
   await page.evaluate(gaps => window.flappyxTest!.reset({ pipeGapCenters: gaps }), baseline.pipeGapCenters);
-  await page.evaluate(flaps => window.flappyxTest!.advance(118, flaps), baseline.flapTicks);
+  await page.evaluate(({ tick, flaps }) => window.flappyxTest!.advance(tick, flaps),
+    { tick: replayTicks[0], flaps: baseline.flapTicks });
   assert.equal((await snapshot()).score, 1);
-  assert.equal((await snapshot()).y, 275);
-  await page.evaluate(flaps => window.flappyxTest!.advance(32, flaps), baseline.flapTicks);
+  assert.equal((await snapshot()).y, baseline.snapshots.find(s => s.tick === replayTicks[0])!.birdY);
+  await page.evaluate(({ ticks, flaps }) => window.flappyxTest!.advance(ticks, flaps),
+    { ticks: baseline.totalTicks - replayTicks[0], flaps: baseline.flapTicks });
   const finished = await snapshot();
   assert.equal(finished.state, 'gameOver');
-  assert.equal(finished.deathTick, 134);
-  assert.equal(finished.gameOverTick, 141);
+  assert.equal(finished.deathTick, baseline.expected.deathTick);
+  assert.equal(finished.gameOverTick, baseline.expected.gameOverTick);
   assert.equal(finished.bestScore, existingBestScore);
   await page.evaluate(() => window.dispatchEvent(new FocusEvent('blur')));
   assert.equal((await snapshot()).paused, true);
@@ -153,7 +158,7 @@ try {
     await page.locator('#action').click();
     await frame();
     assert.equal((await snapshot()).state, 'playing');
-    await page.evaluate(() => window.flappyxTest!.advance(22));
+    await page.evaluate(ticks => window.flappyxTest!.advance(ticks), cases.trajectory.expected.deathTick - 1);
     assert.equal((await snapshot()).state, 'gameOver');
     assert.equal(await page.locator('#action').isDisabled(), true);
     await page.evaluate(() => window.flappyxTest!.advance(15));
@@ -185,7 +190,7 @@ try {
     });
     assert.equal(size.width, 1024); assert.equal(size.height, 768);
     assert.ok(Math.abs(size.rect.width / size.rect.height - 4 / 3) < .001);
-    assert.equal((await snapshot()).y, 464);
+    assert.equal((await snapshot()).y, config.bird.initialY);
     scales.push({ viewport, ...size });
     if (viewport.width !== 1024) await page.screenshot({ path: `${output}/${viewport.width === 1280 ? 'wide' : 'portrait'}.png` });
   }
@@ -198,14 +203,14 @@ try {
   await touch.touchscreen.tap(canvas.x + canvas.width * .85, canvas.y + canvas.height * .65);
   await touch.evaluate(() => window.flappyxTest!.frame(1000 / 30));
   const touchSnapshot = await touch.evaluate(() => window.flappyxTest!.snapshot());
-  assert.equal(touchSnapshot.y, 450.5);
+  assert.equal(touchSnapshot.y, config.bird.initialY + config.bird.flapVelocityPerTick);
   await touch.evaluate(() => window.flappyxTest!.frame(1000 / 30));
-  assert.equal((await touch.evaluate(() => window.flappyxTest!.snapshot())).y, 438.5);
+  assert.equal((await touch.evaluate(() => window.flappyxTest!.snapshot())).y, config.bird.initialY + 2 * config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
   await touchContext.close();
 
   await page.setViewportSize({ width: 1024, height: 768 });
   const replaySnapshots = [];
-  for (const tick of [118, 134, 141]) {
+  for (const tick of replayTicks) {
     await ready(page, `/?replay=baseline&tick=${tick}&test=1`);
     const actual = await snapshot();
     const expected = baseline.snapshots.find(s => s.tick === tick)!;
@@ -219,9 +224,9 @@ try {
     await page.locator('canvas').screenshot({ path: `${output}/tick-${tick}.png` });
   }
   assert.deepEqual(errors, []);
-  const result = { schemaVersion: 1, baseline: 'phaser-v1', recordedAtUnixMilliseconds: Date.now(),
+  const result = { schemaVersion: 1, baseline: config.baselineStatus, recordedAtUnixMilliseconds: Date.now(),
     browserVersion: browser.version(), configSha256: new Bun.CryptoHasher('sha256').update(await Bun.file(new URL('../../shared/config/gameplay.json', import.meta.url)).arrayBuffer()).digest('hex'),
-    checks: ['paired-Phaser-150-tick-replay', 'orthographic-coordinate-conversion', 'three-ticks-per-animation-frame',
+    checks: [`paired-Phaser-${baseline.totalTicks}-tick-replay`, 'orthographic-coordinate-conversion', 'three-ticks-per-animation-frame',
       'fractional-render-coordinates/nearest', 'keyboard/repeat', 'pointer', 'touch/synthetic-mouse', 'pause/focus/explicit-resume', 'catch-up-cap',
       'score/death', 'game-over-blur/explicit-resume-before-restart', 'best-score-reload/reopen-page',
       'ten-restarts/no-render-or-GPU-growth', 'three-viewport-sizes', 'reviewed-replay-screenshots'],

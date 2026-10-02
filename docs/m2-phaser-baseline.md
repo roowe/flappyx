@@ -1,5 +1,7 @@
 # M2 Phaser 基准版
 
+当前已调为 `easyV1`，参数与回放事件见 [当前玩法配置](./m1-resources-and-rules.md#3-玩法配置契约)。本文中的 `phaser-v1` 数值及 118/134/141 关键帧为原始验收记录；浏览器检查 JSON、ready/缩放截图及新增的 158/184/191 关键帧已按当前配置更新。
+
 完成日期：2026-10-02（东八区）  
 基准：`phaser-v1`；`gameplay.json.baselineStatus = frozenPhaserV1`。
 

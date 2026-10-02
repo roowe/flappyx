@@ -2,21 +2,21 @@
   "schemaVersion": 1,
   "id": "one-score-then-upper-pipe",
   "config": "../config/gameplay.json",
-  "totalTicks": 150,
+  "totalTicks": 210,
   "renderFps": [30, 60, 120],
   "initialState": "ready",
   "initialBestScore": 0,
   "seed": 123456789,
-  "flapTicks": [1, 18, 35, 52, 69, 86, 103, 120, 137],
-  "pipeGapCenters": [300, 350, 300, 330, 250, 360, 280, 320],
+  "flapTicks": [1, 18, 43, 68, 93, 118, 143, 168, 180, 205],
+  "pipeGapCenters": [300, 354, 300, 330, 250, 340, 280, 320],
   "snapshots": [
-    {"tick": 1, "state": "playing", "birdY": 450.5, "velocityY": -12, "score": 0, "firstPipeX": 1216},
-    {"tick": 102, "state": "playing", "birdY": 311, "velocityY": 12, "score": 0, "firstPipeX": 408},
-    {"tick": 118, "state": "playing", "birdY": 275, "velocityY": 10.5, "score": 1, "firstPipeX": 280},
-    {"tick": 134, "state": "dying", "birdY": 240.5, "velocityY": 0, "score": 1, "firstPipeX": 152},
-    {"tick": 141, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 152},
-    {"tick": 150, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 152}
+    {"tick": 1, "state": "playing", "birdY": 408, "velocityY": -11, "score": 0, "firstPipeX": 1218},
+    {"tick": 134, "state": "playing", "birdY": 284, "velocityY": 5, "score": 0, "firstPipeX": 420},
+    {"tick": 158, "state": "playing", "birdY": 280, "velocityY": 4, "score": 1, "firstPipeX": 276},
+    {"tick": 184, "state": "dying", "birdY": 224, "velocityY": 0, "score": 1, "firstPipeX": 120},
+    {"tick": 191, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 120},
+    {"tick": 210, "state": "gameOver", "birdY": 514, "velocityY": 0, "score": 1, "firstPipeX": 120}
   ],
-  "expected": {"scoreTicks": [118], "deathTick": 134, "deathReason": "upperPipe", "gameOverTick": 141, "restartAllowedTick": 149, "finalScore": 1, "bestScore": 1, "ignoredFlapTicks": [137], "pipeCount": 7, "consumedGapCenters": 7},
-  "evidence": "Reviewed analytical expectations, checked by a sequential Python reference model at 30/60/120 render FPS; independent TS/C# engine runners are added in M2-M6."
+  "expected": {"scoreTicks": [158], "deathTick": 184, "deathReason": "upperPipe", "gameOverTick": 191, "restartAllowedTick": 199, "finalScore": 1, "bestScore": 1, "ignoredFlapTicks": [205], "pipeCount": 7, "consumedGapCenters": 7},
+  "evidence": "easyV1 analytical expectations: y(n)=y0-12*n+n*(n-1)/2 between flaps; first pipe x=1224-6*tick, second pipe x=1519-6*tick; death descent adds 15*n*(n-1)/2. Real core tests verify the same snapshots at 30/60/120 render FPS."
 }

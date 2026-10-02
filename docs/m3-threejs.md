@@ -1,5 +1,7 @@
 # M3 Three.js 版
 
+当前已调为 `easyV1`，参数与回放事件见 [当前玩法配置](./m1-resources-and-rules.md#3-玩法配置契约)。本文中的 `phaser-v1` 数值及 118/134/141 关键帧为原始验收记录；浏览器检查 JSON、ready/缩放截图及新增的 158/184/191 关键帧已按当前配置更新。
+
 完成日期：2026-10-02（东八区）。玩法继续使用冻结的 `phaser-v1`，未修改共享配置、物理参数或 fixtures。
 
 Three.js 版已完成准备、起飞、过管计分、死亡、结算、重开、最高分、缩放和暂停恢复。两个真实浏览器适配层从 tick 0 到 150 的全部模型快照字段与鸟动画帧一致。启动方式见 [Three.js README](../threejs/README.md)：`just threejs` 打开 <http://127.0.0.1:5176/>，`just preview-threejs` 在 5177 端口预览生产构建。

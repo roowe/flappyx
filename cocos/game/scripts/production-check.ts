@@ -42,10 +42,10 @@ try {
   phase = 'automatic fixture replay';
   const beforeReplay = await page.evaluate(key => localStorage.getItem(key), bestScoreKey);
   await ready(page, `${baseURL}/?replay=baseline`);
-  await page.waitForFunction(() => window.flappyx!.snapshot().tick === 150, undefined, { timeout: 10000 });
+  await page.waitForFunction(ticks => window.flappyx!.snapshot().tick === ticks, baseline.totalTicks, { timeout: 10000 });
   const automatic = await snapshot(page);
   const expected = new Game(config, { initial: { seed: baseline.seed, bestScore: 0 }, pipeGapCenters: baseline.pipeGapCenters });
-  for (let tick = 1; tick <= 150; tick++) expected.step(baseline.flapTicks.includes(tick));
+  for (let tick = 1; tick <= baseline.totalTicks; tick++) expected.step(baseline.flapTicks.includes(tick));
   for (const [key, value] of Object.entries(expected.snapshot())) assert.deepEqual(automatic[key as keyof typeof automatic], value);
   assert.equal(automatic.ui.best, '回放最高 1'); assert.equal(automatic.ui.action, '返回游戏');
   const afterReplay = await page.evaluate(key => localStorage.getItem(key), bestScoreKey);
@@ -55,7 +55,7 @@ try {
 
   phase = 'release fixed frames and scaling';
   const snapshots = [];
-  for (const tick of [118, 134, 141]) {
+  for (const tick of [baseline.expected.scoreTicks[0], baseline.expected.deathTick, baseline.expected.gameOverTick]) {
     await ready(page, `${baseURL}/?replay=baseline&tick=${tick}`);
     const s = await snapshot(page); assert.equal(s.tick, tick); assert.equal(s.paused, true);
     assert.equal(s.objectCount, 35); assert.equal(s.render.birdY, s.y);

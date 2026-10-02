@@ -28,6 +28,13 @@ function run(game: Game, ticks: number, flapTicks: readonly number[]) {
   return { snapshots, result: { ...game.snapshot(), finalScore: game.score, scoreTicks, ignoredFlapTicks } };
 }
 
+test('default opening lets a steady 0.8-second flap rhythm clear two pipes', () => {
+  const game = new Game();
+  for (let tick = 1; tick <= 210; tick++) game.step((tick - 1) % 24 === 0);
+  expect(game.state).toBe('playing');
+  expect(game.score).toBe(2);
+});
+
 test('M1 trajectories, collision priority, offsets, score boundaries and seven-pipe recycling', () => {
   for (const item of [cases.trajectory, ...cases.stepCases, cases.recycle]) {
     const game = new Game(config, item as GameOptions);

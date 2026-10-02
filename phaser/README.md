@@ -1,5 +1,7 @@
 # FlappyX · Phaser
 
+当前统一使用 `easyV1`：更宽的水管开口、更慢的滚动与下落，以及更高的开局位置。参数见 [共享配置](../shared/config/gameplay.json)。
+
 Phaser 4.2.1 的可玩基准版本，共用 `shared/core-ts/` 内核、共享 PNG 和玩法配置。详细基准与验收记录见 [M2 记录](../docs/m2-phaser-baseline.md)。
 
 从仓库根目录安装和启动：
@@ -20,7 +22,7 @@ just preview-phaser
 
 生产预览为 <http://127.0.0.1:5175/>。`dist/` 是派生产物，不提交；构建覆盖同名输出，禁止自动清空目录。
 
-固定输入回放为 `/?replay=baseline`；`/?replay=baseline&tick=118` 在指定 tick 定格，用于引擎间截图对照。允许 tick 0–150，HUD 的「回放最高」来自 fixture 的模型，初始为 0，结算后为 1。回放不读取或写入玩家最高分，点击「返回游戏」后恢复玩家纪录。开发模式的 `/?test=1` 暴露确定性验收接口并停用自动 tick；生产构建没有这个接口。
+固定输入回放为 `/?replay=baseline`；`/?replay=baseline&tick=158` 在指定 tick 定格，用于引擎间截图对照。允许 tick 0–210，HUD 的「回放最高」来自 fixture 的模型，初始为 0，结算后为 1。回放不读取或写入玩家最高分，点击「返回游戏」后恢复玩家纪录。开发模式的 `/?test=1` 暴露确定性验收接口并停用自动 tick；生产构建没有这个接口。
 
 自动浏览器验收使用 `playwright-core` 连接单独启动的本机 Chrome，无需下载浏览器。macOS 可在独立终端启动以下可见窗口，其他平台使用本机 Chrome 可执行文件和绝对配置目录：
 

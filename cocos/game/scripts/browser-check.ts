@@ -3,6 +3,7 @@ import { Game, config } from '../../../shared/core-ts';
 import baseline from '../../../shared/fixtures/replay-baseline.json';
 import { bestScoreKey, browserSession, clickButton, configHash, output, ready, snapshot, surface } from './browser-helpers';
 
+const replayTicks = [baseline.expected.scoreTicks[0], baseline.expected.deathTick, baseline.expected.gameOverTick];
 const baseURL = process.env.FLAPPYX_URL ?? 'http://127.0.0.1:7456';
 const { browser, context, page, errors } = await browserSession(baseURL, 768);
 const frame = (ms = 1000 / 30) => page.evaluate(ms => window.flappyxTest!.frame(ms), ms);
@@ -20,14 +21,14 @@ try {
   assert.equal((await snapshot(page)).state, 'ready');
   await page.evaluate(() => window.flappyxTest!.reset());
   await page.keyboard.down('Space'); await frame();
-  assert.equal((await snapshot(page)).y, 450.5);
+  assert.equal((await snapshot(page)).y, config.bird.initialY + config.bird.flapVelocityPerTick);
   await page.keyboard.down('Space'); await frame();
-  assert.equal((await snapshot(page)).y, 438.5);
+  assert.equal((await snapshot(page)).y, config.bird.initialY + 2 * config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
   await page.keyboard.up('Space');
   await page.mouse.click(860, 470); await page.keyboard.press('Space'); await frame();
-  assert.equal((await snapshot(page)).velocityY, -12);
+  assert.equal((await snapshot(page)).velocityY, config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
   await page.touchscreen.tap(860, 470); await frame();
-  assert.equal((await snapshot(page)).velocityY, -12);
+  assert.equal((await snapshot(page)).velocityY, config.bird.flapVelocityPerTick + config.bird.gravityPerTickSquared);
 
   phase = 'pause';
   await page.keyboard.press('Space'); await clickButton(page, 'pause');
@@ -42,7 +43,7 @@ try {
   assert.equal(await frame(340), 5);
   assert.ok(Math.abs((await snapshot(page)).accumulatedTicks - .2) < 1e-9);
 
-  phase = '151 paired snapshots';
+  phase = `${baseline.totalTicks + 1} paired snapshots`;
   const options = { initial: { bestScore: 0, seed: baseline.seed }, pipeGapCenters: baseline.pipeGapCenters };
   await page.evaluate(options => window.flappyxTest!.reset(options), options);
   const expected = new Game(config, options), snapshots = [];
@@ -66,7 +67,7 @@ try {
       assert.equal(lowerHead.y + lowerHead.height / 2, lowerBody.y - lowerBody.height / 2);
       assert.equal(lowerBody.y + lowerBody.height / 2, 544);
     }
-    if ([118, 134, 141].includes(tick)) snapshots.push(actual);
+    if (replayTicks.includes(tick)) snapshots.push(actual);
     if (tick < baseline.totalTicks) {
       expected.step(baseline.flapTicks.includes(tick + 1));
       await page.evaluate(flaps => window.flappyxTest!.advance(1, flaps), baseline.flapTicks);
@@ -75,16 +76,17 @@ try {
   phase = 'ten restarts';
   for (let round = 0; round < 10; round++) {
     await page.evaluate(options => window.flappyxTest!.reset(options), options);
-    await page.evaluate(flaps => window.flappyxTest!.advance(150, flaps), baseline.flapTicks);
+    await page.evaluate(({ ticks, flaps }) => window.flappyxTest!.advance(ticks, flaps),
+      { ticks: baseline.totalTicks, flaps: baseline.flapTicks });
     await clickButton(page, 'action');
     const s = await snapshot(page); assert.equal(s.state, 'ready'); assert.equal(s.tick, 0);
     assert.equal(s.pipeCount, 7); assert.equal(s.objectCount, 35); assert.equal(s.bestScore, 7);
   }
   phase = 'read-only replay and scale';
   const before = await page.evaluate(key => localStorage.getItem(key), bestScoreKey);
-  for (const tick of [118, 134, 141]) {
+  for (const tick of replayTicks) {
     await ready(page, `${baseURL}/?replay=baseline&tick=${tick}`);
-    const s = await snapshot(page); assert.equal(s.tick, tick); assert.equal(s.bestScore, tick < 141 ? 0 : 1);
+    const s = await snapshot(page); assert.equal(s.tick, tick); assert.equal(s.bestScore, tick < baseline.expected.gameOverTick ? 0 : 1);
     assert.equal(s.ui.best, `回放最高 ${s.bestScore}`);
     await page.locator('canvas').screenshot({ path: `${output}/tick-${tick}.png` });
   }
@@ -93,7 +95,7 @@ try {
   // 正式发布页的连续 resize 另由 production-check 验证。
   for (const size of [{ width: 1024, height: 768 }, { width: 1280, height: 720 }, { width: 390, height: 844 }]) {
     await page.setViewportSize(size);
-    await ready(page, `${baseURL}/?replay=baseline&tick=141`);
+    await ready(page, `${baseURL}/?replay=baseline&tick=${baseline.expected.gameOverTick}`);
     const s = await snapshot(page);
     assert.equal(s.y, 514); assert.equal(s.render.birdY, 514);
     assert.ok(Math.abs(s.viewport.rect.width / s.viewport.rect.height - 4 / 3) < 1e-9);
@@ -105,11 +107,11 @@ try {
   assert.deepEqual(errors, []);
   await Bun.write(`${output}/browser-check.json`, JSON.stringify({ schemaVersion: 1,
     recordedAtUnixMilliseconds: Date.now(), engine: 'cocos', creatorVersion: '3.8.8', browserVersion: browser.version(),
-    configSha256: await configHash(), url: baseURL, pairedTicks: 151, frames, snapshots, sizes,
+    configSha256: await configHash(), url: baseURL, pairedTicks: baseline.totalTicks + 1, frames, snapshots, sizes,
     previewSizing: 'WebpageFullScreen; reload after changing the browser viewport',
     checks: ['native-input/primary-only/touch/merge/repeat', 'native-buttons', 'pause/explicit-resume/clear-input', 'catch-up-cap',
       'all-model-fields', 'bird-animation/position/size/sampler', 'pipe-seams', 'ten-restarts/bounded-sprites',
       'fixed-replay/read-only', 'three-preview-window-sizes/reload'], storage: { before, after }, errors }, null, 2) + '\n');
-  console.log('Creator 编辑器浏览器预览验收通过，151 tick 对照一致。');
+  console.log(`Creator 编辑器浏览器预览验收通过，${baseline.totalTicks + 1} 个快照对照一致。`);
 } catch (error) { console.error(`失败阶段：${phase}`, await snapshot(page)); throw error; }
 finally { await context.close(); await browser.close(); }

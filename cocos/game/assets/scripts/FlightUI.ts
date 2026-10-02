@@ -49,7 +49,7 @@ export class FlightUI {
     this.score = label(this.root, 'Score', '0', 512, 52, 180, 48);
     this.best = label(this.root, 'Best', '最高 0', 790, 52, 220, 24);
     this.pause = button(this.root, 'Pause', '暂停', 950, 52, 110, 46, pause);
-    this.panel = box(this.root, 'Panel', 512, 306, 570, 304, cream);
+    this.panel = box(this.root, 'Panel', 512, 240, 570, 260, cream);
     // Panel children use coordinates relative to their parent's center.
     this.title = label(this.panel, 'Heading', '', 512, 299, 530, 36);
     this.message = label(this.panel, 'Message', '', 512, 354, 540, 20);

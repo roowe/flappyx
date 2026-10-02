@@ -1,11 +1,13 @@
 import sys
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 from PIL import Image
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from prepare_assets import LuaTableReader, straight_alpha, upright_sprite
+import verify_m1
 
 
 class AssetConversionTests(unittest.TestCase):
@@ -34,6 +36,12 @@ class AssetConversionTests(unittest.TestCase):
         self.assertEqual(LuaTableReader('return {{["id"]=4,[1]={16,-16},["flag"]=false,},}').read()[1][1], {1: 16, 2: -16})
         with self.assertRaises(ValueError):
             LuaTableReader('return { os.execute("anything") }').read()
+
+    def test_asset_verification_needs_no_scratch_directory(self):
+        with patch("tempfile.mkdtemp", side_effect=AssertionError("No scratch directory expected")):
+            with patch.object(Path, "mkdir", side_effect=AssertionError("Verification must not create directories")):
+                with patch.object(Path, "write_bytes", side_effect=AssertionError("Verification must not write generated files")):
+                    verify_m1.verify_assets()
 
 
 if __name__ == "__main__":

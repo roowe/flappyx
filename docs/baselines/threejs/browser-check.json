@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "baseline": "phaser-v1",
-  "recordedAtUnixMilliseconds": 1790908312755,
+  "baseline": "easyV1",
+  "recordedAtUnixMilliseconds": 1790950335626,
   "browserVersion": "154.0.8037.93",
-  "configSha256": "4e42ef1978a4f2b096450012137fd3006175e5d6514181eba85c5e6b09d8d433",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
   "checks": [
-    "paired-Phaser-150-tick-replay",
+    "paired-Phaser-210-tick-replay",
     "orthographic-coordinate-conversion",
     "three-ticks-per-animation-frame",
     "fractional-render-coordinates/nearest",
@@ -52,16 +52,16 @@
       "threejs": {
         "tick": 1,
         "state": "playing",
-        "y": 450.5,
-        "birdY": 450.5,
-        "velocityY": -12,
+        "y": 408,
+        "birdY": 408,
+        "velocityY": -11,
         "score": 0,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 1216,
+        "firstPipeX": 1218,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -73,21 +73,21 @@
           6
         ],
         "pipeXs": [
-          1216,
-          1481,
-          1746,
-          2011,
-          2276,
-          2541,
-          2806
+          1218,
+          1513,
+          1808,
+          2103,
+          2398,
+          2693,
+          2988
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -108,9 +108,9 @@
         "render": {
           "birdFrame": "bird.frame1",
           "birdX": 350,
-          "birdY": 450.5,
+          "birdY": 408,
           "roundPixels": false,
-          "birdWorldY": 317.5,
+          "birdWorldY": 360,
           "birdAngleDegrees": -20,
           "camera": {
             "type": "OrthographicCamera",
@@ -138,16 +138,16 @@
       "phaser": {
         "tick": 1,
         "state": "playing",
-        "y": 450.5,
-        "birdY": 450.5,
-        "velocityY": -12,
+        "y": 408,
+        "birdY": 408,
+        "velocityY": -11,
         "score": 0,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 1216,
+        "firstPipeX": 1218,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -159,21 +159,21 @@
           6
         ],
         "pipeXs": [
-          1216,
-          1481,
-          1746,
-          2011,
-          2276,
-          2541,
-          2806
+          1218,
+          1513,
+          1808,
+          2103,
+          2398,
+          2693,
+          2988
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -193,7 +193,7 @@
         "objectCount": 35,
         "render": {
           "birdFrame": "bird.frame1",
-          "birdY": 450.5,
+          "birdY": 408,
           "roundPixels": false,
           "cameraRoundPixels": false,
           "birdScaleMode": 1
@@ -201,20 +201,20 @@
       }
     },
     {
-      "tick": 102,
+      "tick": 134,
       "threejs": {
-        "tick": 102,
+        "tick": 134,
         "state": "playing",
-        "y": 311,
-        "birdY": 311,
-        "velocityY": 12,
+        "y": 284,
+        "birdY": 284,
+        "velocityY": 5,
         "score": 0,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 408,
+        "firstPipeX": 420,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -226,21 +226,21 @@
           6
         ],
         "pipeXs": [
-          408,
-          673,
-          938,
-          1203,
-          1468,
-          1733,
-          1998
+          420,
+          715,
+          1010,
+          1305,
+          1600,
+          1895,
+          2190
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -254,17 +254,17 @@
         ],
         "pipesPassed": false,
         "consumedGapCenters": 7,
-        "flightTicks": 102,
+        "flightTicks": 134,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame2",
+          "birdFrame": "bird.frame1",
           "birdX": 350,
-          "birdY": 311,
+          "birdY": 284,
           "roundPixels": false,
-          "birdWorldY": 457,
-          "birdAngleDegrees": 36,
+          "birdWorldY": 484,
+          "birdAngleDegrees": 14.999999999999998,
           "camera": {
             "type": "OrthographicCamera",
             "left": 0,
@@ -289,18 +289,18 @@
         }
       },
       "phaser": {
-        "tick": 102,
+        "tick": 134,
         "state": "playing",
-        "y": 311,
-        "birdY": 311,
-        "velocityY": 12,
+        "y": 284,
+        "birdY": 284,
+        "velocityY": 5,
         "score": 0,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 408,
+        "firstPipeX": 420,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -312,21 +312,21 @@
           6
         ],
         "pipeXs": [
-          408,
-          673,
-          938,
-          1203,
-          1468,
-          1733,
-          1998
+          420,
+          715,
+          1010,
+          1305,
+          1600,
+          1895,
+          2190
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -340,13 +340,13 @@
         ],
         "pipesPassed": false,
         "consumedGapCenters": 7,
-        "flightTicks": 102,
+        "flightTicks": 134,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame2",
-          "birdY": 311,
+          "birdFrame": "bird.frame1",
+          "birdY": 284,
           "roundPixels": false,
           "cameraRoundPixels": false,
           "birdScaleMode": 1
@@ -354,20 +354,20 @@
       }
     },
     {
-      "tick": 118,
+      "tick": 158,
       "threejs": {
-        "tick": 118,
+        "tick": 158,
         "state": "playing",
-        "y": 275,
-        "birdY": 275,
-        "velocityY": 10.5,
+        "y": 280,
+        "birdY": 280,
+        "velocityY": 4,
         "score": 1,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 280,
+        "firstPipeX": 276,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -379,21 +379,21 @@
           6
         ],
         "pipeXs": [
-          280,
-          545,
-          810,
-          1075,
-          1340,
-          1605,
-          1870
+          276,
+          571,
+          866,
+          1161,
+          1456,
+          1751,
+          2046
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -407,17 +407,17 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 118,
+        "flightTicks": 158,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame2",
+          "birdFrame": "bird.frame1",
           "birdX": 350,
-          "birdY": 275,
+          "birdY": 280,
           "roundPixels": false,
-          "birdWorldY": 493,
-          "birdAngleDegrees": 31.5,
+          "birdWorldY": 488,
+          "birdAngleDegrees": 12,
           "camera": {
             "type": "OrthographicCamera",
             "left": 0,
@@ -438,22 +438,22 @@
             "geometries": 1,
             "textures": 9
           },
-          "drawCalls": 23
+          "drawCalls": 19
         }
       },
       "phaser": {
-        "tick": 118,
+        "tick": 158,
         "state": "playing",
-        "y": 275,
-        "birdY": 275,
-        "velocityY": 10.5,
+        "y": 280,
+        "birdY": 280,
+        "velocityY": 4,
         "score": 1,
         "bestScore": 0,
         "deathTick": null,
         "deathReason": null,
         "gameOverTick": null,
         "restartAllowedTick": null,
-        "firstPipeX": 280,
+        "firstPipeX": 276,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -465,21 +465,21 @@
           6
         ],
         "pipeXs": [
-          280,
-          545,
-          810,
-          1075,
-          1340,
-          1605,
-          1870
+          276,
+          571,
+          866,
+          1161,
+          1456,
+          1751,
+          2046
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -493,13 +493,13 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 118,
+        "flightTicks": 158,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame2",
-          "birdY": 275,
+          "birdFrame": "bird.frame1",
+          "birdY": 280,
           "roundPixels": false,
           "cameraRoundPixels": false,
           "birdScaleMode": 1
@@ -507,20 +507,20 @@
       }
     },
     {
-      "tick": 134,
+      "tick": 184,
       "threejs": {
-        "tick": 134,
+        "tick": 184,
         "state": "dying",
-        "y": 240.5,
-        "birdY": 240.5,
+        "y": 224,
+        "birdY": 224,
         "velocityY": 0,
         "score": 1,
         "bestScore": 0,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
         "gameOverTick": null,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -532,21 +532,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -560,16 +560,16 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
+          "birdFrame": "bird.frame2",
           "birdX": 350,
-          "birdY": 240.5,
+          "birdY": 224,
           "roundPixels": false,
-          "birdWorldY": 527.5,
+          "birdWorldY": 544,
           "birdAngleDegrees": 0,
           "camera": {
             "type": "OrthographicCamera",
@@ -595,18 +595,18 @@
         }
       },
       "phaser": {
-        "tick": 134,
+        "tick": 184,
         "state": "dying",
-        "y": 240.5,
-        "birdY": 240.5,
+        "y": 224,
+        "birdY": 224,
         "velocityY": 0,
         "score": 1,
         "bestScore": 0,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
         "gameOverTick": null,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -618,21 +618,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -646,13 +646,13 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
-          "birdY": 240.5,
+          "birdFrame": "bird.frame2",
+          "birdY": 224,
           "roundPixels": false,
           "cameraRoundPixels": false,
           "birdScaleMode": 1
@@ -660,20 +660,20 @@
       }
     },
     {
-      "tick": 141,
+      "tick": 191,
       "threejs": {
-        "tick": 141,
+        "tick": 191,
         "state": "gameOver",
         "y": 514,
         "birdY": 514,
         "velocityY": 0,
         "score": 1,
         "bestScore": 1,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
-        "gameOverTick": 141,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -685,21 +685,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -713,12 +713,12 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
+          "birdFrame": "bird.frame2",
           "birdX": 350,
           "birdY": 514,
           "roundPixels": false,
@@ -748,18 +748,18 @@
         }
       },
       "phaser": {
-        "tick": 141,
+        "tick": 191,
         "state": "gameOver",
         "y": 514,
         "birdY": 514,
         "velocityY": 0,
         "score": 1,
         "bestScore": 1,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
-        "gameOverTick": 141,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -771,21 +771,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -799,12 +799,12 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
+          "birdFrame": "bird.frame2",
           "birdY": 514,
           "roundPixels": false,
           "cameraRoundPixels": false,
@@ -813,20 +813,20 @@
       }
     },
     {
-      "tick": 150,
+      "tick": 210,
       "threejs": {
-        "tick": 150,
+        "tick": 210,
         "state": "gameOver",
         "y": 514,
         "birdY": 514,
         "velocityY": 0,
         "score": 1,
         "bestScore": 1,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
-        "gameOverTick": 141,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -838,21 +838,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -866,12 +866,12 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
+          "birdFrame": "bird.frame2",
           "birdX": 350,
           "birdY": 514,
           "roundPixels": false,
@@ -901,18 +901,18 @@
         }
       },
       "phaser": {
-        "tick": 150,
+        "tick": 210,
         "state": "gameOver",
         "y": 514,
         "birdY": 514,
         "velocityY": 0,
         "score": 1,
         "bestScore": 1,
-        "deathTick": 134,
+        "deathTick": 184,
         "deathReason": "upperPipe",
-        "gameOverTick": 141,
-        "restartAllowedTick": 149,
-        "firstPipeX": 152,
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
         "pipeCount": 7,
         "pipeIds": [
           0,
@@ -924,21 +924,21 @@
           6
         ],
         "pipeXs": [
-          152,
-          417,
-          682,
-          947,
-          1212,
-          1477,
-          1742
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
         ],
         "pipeGapCenters": [
           300,
-          350,
+          354,
           300,
           330,
           250,
-          360,
+          340,
           280
         ],
         "pipePassed": [
@@ -952,12 +952,12 @@
         ],
         "pipesPassed": true,
         "consumedGapCenters": 7,
-        "flightTicks": 134,
+        "flightTicks": 184,
         "paused": true,
         "accumulatedTicks": 0,
         "objectCount": 35,
         "render": {
-          "birdFrame": "bird.frame1",
+          "birdFrame": "bird.frame2",
           "birdY": 514,
           "roundPixels": false,
           "cameraRoundPixels": false,
@@ -1012,18 +1012,18 @@
   ],
   "replaySnapshots": [
     {
-      "tick": 118,
+      "tick": 158,
       "state": "playing",
-      "y": 275,
-      "birdY": 275,
-      "velocityY": 10.5,
+      "y": 280,
+      "birdY": 280,
+      "velocityY": 4,
       "score": 1,
       "bestScore": 0,
       "deathTick": null,
       "deathReason": null,
       "gameOverTick": null,
       "restartAllowedTick": null,
-      "firstPipeX": 280,
+      "firstPipeX": 276,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -1035,21 +1035,21 @@
         6
       ],
       "pipeXs": [
-        280,
-        545,
-        810,
-        1075,
-        1340,
-        1605,
-        1870
+        276,
+        571,
+        866,
+        1161,
+        1456,
+        1751,
+        2046
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -1063,17 +1063,17 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 118,
+      "flightTicks": 158,
       "paused": true,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame2",
+        "birdFrame": "bird.frame1",
         "birdX": 350,
-        "birdY": 275,
+        "birdY": 280,
         "roundPixels": false,
-        "birdWorldY": 493,
-        "birdAngleDegrees": 31.5,
+        "birdWorldY": 488,
+        "birdAngleDegrees": 12,
         "camera": {
           "type": "OrthographicCamera",
           "left": 0,
@@ -1094,22 +1094,22 @@
           "geometries": 1,
           "textures": 9
         },
-        "drawCalls": 23
+        "drawCalls": 19
       }
     },
     {
-      "tick": 134,
+      "tick": 184,
       "state": "dying",
-      "y": 240.5,
-      "birdY": 240.5,
+      "y": 224,
+      "birdY": 224,
       "velocityY": 0,
       "score": 1,
       "bestScore": 0,
-      "deathTick": 134,
+      "deathTick": 184,
       "deathReason": "upperPipe",
       "gameOverTick": null,
-      "restartAllowedTick": 149,
-      "firstPipeX": 152,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -1121,21 +1121,21 @@
         6
       ],
       "pipeXs": [
-        152,
-        417,
-        682,
-        947,
-        1212,
-        1477,
-        1742
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -1149,16 +1149,16 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 134,
+      "flightTicks": 184,
       "paused": true,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame1",
+        "birdFrame": "bird.frame2",
         "birdX": 350,
-        "birdY": 240.5,
+        "birdY": 224,
         "roundPixels": false,
-        "birdWorldY": 527.5,
+        "birdWorldY": 544,
         "birdAngleDegrees": 0,
         "camera": {
           "type": "OrthographicCamera",
@@ -1184,18 +1184,18 @@
       }
     },
     {
-      "tick": 141,
+      "tick": 191,
       "state": "gameOver",
       "y": 514,
       "birdY": 514,
       "velocityY": 0,
       "score": 1,
       "bestScore": 1,
-      "deathTick": 134,
+      "deathTick": 184,
       "deathReason": "upperPipe",
-      "gameOverTick": 141,
-      "restartAllowedTick": 149,
-      "firstPipeX": 152,
+      "gameOverTick": 191,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
       "pipeCount": 7,
       "pipeIds": [
         0,
@@ -1207,21 +1207,21 @@
         6
       ],
       "pipeXs": [
-        152,
-        417,
-        682,
-        947,
-        1212,
-        1477,
-        1742
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
       ],
       "pipeGapCenters": [
         300,
-        350,
+        354,
         300,
         330,
         250,
-        360,
+        340,
         280
       ],
       "pipePassed": [
@@ -1235,12 +1235,12 @@
       ],
       "pipesPassed": true,
       "consumedGapCenters": 7,
-      "flightTicks": 134,
+      "flightTicks": 184,
       "paused": true,
       "accumulatedTicks": 0,
       "objectCount": 35,
       "render": {
-        "birdFrame": "bird.frame1",
+        "birdFrame": "bird.frame2",
         "birdX": 350,
         "birdY": 514,
         "roundPixels": false,
