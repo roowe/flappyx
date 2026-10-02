@@ -1,0 +1,35 @@
+* { box-sizing: border-box; }
+:root { font-family: "Avenir Next", "PingFang SC", sans-serif; color: #203c37; background: #192e31; }
+body { margin: 0; min-height: 100dvh; display: grid; place-items: center; overflow: hidden; }
+button { font: inherit; cursor: pointer; touch-action: manipulation; color: inherit; }
+button:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+button:disabled { cursor: default; opacity: .55; }
+[hidden] { display: none !important; }
+#stage { position: relative; width: min(100vw, 133.333333dvh); height: min(75vw, 100dvh); overflow: hidden; }
+#game { width: 100%; height: 100%; }
+canvas { display: block; image-rendering: pixelated; touch-action: none; }
+.hud { position: absolute; inset: 4% 4% auto; display: flex; align-items: flex-start; justify-content: space-between; pointer-events: none; }
+.brand { font-size: clamp(12px, 2.5vw, 28px); font-weight: 900; letter-spacing: -.04em; }
+.brand span { display: block; font-size: .45em; letter-spacing: .12em; font-weight: 600; margin-top: 3px; }
+.scoreboard { position: absolute; left: 50%; transform: translateX(-50%); text-align: center; }
+#score { display: block; font-size: clamp(32px, 7vw, 72px); line-height: 1; font-weight: 900; color: #fff9da; text-shadow: 2px 3px #254f4b; }
+.scoreboard small { display: block; font-size: clamp(10px, 1.8vw, 17px); margin-top: 8px; font-weight: 600; }
+.quiet { pointer-events: auto; border: 2px solid #35635b; background: #e5f3dd; border-radius: 8px; padding: .5em .9em; font-size: clamp(10px, 1.7vw, 16px); box-shadow: 0 3px #35635b; }
+.panel { position: absolute; width: 46%; min-width: 210px; left: 50%; top: 18%; transform: translateX(-50%); padding: clamp(12px, 2.4vw, 24px); text-align: center; background: #fff5d7f2; border: 3px solid #386950; border-radius: 14px; box-shadow: 0 7px #38695038; }
+.panel p { margin: 0; font-size: clamp(10px, 1.6vw, 16px); line-height: 1.65; }
+#eyebrow { font-size: clamp(9px, 1.3vw, 13px); font-weight: 700; letter-spacing: .15em; color: #58805f; }
+h1 { margin: .22em 0 .35em; font-size: clamp(23px, 4vw, 40px); letter-spacing: -.04em; }
+.primary { margin: .7em 0 .5em; border: 2px solid #315d36; border-radius: 8px; background: #88c45f; padding: .6em 1.7em; font-size: clamp(12px, 2vw, 20px); font-weight: 800; box-shadow: 0 4px #315d36; }
+.primary:active { transform: translateY(2px); box-shadow: 0 2px #315d36; }
+.panel .hint { font-size: clamp(8px, 1.3vw, 12px); color: #658166; }
+footer { position: absolute; left: 4%; right: 4%; bottom: 5%; display: flex; justify-content: space-between; font-size: clamp(9px, 1.5vw, 14px); color: #476847; font-weight: 600; pointer-events: none; }
+#storage-status { position: absolute; left: 4%; bottom: 8%; font-size: 12px; }
+#storage-status:empty { display: none; }
+#load-error { position: absolute; inset: 30% 10%; background: #fff5d7; padding: 20px; border: 2px solid #386950; }
+@media (max-width: 500px) {
+  .panel { padding: 8px; top: 17%; }
+  .panel #eyebrow, .panel #message { display: none; }
+  .panel p { line-height: 1.4; }
+  h1 { line-height: 1.1; margin: .1em 0 .2em; }
+  .primary { margin: .35em 0 .3em; padding: .45em 1.4em; }
+}

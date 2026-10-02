@@ -1,6 +1,6 @@
 goal: 使用 Cocos Creator、Godot、Phaser、Three.js 和 Unity 实现玩法与资源一致的 Flappy Bird，完成五引擎可玩验收。
 created_at: '2026-10-01'
-updated_at: '2026-10-01'
+updated_at: '2026-10-02'
 phases:
   - id: 1
     content: M0 参考核对：检查 CrossGameEngine 结构和 ejoy2d 示例、定位资源并写入 docs/plan.md。
@@ -10,7 +10,7 @@ phases:
     status: done
   - id: 3
     content: M2 Phaser 基准版：实现 TS 内核与可玩闭环，验证缩放、暂停和最高分，冻结手感并记录基准。
-    status: pending
+    status: done
   - id: 4
     content: M3 Three.js 版：复用 TS 内核，以正交相机渲染，完成浏览器玩法一致性验证。
     status: pending
@@ -27,7 +27,7 @@ phases:
     content: M7 统一验收：完成五引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
     status: pending
 notes:
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0、M1 已完成，下一阶段为 M2 Phaser 基准版。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M2 已完成，下一阶段为 M3 Three.js 版。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
@@ -41,4 +41,9 @@ notes:
   - content: Python 工具为 tools/ 下的独立 uv 项目，pyproject.toml、uv.lock 和 .venv 均位于 tools/；根目录 justfile 通过 uv run --project tools 调用，供后续引擎项目并列组织。
   - content: M1 review 已收口：地面、顶部、上管、下管依次判碰撞，地面当 tick 直接结算；计分使用碰撞盒左边缘。逐 tick 参考模型验证全部快照、死亡事件、偏移、七组队列回收、暂停和补 tick，生产 TS/C# 内核仍须独立执行 fixtures。
   - content: 水管身体元数据必须传入边界求得的高度，位置统一表示中心锚点；资源布局用例锁定背景和身体的定位。入口直接调用 uv；重现检查在内存完成，先前四个校验临时目录已移入系统回收站。
+  - content: M2 已完成 shared/core-ts 纯 TS 内核、FixedClock 和 phaser 独立 Bun 工程；just phaser 启动 5174，just preview-phaser 预览 5175，just check-m2 执行五项测试、605 个断言、独立无 DOM 内核类型检查和生产构建。
+  - content: gameplay.json 冻结为 frozenPhaserV1，M1 的运动与碰撞参数未变，视觉倾角进入共享 render.birdTilt。真实 TS 运行 M1 fixtures，30/60/120 FPS 均得分 118、死亡 134、结算 141，与 Python 参考一致。
+  - content: Chrome 154.0.8037.93 验证输入去重、暂停/显式恢复、补 tick、最高分刷新与浏览器进程重启保留，以及十次重开七组水管和 35 个渲染对象有界；1024×768、1280×720、390×844 比例与逻辑位置一致。
+  - content: M2 交付和限制见 docs/m2-phaser-baseline.md；docs/baselines/phaser 保存六张截图及浏览器、生产构建和进程重启存档 JSON。生产 RAF 闭环与真实窗口失焦检查通过；关闭 Playwright 默认焦点模拟后验证，后台轮询使用定时器，避免 RAF 冻结阻塞测试。
+  - content: M2 review 修订：起飞首帧覆盖 flightTicks 1–3，保留小数显示坐标并关闭 Phaser 强制取整，最近邻采样不变；回放 HUD 标为「回放最高」。浏览器验收使用隔离 context 预置 7 分，锁定原存档保留及结算页失焦后的显式恢复。
 summary: null

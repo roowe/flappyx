@@ -46,7 +46,7 @@ Phaser、Three.js 的依赖目前存在于参考工程，FlappyX 工程依赖在
 | `pipe.upper.head` / `pipe.lower.head` | 30×20 | 75×50 |
 | `pipe.upper.body` / `pipe.lower.body` | 30×100 | 宽 75，高度按边界延伸 |
 
-鸟的动画帧为 1→2→3→2，每帧 3 tick；第四张重复帧不另生成文件。水管头保持 75×50。身体的 `sizing.mode` 为 `stretchBetweenBoundaries`，`displaySize.height` 为 `null`，必须用边界求高度；250 仅作为 `referenceSize.height` 保留，不能用于运行时绘制。上方身体范围是 `[0, gapTop-50]`，下方身体范围是 `[gapBottom+50, 544]`，中心 y 为两端均值。天空底边与地面顶边对齐，横向重复平铺；纯色填充天空以上的区域。
+鸟的动画帧为 1→2→3→2，每帧 3 tick；第四张重复帧不另生成文件。ready 的首帧对应 tick 0–2，飞行首帧对应 flightTicks 1–3。显示保留小数坐标，最近邻采样与坐标取整分别配置，`render.roundPixels = false`。水管头保持 75×50。身体的 `sizing.mode` 为 `stretchBetweenBoundaries`，`displaySize.height` 为 `null`，必须用边界求高度；250 仅作为 `referenceSize.height` 保留，不能用于运行时绘制。上方身体范围是 `[0, gapTop-50]`，下方身体范围是 `[gapBottom+50, 544]`，中心 y 为两端均值。天空底边与地面顶边对齐，横向重复平铺；纯色填充天空以上的区域。
 
 由左上角求锚点位置使用 `position = topLeft + displaySize × pivot`。第一块地面的左上角 `(0, 544)` 对应中心 `(336, 656)`；第一块天空左上角 `(0, 334)` 对应中心 `(276, 439)`。后续图块的中心 x 每次加自身显示宽度。布局预览也先使用这些中心坐标，再转成 Pillow 的左上角坐标粘贴；引擎无需模仿 Pillow 的定位方式。[resource-layout.json](../shared/fixtures/resource-layout.json)锁定背景与水管的高度和定位示例。
 

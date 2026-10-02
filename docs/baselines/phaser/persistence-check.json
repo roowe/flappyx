@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUnixMilliseconds": 1790902388616,
+  "browserVersion": "154.0.8037.93",
+  "check": "best-score-after-graceful-browser-process-restart",
+  "actual": {
+    "bestScore": 1,
+    "record": {
+      "schemaVersion": 1,
+      "bestScore": 1
+    }
+  }
+}

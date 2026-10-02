@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "baselineStatus": "provisionalUntilPhaserPlaytest",
+  "baselineStatus": "frozenPhaserV1",
   "canvas": {"width": 1024, "height": 768, "origin": "topLeft", "yAxis": "down", "scaleMode": "fitWithLetterbox"},
   "simulation": {"tickRate": 30, "maxCatchUpTicks": 5, "numericType": "float64", "positionTolerance": 0.001, "overflowTimePolicy": "discardWholeTicksKeepFraction"},
   "bird": {
@@ -52,5 +52,6 @@
   "random": {"algorithm": "xorshift32", "defaultSeed": 123456789, "zeroSeedPolicy": "reject", "gapMapping": "minPlusUint32ModuloInclusiveRange"},
   "lifecycle": {"pauseOnBlur": true, "requireExplicitResume": true, "clearAccumulatedTimeOnResume": true},
   "storage": {"schemaVersion": 1, "keyPrefix": "flappyx", "fields": ["schemaVersion", "bestScore"], "writeBestScoreOn": "gameOver"},
-  "render": {"clearColor": "#51c0c9", "filter": "nearest", "mipmaps": false, "rotationAffectsCollision": false}
+  "render": {"clearColor": "#51c0c9", "filter": "nearest", "mipmaps": false, "roundPixels": false, "rotationAffectsCollision": false,
+    "birdTilt": {"velocityMultiplier": 3, "minDegrees": -20, "maxDegrees": 65, "readyDegrees": 0}}
 }

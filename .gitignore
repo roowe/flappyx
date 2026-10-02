@@ -2,3 +2,5 @@
 __pycache__/
 *.pyc
 .DS_Store
+/phaser/node_modules/
+/phaser/dist/
