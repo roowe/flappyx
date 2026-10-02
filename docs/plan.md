@@ -2,7 +2,7 @@
 
 创建日期：2026-10-01  
 更新日期：2026-10-02
-状态：M0–M3 已完成，下一阶段为 Cocos 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，Three.js 对照见 [M3 记录](./m3-threejs.md)。
+状态：M0–M4 已完成，下一阶段为 Unity 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，引擎对照见 [M3 记录](./m3-threejs.md)与[M4 记录](./m4-cocos.md)。
 
 ## 1. 目标与范围
 
@@ -55,6 +55,7 @@ flappyx/
 │   ├── m1-resources-and-rules.md # M1 环境、资源与数据契约
 │   ├── m2-phaser-baseline.md    # Phaser 可玩基准与验收
 │   ├── m3-threejs.md            # Three.js 正交渲染与对照验收
+│   ├── m4-cocos.md              # Creator 场景适配、预览和 Web 验收
 │   └── acceptance.md            # 后续建立：五引擎验收结果
 ├── shared/
 │   ├── assets/
@@ -63,7 +64,7 @@ flappyx/
 │   ├── config/gameplay.json     # 画布、运动、碰撞和生成参数唯一编辑源
 │   ├── fixtures/               # 固定水管序列、输入 tick 与预期结果
 │   ├── core-ts/                # Phaser / Three.js / Cocos 共用玩法
-│   ├── web-ts/                 # Phaser / Three.js 共用 DOM、样式和存档格式
+│   ├── web-ts/                 # Phaser / Three.js 共用 DOM、样式；三版 TS 共用存档格式
 │   └── core-csharp/            # Unity / Godot 共用玩法
 ├── tools/                      # 独立 Python 工具项目：素材转换、分发与核对
 │   ├── pyproject.toml
@@ -78,7 +79,7 @@ flappyx/
 └── u3d/
 ```
 
-M1 已建立共享资源、配置、fixtures 和转换工具；M2–M3 已建立纯 TS 内核、Phaser 与 Three.js 工程，C# 内核及其他引擎工程随后续阶段建立。
+M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立纯 TS 内核以及 Phaser、Three.js、Cocos 工程，C# 内核及 Unity、Godot 工程随后续阶段建立。Cocos 位于 `cocos/game/`，启动和构建前同步共享 TS、JSON 模块与九张 PNG。
 
 共享玩法只负责状态、鸟的运动、水管生成与回收、碰撞、分数和事件，不引用引擎 API。适配层负责输入、固定步长调度、贴图/UI、最高分存储及生命周期。TypeScript 和 C# 分别保留一份内核，通过同一组数据用例验证一致性。
 
@@ -153,7 +154,7 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2–M3 已建立
 | M1：资源与规则 | 转换工具、标准 PNG、资源来源、`gameplay.json`、首组验收数据 | 已完成；转换可重复，预览与数据检查通过 |
 | M2：Phaser 基准版 | TS 内核、Phaser 适配、准备→游戏→结算→重开闭环、最高分、缩放/暂停 | 已完成；本地可玩，配置冻结，基准截图与浏览器证据见 M2 记录 |
 | M3：Three.js 版 | 复用 TS 内核，正交相机/贴图渲染和 UI、浏览器启动 | 已完成；逐 tick 与 Phaser 一致，资源和浏览器闭环通过，证据见 M3 记录 |
-| M4：Cocos 版 | 复用 TS 内核，资源分发、场景、输入/存储适配 | 编辑器与 Web 构建均可玩；确认共享 TS 可被 Creator 工程导入 |
+| M4：Cocos 版 | 复用 TS 内核，资源分发、场景、输入/存储适配 | 已完成；Creator 3.8.8 导入和浏览器预览、Web Release 可玩，151 tick 对照、存档和缩放通过，证据见 M4 记录 |
 | M5：Unity 版 | C# 内核、与 TS 共用的用例、2D 场景/UI、桌面构建 | TS/C# 用例一致，编辑器及构建闭环通过 |
 | M6：Godot 版 | 复用 C# 内核，Godot 节点/UI、存储和生命周期适配 | .NET 编辑器及桌面导出可玩，与 Unity 结果一致 |
 | M7：统一验收 | 五引擎结果表、同局面截图、启动文档、引擎差异记录 | 五版本均通过首版验收；剩余限制如实记录 |
@@ -172,7 +173,7 @@ TypeScript 的安装、构建和测试使用 `bun`；Python 工具作为 `tools/
 - 一组水管仅计分一次，以及碰撞和通过发生在同 tick 时不加分。
 - 死亡输入保护、结算和重开后的分数/速度/水管状态重置。
 - 固定输入 tick、固定水管序列下，TS 与 C# 的死亡 tick、最终分数和水管顺序相同；位置/速度误差不超过 0.001 逻辑单位。
-- 同 tick 地面与水管重叠的优先级、七组队列回收、碰撞盒偏移、暂停/恢复和最多五个补 tick。M1 的 Python 逐 tick 参考校验不替代各生产内核独立执行这些 fixtures。
+- 同 tick 地面与水管重叠的优先级、七组队列回收、碰撞盒偏移、暂停/恢复和最多五个补 tick。各生产内核直接执行共享 fixtures 验证。
 
 共享内核使用双精度数值。30/60/120 FPS 渲染回放同一组逻辑输入，结果应一致；输入回放按 tick 注入，不依赖墙钟时间。
 

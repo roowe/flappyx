@@ -36,7 +36,7 @@ M3 接入时，浏览器 DOM 节点、样式和存档实现提取到 `shared/web
 
 ## TS 契约验证
 
-[contract.test.ts](../shared/core-ts/contract.test.ts) 独立执行 M1 数据，未调用 Python oracle。五项 Bun 测试、605 个断言全部通过，涵盖全部快照、状态/速度/分数、计分和死亡事件、偏移边界、碰撞优先级、随机向量、七组回收、重开保护、暂停和补 tick。M1 的资源重现与五项 Python 检查也继续通过。
+[contract.test.ts](../shared/core-ts/contract.test.ts) 通过真实 TS 内核执行 M1 数据。M2 验收时五项 Bun 测试、605 个断言全部通过，涵盖全部快照、状态/速度/分数、计分和死亡事件、偏移边界、碰撞优先级、随机向量、七组回收、重开保护、暂停和补 tick。M1 的资源重现与素材检查继续保留。
 
 | tick | 状态 | y | velocityY | score | firstPipeX |
 | --- | --- | --- | --- | --- | --- |

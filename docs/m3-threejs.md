@@ -61,7 +61,7 @@ M3 review 的 [review.test.ts](../threejs/scripts/review.test.ts) 先复现错�
 - [tick-118.png](./baselines/threejs/tick-118.png)、[tick-134.png](./baselines/threejs/tick-134.png)、[tick-141.png](./baselines/threejs/tick-141.png)：同局面回放。
 - [wide.png](./baselines/threejs/wide.png)、[portrait.png](./baselines/threejs/portrait.png)：宽屏与竖向窗口留边。
 
-`just compare-web-frames` 使用现有 uv/Pillow 工具，比较两版截图的 `(0,146)–(1024,704)` 区域，排除 HUD 和页脚，保留鸟、管道、天空及地面。[像素差异报告](./baselines/threejs/screenshot-comparison.json) 同时记录配置与输入截图哈希。
+以下为 M3 验收时保存的历史像素比较结果，比较区域为 `(0,146)–(1024,704)`，排除 HUD 和页脚，保留鸟、管道、天空及地面。[像素差异报告](./baselines/threejs/screenshot-comparison.json) 同时记录配置与输入截图哈希。像素比较脚本已移除；后续使用关键帧截图检查画面、真实内核快照验证玩法。
 
 | tick | 不同像素 | 平均通道差（0–255） | 最大通道差（0–255） |
 | --- | --- | --- | --- |

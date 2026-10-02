@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUnixMilliseconds": 1790938365393,
+  "browserVersion": "154.0.8037.93",
+  "configSha256": "4e42ef1978a4f2b096450012137fd3006175e5d6514181eba85c5e6b09d8d433",
+  "url": "http://127.0.0.1:5178",
+  "beforeRestart": {
+    "initialRaw": "{\"schemaVersion\":1,\"bestScore\":0}",
+    "snapshot": {
+      "tick": 126,
+      "state": "gameOver",
+      "y": 514,
+      "birdY": 514,
+      "velocityY": 0,
+      "score": 1,
+      "bestScore": 1,
+      "deathTick": 126,
+      "deathReason": "ground",
+      "gameOverTick": 126,
+      "restartAllowedTick": 141,
+      "firstPipeX": 216,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        216,
+        481,
+        746,
+        1011,
+        1276,
+        1541,
+        1806
+      ],
+      "pipeGapCenters": [
+        336,
+        376,
+        331,
+        341,
+        186,
+        372,
+        375
+      ],
+      "pipePassed": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": true,
+      "consumedGapCenters": 7,
+      "flightTicks": 126,
+      "paused": false,
+      "accumulatedTicks": 1.3322676295501878e-15,
+      "objectCount": 35,
+      "render": {
+        "birdFrame": "bird.frame2",
+        "birdX": 350,
+        "birdY": 514,
+        "birdLocalY": -130,
+        "birdAngleDegrees": 0,
+        "roundPixels": false,
+        "objectCount": 35,
+        "texture": {
+          "minFilter": 1,
+          "magFilter": 1,
+          "mipFilter": 0
+        },
+        "birdSize": {
+          "width": 85,
+          "height": 60
+        },
+        "pipes": [
+          [
+            {
+              "x": 216,
+              "y": 93,
+              "width": 75,
+              "height": 186
+            },
+            {
+              "x": 216,
+              "y": 211,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 216,
+              "y": 515,
+              "width": 75,
+              "height": 58
+            },
+            {
+              "x": 216,
+              "y": 461,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 481,
+              "y": 113,
+              "width": 75,
+              "height": 226
+            },
+            {
+              "x": 481,
+              "y": 251,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 481,
+              "y": 535,
+              "width": 75,
+              "height": 18
+            },
+            {
+              "x": 481,
+              "y": 501,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 746,
+              "y": 90.5,
+              "width": 75,
+              "height": 181
+            },
+            {
+              "x": 746,
+              "y": 206,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 746,
+              "y": 512.5,
+              "width": 75,
+              "height": 63
+            },
+            {
+              "x": 746,
+              "y": 456,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1011,
+              "y": 95.5,
+              "width": 75,
+              "height": 191
+            },
+            {
+              "x": 1011,
+              "y": 216,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1011,
+              "y": 517.5,
+              "width": 75,
+              "height": 53
+            },
+            {
+              "x": 1011,
+              "y": 466,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1276,
+              "y": 18,
+              "width": 75,
+              "height": 36
+            },
+            {
+              "x": 1276,
+              "y": 61,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1276,
+              "y": 440,
+              "width": 75,
+              "height": 208
+            },
+            {
+              "x": 1276,
+              "y": 311,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1541,
+              "y": 111,
+              "width": 75,
+              "height": 222
+            },
+            {
+              "x": 1541,
+              "y": 247,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1541,
+              "y": 533,
+              "width": 75,
+              "height": 22
+            },
+            {
+              "x": 1541,
+              "y": 497,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1806,
+              "y": 112.5,
+              "width": 75,
+              "height": 225
+            },
+            {
+              "x": 1806,
+              "y": 250,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1806,
+              "y": 534.5,
+              "width": 75,
+              "height": 19
+            },
+            {
+              "x": 1806,
+              "y": 500,
+              "width": 75,
+              "height": 50
+            }
+          ]
+        ]
+      },
+      "ui": {
+        "heading": "1 分",
+        "best": "最高 1",
+        "message": "最高纪录 1 分，再试一次吧。",
+        "panelVisible": true,
+        "action": "稍候…",
+        "actionEnabled": false,
+        "actionWorld": {
+          "x": 512,
+          "y": 424.00000000000006
+        },
+        "pauseWorld": {
+          "x": 950,
+          "y": 716
+        },
+        "storageStatus": ""
+      },
+      "viewport": {
+        "width": 1024,
+        "height": 768,
+        "scaleX": 1.9869791666666667,
+        "scaleY": 1.9869791666666667,
+        "rect": {
+          "x": 83,
+          "y": 0,
+          "width": 2034.6666666666667,
+          "height": 1526
+        }
+      }
+    },
+    "raw": "{\"schemaVersion\":1,\"bestScore\":1}"
+  },
+  "errors": [],
+  "afterProcessRestart": {
+    "checkedAtUnixMilliseconds": 1790938481255,
+    "bestScore": 1,
+    "raw": "{\"schemaVersion\":1,\"bestScore\":1}"
+  }
+}
