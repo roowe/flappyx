@@ -2,13 +2,13 @@
 
 创建日期：2026-10-01  
 更新日期：2026-10-02
-状态：M0–M4 已完成，下一阶段为 Unity 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，引擎对照见 [M3 记录](./m3-threejs.md)与[M4 记录](./m4-cocos.md)。
+状态：M0–M4 与新增 M4b Babylon.js 已完成，下一阶段为 Unity 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，引擎对照见 [M3 记录](./m3-threejs.md)、[M4 记录](./m4-cocos.md)与[M4b 记录](./m4b-babylonjs.md)。
 
 ## 1. 目标与范围
 
-参考 `/Users/luoliwei/myproject/CrossGameEngine` 的目录组织，分别使用 Cocos Creator、Godot、Phaser、Three.js 和 Unity 实现同一个 Flappy Bird。五个版本共用素材、玩法参数与验收用例，能够独立启动，并可对照比较画面、手感和引擎接入方式。
+参考 `/Users/luoliwei/myproject/CrossGameEngine` 的目录组织，分别使用 Cocos Creator、Godot、Phaser、Three.js、Babylon.js 和 Unity 实现同一个 Flappy Bird。六个版本共用素材、玩法参数与验收用例，能够独立启动，并可对照比较画面、手感和引擎接入方式。
 
-玩法和美术参考 `/Users/luoliwei/github/ejoy2d/examples/flappybird.lua`。ejoy2d 本期作为参考实现，不增加第六个工程。
+玩法和美术参考 `/Users/luoliwei/github/ejoy2d/examples/flappybird.lua`。ejoy2d 本期作为参考实现，不建立 ejoy2d 引擎工程。
 
 首版完成：准备界面、点击起飞、重力下落、上下水管、背景与地面滚动、碰撞死亡、计分、结算、重新开始、最高分本地保存，以及窗口缩放和前后台暂停。先交付本机可玩版本；移动端安装包、线上发布、排行榜、广告、账号和联网不进入首版。
 
@@ -32,12 +32,13 @@ CrossGameEngine 用作组织与启动方式参考。FlappyX 只建立这款小�
 
 ### 2.2 引擎基线
 
-以下基线来自 CrossGameEngine，M1 已确认本机编辑器与已安装 Web 依赖版本一致，详见 [环境核对记录](./m1-resources-and-rules.md#1-本机环境)。各引擎的实际工程运行与构建在对应阶段验证。
+除新增 Babylon.js 外，以下基线来自 CrossGameEngine，M1 已确认本机编辑器与已安装 Web 依赖版本一致，详见 [环境核对记录](./m1-resources-and-rules.md#1-本机环境)。各引擎的实际工程运行与构建在对应阶段验证。
 
 | 目录 | 引擎基线 | 语言与实现方式 | 首版运行目标 |
 | --- | --- | --- | --- |
 | `phaser/` | Phaser 4.2.1 | TypeScript，2D Scene 和 Sprite | 本地浏览器 |
 | `threejs/` | Three.js 0.186.0 | TypeScript，正交相机和贴图平面 | 本地浏览器 |
+| `babylonjs/` | Babylon.js 9.29.0 | TypeScript，正交相机和贴图平面 | 本地浏览器 |
 | `cocos/` | Cocos Creator 3.8.8 | TypeScript，2D 节点、Sprite 和 UI | 编辑器预览及本地 Web 构建 |
 | `godot/` | Godot 4.7.2 .NET | C#，Node2D、Sprite2D 和 Control | macOS 编辑器及桌面导出 |
 | `u3d/` | Unity 6000.5.6f1 | C#，2D Sprite 和 Canvas | macOS 编辑器及桌面构建 |
@@ -56,15 +57,16 @@ flappyx/
 │   ├── m2-phaser-baseline.md    # Phaser 可玩基准与验收
 │   ├── m3-threejs.md            # Three.js 正交渲染与对照验收
 │   ├── m4-cocos.md              # Creator 场景适配、预览和 Web 验收
-│   └── acceptance.md            # 后续建立：五引擎验收结果
+│   ├── m4b-babylonjs.md         # Babylon 正交渲染和 Web 验收
+│   └── acceptance.md            # 后续建立：六引擎验收结果
 ├── shared/
 │   ├── assets/
 │   │   ├── source/              # 原始 PPM、PGM、Lua 元数据与来源记录
 │   │   └── runtime/             # 标准 PNG 与精灵元数据
 │   ├── config/gameplay.json     # 画布、运动、碰撞和生成参数唯一编辑源
 │   ├── fixtures/               # 固定水管序列、输入 tick 与预期结果
-│   ├── core-ts/                # Phaser / Three.js / Cocos 共用玩法
-│   ├── web-ts/                 # Phaser / Three.js 共用 DOM、样式；三版 TS 共用存档格式
+│   ├── core-ts/                # Phaser / Three.js / Babylon / Cocos 共用玩法
+│   ├── web-ts/                 # 三版 Web 共用 DOM、样式；四版 TS 共用存档格式
 │   └── core-csharp/            # Unity / Godot 共用玩法
 ├── tools/                      # 独立 Python 工具项目：素材转换、分发与核对
 │   ├── pyproject.toml
@@ -74,12 +76,13 @@ flappyx/
 │   └── tests/
 ├── phaser/
 ├── threejs/
+├── babylonjs/
 ├── cocos/
 ├── godot/
 └── u3d/
 ```
 
-M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立纯 TS 内核以及 Phaser、Three.js、Cocos 工程，C# 内核及 Unity、Godot 工程随后续阶段建立。Cocos 位于 `cocos/game/`，启动和构建前同步共享 TS、JSON 模块与九张 PNG。
+M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立纯 TS 内核以及 Phaser、Three.js、Cocos 工程，M4b 新增 Babylon.js 工程，C# 内核及 Unity、Godot 工程随后续阶段建立。Cocos 位于 `cocos/game/`，启动和构建前同步共享 TS、JSON 模块与九张 PNG。
 
 共享玩法只负责状态、鸟的运动、水管生成与回收、碰撞、分数和事件，不引用引擎 API。适配层负责输入、固定步长调度、贴图/UI、最高分存储及生命周期。TypeScript 和 C# 分别保留一份内核，通过同一组数据用例验证一致性。
 
@@ -92,9 +95,9 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立
 3. 根据 `birds.lua` 的 `src` 与 `screen` 顶点对应关系恢复方向。水管存在旋转存放，不能只取包围矩形裁剪；输出方向统一的精灵，保留锚点和显示尺寸。
 4. 首版导出鸟的三个独立帧、天空、地面、水管头和水管身体。水管头保持比例，身体单独延伸或平铺，避免把开口一起拉长。无关的 `Spaceship.png` 等图块不进入运行资源。
 5. 建立统一精灵元数据，包含逻辑 ID、文件名、原始尺寸、锚点和动画序列。确认 ejoy2d 的定点坐标、矩阵缩放与像素单位后再计算显示尺寸，不直接把 Lua 顶点值当成像素。
-6. 生成可查看的资源预览图，对照原示例核对鸟、水管方向、天空/地面拼接与透明度；五个引擎统一使用最近邻采样并关闭不必要的 mipmap。
+6. 生成可查看的资源预览图，对照原示例核对鸟、水管方向、天空/地面拼接与透明度；六个引擎统一使用最近邻采样并关闭不必要的 mipmap。
 
-资源完成标准：转换可重复执行；输入文件未改变；透明度与旋转正确；鸟帧和水管可以直接导入五个引擎；资源来源及待确认事项可查。
+资源完成标准：转换可重复执行；输入文件未改变；透明度与旋转正确；鸟帧和水管可以直接导入六个引擎；资源来源及待确认事项可查。
 
 ## 5. 统一玩法基线
 
@@ -144,7 +147,7 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立
 - 正常游戏使用可设种子的随机源。跨语言采用同一明确的 32 位随机算法与种子约定；验收用例优先直接提供水管序列，避免引擎原生随机数影响比较。
 - 最高分使用引擎各自的本地存储。统一数据字段为 `schemaVersion`、`bestScore`，首版不做存档互导。若后续增加保存时间，采用 Unix 毫秒时间戳，界面按东八区显示。
 
-这里有意规范了参考示例的部分行为：首次输入直接起飞、明确准备/死亡/结算状态、以鸟碰撞盒代替中心点碰撞、完全通过水管后计分，以及明确顶部碰撞。五引擎复用这些规则，不逐个复刻示例中的边界差异。
+这里有意规范了参考示例的部分行为：首次输入直接起飞、明确准备/死亡/结算状态、以鸟碰撞盒代替中心点碰撞、完全通过水管后计分，以及明确顶部碰撞。六引擎复用这些规则，不逐个复刻示例中的边界差异。
 
 ## 6. 实施阶段与交付
 
@@ -155,11 +158,12 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立
 | M2：Phaser 基准版 | TS 内核、Phaser 适配、准备→游戏→结算→重开闭环、最高分、缩放/暂停 | 已完成；本地可玩，配置冻结，基准截图与浏览器证据见 M2 记录 |
 | M3：Three.js 版 | 复用 TS 内核，正交相机/贴图渲染和 UI、浏览器启动 | 已完成；逐 tick 与 Phaser 一致，资源和浏览器闭环通过，证据见 M3 记录 |
 | M4：Cocos 版 | 复用 TS 内核，资源分发、场景、输入/存储适配 | 已完成；Creator 3.8.8 导入和浏览器预览、Web Release 可玩，151 tick 对照、存档和缩放通过，证据见 M4 记录 |
+| M4b：Babylon.js 版 | 复用 TS 内核、资源和 Web UI，正交相机渲染 | 已完成；211 个快照与 Phaser 一致，开发/发布闭环、缩放及存档通过，证据见 M4b 记录 |
 | M5：Unity 版 | C# 内核、与 TS 共用的用例、2D 场景/UI、桌面构建 | TS/C# 用例一致，编辑器及构建闭环通过 |
 | M6：Godot 版 | 复用 C# 内核，Godot 节点/UI、存储和生命周期适配 | .NET 编辑器及桌面导出可玩，与 Unity 结果一致 |
-| M7：统一验收 | 五引擎结果表、同局面截图、启动文档、引擎差异记录 | 五版本均通过首版验收；剩余限制如实记录 |
+| M7：统一验收 | 六引擎结果表、同局面截图、启动文档、引擎差异记录 | 六版本均通过首版验收；剩余限制如实记录 |
 
-每完成一个引擎就验证后续版本所依赖的共享逻辑，不等五个工程全部完成才调手感。若编辑器版本不可用，先推进已具备环境的版本，在进度文件中记录环境差异。
+每完成一个引擎就验证后续版本所依赖的共享逻辑，不等六个工程全部完成才调手感。若编辑器版本不可用，先推进已具备环境的版本，在进度文件中记录环境差异。
 
 TypeScript 的安装、构建和测试使用 `bun`；Python 工具作为 `tools/` 下的独立项目使用 `uv`，配置、锁文件和虚拟环境均位于该目录。根目录留给共享内容与各引擎项目，`justfile` 通过 `uv run --project tools` 调用工具。各引擎提供简短 README 与可重复的启动/构建入口，必要时使用 `just` 聚合。实现工具遵守文件回收策略：不使用永久删除 API，不运行 `git clean` 或 `git reset --hard`，清理已生成文件时在 macOS 使用 `/usr/bin/trash <绝对路径>`。
 

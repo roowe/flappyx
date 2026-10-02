@@ -1,0 +1,2950 @@
+{
+  "schemaVersion": 1,
+  "baseline": "easyV1",
+  "recordedAtUnixMilliseconds": 1790955461721,
+  "browserVersion": "154.0.8037.93",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
+  "checks": [
+    "paired-Phaser-210-tick-replay",
+    "orthographic-coordinate-conversion",
+    "three-ticks-per-animation-frame",
+    "fractional-render-coordinates/nearest",
+    "pipe-seams",
+    "keyboard/repeat",
+    "primary-pointer/merged-input",
+    "touch/synthetic-mouse",
+    "pause/focus/explicit-resume",
+    "catch-up-cap",
+    "score/death",
+    "game-over-blur/explicit-resume-before-restart",
+    "best-score-reload/reopen-page",
+    "ten-restarts/no-render-or-GPU-growth",
+    "three-viewport-sizes",
+    "reviewed-replay-screenshots"
+  ],
+  "engine": "babylonjs",
+  "existingBestScore": 7,
+  "animationFrames": {
+    "ready": [
+      "bird.frame1",
+      "bird.frame1",
+      "bird.frame1",
+      "bird.frame2",
+      "bird.frame2",
+      "bird.frame2"
+    ],
+    "flying": [
+      "bird.frame1",
+      "bird.frame1",
+      "bird.frame1",
+      "bird.frame2",
+      "bird.frame2",
+      "bird.frame2"
+    ]
+  },
+  "objectCount": 35,
+  "renderMemory": {
+    "geometries": 1,
+    "textures": 9,
+    "materials": 10
+  },
+  "pairedReplay": [
+    {
+      "tick": 1,
+      "babylonjs": {
+        "tick": 1,
+        "state": "playing",
+        "y": 408,
+        "birdY": 408,
+        "velocityY": -11,
+        "score": 0,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 1218,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          1218,
+          1513,
+          1808,
+          2103,
+          2398,
+          2693,
+          2988
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": false,
+        "consumedGapCenters": 7,
+        "flightTicks": 1,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdX": 350,
+          "birdY": 408,
+          "roundPixels": false,
+          "birdWorldY": 360,
+          "birdAngleDegrees": -20,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 1218,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 1218,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1218,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 1218,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1513,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 1513,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1513,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 1513,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1808,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 1808,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1808,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 1808,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2103,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 2103,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2103,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 2103,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2398,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 2398,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2398,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 2398,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2693,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 2693,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2693,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 2693,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2988,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 2988,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2988,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 2988,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 1,
+        "state": "playing",
+        "y": 408,
+        "birdY": 408,
+        "velocityY": -11,
+        "score": 0,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 1218,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          1218,
+          1513,
+          1808,
+          2103,
+          2398,
+          2693,
+          2988
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": false,
+        "consumedGapCenters": 7,
+        "flightTicks": 1,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdY": 408,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    },
+    {
+      "tick": 134,
+      "babylonjs": {
+        "tick": 134,
+        "state": "playing",
+        "y": 284,
+        "birdY": 284,
+        "velocityY": 5,
+        "score": 0,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 420,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          420,
+          715,
+          1010,
+          1305,
+          1600,
+          1895,
+          2190
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": false,
+        "consumedGapCenters": 7,
+        "flightTicks": 134,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdX": 350,
+          "birdY": 284,
+          "roundPixels": false,
+          "birdWorldY": 484,
+          "birdAngleDegrees": 14.999999999999998,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 420,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 420,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 420,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 420,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 715,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 715,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 715,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 715,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1010,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 1010,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1010,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 1010,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1305,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 1305,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1305,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 1305,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1600,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 1600,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1600,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 1600,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1895,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 1895,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1895,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 1895,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2190,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 2190,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2190,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 2190,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 134,
+        "state": "playing",
+        "y": 284,
+        "birdY": 284,
+        "velocityY": 5,
+        "score": 0,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 420,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          420,
+          715,
+          1010,
+          1305,
+          1600,
+          1895,
+          2190
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": false,
+        "consumedGapCenters": 7,
+        "flightTicks": 134,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdY": 284,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    },
+    {
+      "tick": 158,
+      "babylonjs": {
+        "tick": 158,
+        "state": "playing",
+        "y": 280,
+        "birdY": 280,
+        "velocityY": 4,
+        "score": 1,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 276,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          276,
+          571,
+          866,
+          1161,
+          1456,
+          1751,
+          2046
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 158,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdX": 350,
+          "birdY": 280,
+          "roundPixels": false,
+          "birdWorldY": 488,
+          "birdAngleDegrees": 12,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 276,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 276,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 276,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 276,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 571,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 571,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 571,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 571,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 866,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 866,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 866,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 866,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1161,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 1161,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1161,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 1161,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1456,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 1456,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1456,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 1456,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1751,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 1751,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1751,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 1751,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 2046,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 2046,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 2046,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 2046,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 158,
+        "state": "playing",
+        "y": 280,
+        "birdY": 280,
+        "velocityY": 4,
+        "score": 1,
+        "bestScore": 0,
+        "deathTick": null,
+        "deathReason": null,
+        "gameOverTick": null,
+        "restartAllowedTick": null,
+        "firstPipeX": 276,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          276,
+          571,
+          866,
+          1161,
+          1456,
+          1751,
+          2046
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 158,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame1",
+          "birdY": 280,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    },
+    {
+      "tick": 184,
+      "babylonjs": {
+        "tick": 184,
+        "state": "dying",
+        "y": 224,
+        "birdY": 224,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 0,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": null,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdX": 350,
+          "birdY": 224,
+          "roundPixels": false,
+          "birdWorldY": 544,
+          "birdAngleDegrees": 0,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 120,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 120,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 120,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 120,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 415,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 415,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 415,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 415,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 710,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 710,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 710,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 710,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1005,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 1005,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1005,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 1005,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1300,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 1300,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1300,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 1300,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1595,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 1595,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1595,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 1595,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1890,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 1890,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1890,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 1890,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 184,
+        "state": "dying",
+        "y": 224,
+        "birdY": 224,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 0,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": null,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdY": 224,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    },
+    {
+      "tick": 191,
+      "babylonjs": {
+        "tick": 191,
+        "state": "gameOver",
+        "y": 514,
+        "birdY": 514,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 1,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdX": 350,
+          "birdY": 514,
+          "roundPixels": false,
+          "birdWorldY": 254,
+          "birdAngleDegrees": 0,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 120,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 120,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 120,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 120,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 415,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 415,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 415,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 415,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 710,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 710,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 710,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 710,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1005,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 1005,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1005,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 1005,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1300,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 1300,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1300,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 1300,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1595,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 1595,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1595,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 1595,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1890,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 1890,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1890,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 1890,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 191,
+        "state": "gameOver",
+        "y": 514,
+        "birdY": 514,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 1,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdY": 514,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    },
+    {
+      "tick": 210,
+      "babylonjs": {
+        "tick": 210,
+        "state": "gameOver",
+        "y": 514,
+        "birdY": 514,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 1,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdX": 350,
+          "birdY": 514,
+          "roundPixels": false,
+          "birdWorldY": 254,
+          "birdAngleDegrees": 0,
+          "birdSize": {
+            "width": 85,
+            "height": 60
+          },
+          "camera": {
+            "mode": 1,
+            "left": -512,
+            "right": 512,
+            "top": 384,
+            "bottom": -384
+          },
+          "texture": {
+            "samplingMode": 1,
+            "noMipmap": true,
+            "invertY": true,
+            "gammaSpace": false
+          },
+          "objectCount": 35,
+          "memory": {
+            "geometries": 1,
+            "textures": 9,
+            "materials": 10
+          },
+          "pipes": [
+            [
+              {
+                "x": 120,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 120,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 120,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 120,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 415,
+                "y": 87,
+                "width": 75,
+                "height": 174
+              },
+              {
+                "x": 415,
+                "y": 199,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 415,
+                "y": 539,
+                "width": 75,
+                "height": 10
+              },
+              {
+                "x": 415,
+                "y": 509,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 710,
+                "y": 60,
+                "width": 75,
+                "height": 120
+              },
+              {
+                "x": 710,
+                "y": 145,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 710,
+                "y": 512,
+                "width": 75,
+                "height": 64
+              },
+              {
+                "x": 710,
+                "y": 455,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1005,
+                "y": 75,
+                "width": 75,
+                "height": 150
+              },
+              {
+                "x": 1005,
+                "y": 175,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1005,
+                "y": 527,
+                "width": 75,
+                "height": 34
+              },
+              {
+                "x": 1005,
+                "y": 485,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1300,
+                "y": 35,
+                "width": 75,
+                "height": 70
+              },
+              {
+                "x": 1300,
+                "y": 95,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1300,
+                "y": 487,
+                "width": 75,
+                "height": 114
+              },
+              {
+                "x": 1300,
+                "y": 405,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1595,
+                "y": 80,
+                "width": 75,
+                "height": 160
+              },
+              {
+                "x": 1595,
+                "y": 185,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1595,
+                "y": 532,
+                "width": 75,
+                "height": 24
+              },
+              {
+                "x": 1595,
+                "y": 495,
+                "width": 75,
+                "height": 50
+              }
+            ],
+            [
+              {
+                "x": 1890,
+                "y": 50,
+                "width": 75,
+                "height": 100
+              },
+              {
+                "x": 1890,
+                "y": 125,
+                "width": 75,
+                "height": 50
+              },
+              {
+                "x": 1890,
+                "y": 502,
+                "width": 75,
+                "height": 84
+              },
+              {
+                "x": 1890,
+                "y": 435,
+                "width": 75,
+                "height": 50
+              }
+            ]
+          ]
+        }
+      },
+      "phaser": {
+        "tick": 210,
+        "state": "gameOver",
+        "y": 514,
+        "birdY": 514,
+        "velocityY": 0,
+        "score": 1,
+        "bestScore": 1,
+        "deathTick": 184,
+        "deathReason": "upperPipe",
+        "gameOverTick": 191,
+        "restartAllowedTick": 199,
+        "firstPipeX": 120,
+        "pipeCount": 7,
+        "pipeIds": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "pipeXs": [
+          120,
+          415,
+          710,
+          1005,
+          1300,
+          1595,
+          1890
+        ],
+        "pipeGapCenters": [
+          300,
+          354,
+          300,
+          330,
+          250,
+          340,
+          280
+        ],
+        "pipePassed": [
+          true,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "pipesPassed": true,
+        "consumedGapCenters": 7,
+        "flightTicks": 184,
+        "paused": true,
+        "accumulatedTicks": 0,
+        "objectCount": 35,
+        "render": {
+          "birdFrame": "bird.frame2",
+          "birdY": 514,
+          "roundPixels": false,
+          "cameraRoundPixels": false,
+          "birdScaleMode": 1
+        }
+      }
+    }
+  ],
+  "scales": [
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "width": 1024,
+      "height": 768,
+      "rect": {
+        "x": 0,
+        "y": 0,
+        "width": 1024,
+        "height": 768
+      }
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "width": 1024,
+      "height": 768,
+      "rect": {
+        "x": 160,
+        "y": 0,
+        "width": 960,
+        "height": 720
+      }
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 1024,
+      "height": 768,
+      "rect": {
+        "x": 0,
+        "y": 275.75,
+        "width": 390,
+        "height": 292.5
+      }
+    }
+  ],
+  "replaySnapshots": [
+    {
+      "tick": 158,
+      "state": "playing",
+      "y": 280,
+      "birdY": 280,
+      "velocityY": 4,
+      "score": 1,
+      "bestScore": 0,
+      "deathTick": null,
+      "deathReason": null,
+      "gameOverTick": null,
+      "restartAllowedTick": null,
+      "firstPipeX": 276,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        276,
+        571,
+        866,
+        1161,
+        1456,
+        1751,
+        2046
+      ],
+      "pipeGapCenters": [
+        300,
+        354,
+        300,
+        330,
+        250,
+        340,
+        280
+      ],
+      "pipePassed": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": true,
+      "consumedGapCenters": 7,
+      "flightTicks": 158,
+      "paused": true,
+      "accumulatedTicks": 0,
+      "objectCount": 35,
+      "render": {
+        "birdFrame": "bird.frame1",
+        "birdX": 350,
+        "birdY": 280,
+        "roundPixels": false,
+        "birdWorldY": 488,
+        "birdAngleDegrees": 12,
+        "birdSize": {
+          "width": 85,
+          "height": 60
+        },
+        "camera": {
+          "mode": 1,
+          "left": -512,
+          "right": 512,
+          "top": 384,
+          "bottom": -384
+        },
+        "texture": {
+          "samplingMode": 1,
+          "noMipmap": true,
+          "invertY": true,
+          "gammaSpace": false
+        },
+        "objectCount": 35,
+        "memory": {
+          "geometries": 1,
+          "textures": 9,
+          "materials": 10
+        },
+        "pipes": [
+          [
+            {
+              "x": 276,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 276,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 276,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 276,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 571,
+              "y": 87,
+              "width": 75,
+              "height": 174
+            },
+            {
+              "x": 571,
+              "y": 199,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 571,
+              "y": 539,
+              "width": 75,
+              "height": 10
+            },
+            {
+              "x": 571,
+              "y": 509,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 866,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 866,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 866,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 866,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1161,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1161,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1161,
+              "y": 527,
+              "width": 75,
+              "height": 34
+            },
+            {
+              "x": 1161,
+              "y": 485,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1456,
+              "y": 35,
+              "width": 75,
+              "height": 70
+            },
+            {
+              "x": 1456,
+              "y": 95,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1456,
+              "y": 487,
+              "width": 75,
+              "height": 114
+            },
+            {
+              "x": 1456,
+              "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1751,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1751,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1751,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1751,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 2046,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 2046,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 2046,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 2046,
+              "y": 435,
+              "width": 75,
+              "height": 50
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 184,
+      "state": "dying",
+      "y": 224,
+      "birdY": 224,
+      "velocityY": 0,
+      "score": 1,
+      "bestScore": 0,
+      "deathTick": 184,
+      "deathReason": "upperPipe",
+      "gameOverTick": null,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
+      ],
+      "pipeGapCenters": [
+        300,
+        354,
+        300,
+        330,
+        250,
+        340,
+        280
+      ],
+      "pipePassed": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": true,
+      "consumedGapCenters": 7,
+      "flightTicks": 184,
+      "paused": true,
+      "accumulatedTicks": 0,
+      "objectCount": 35,
+      "render": {
+        "birdFrame": "bird.frame2",
+        "birdX": 350,
+        "birdY": 224,
+        "roundPixels": false,
+        "birdWorldY": 544,
+        "birdAngleDegrees": 0,
+        "birdSize": {
+          "width": 85,
+          "height": 60
+        },
+        "camera": {
+          "mode": 1,
+          "left": -512,
+          "right": 512,
+          "top": 384,
+          "bottom": -384
+        },
+        "texture": {
+          "samplingMode": 1,
+          "noMipmap": true,
+          "invertY": true,
+          "gammaSpace": false
+        },
+        "objectCount": 35,
+        "memory": {
+          "geometries": 1,
+          "textures": 9,
+          "materials": 10
+        },
+        "pipes": [
+          [
+            {
+              "x": 120,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 120,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 120,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 120,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 415,
+              "y": 87,
+              "width": 75,
+              "height": 174
+            },
+            {
+              "x": 415,
+              "y": 199,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 415,
+              "y": 539,
+              "width": 75,
+              "height": 10
+            },
+            {
+              "x": 415,
+              "y": 509,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 710,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 710,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 710,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 710,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1005,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1005,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1005,
+              "y": 527,
+              "width": 75,
+              "height": 34
+            },
+            {
+              "x": 1005,
+              "y": 485,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1300,
+              "y": 35,
+              "width": 75,
+              "height": 70
+            },
+            {
+              "x": 1300,
+              "y": 95,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1300,
+              "y": 487,
+              "width": 75,
+              "height": 114
+            },
+            {
+              "x": 1300,
+              "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1595,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1595,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1595,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1595,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1890,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 1890,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1890,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 1890,
+              "y": 435,
+              "width": 75,
+              "height": 50
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "tick": 191,
+      "state": "gameOver",
+      "y": 514,
+      "birdY": 514,
+      "velocityY": 0,
+      "score": 1,
+      "bestScore": 1,
+      "deathTick": 184,
+      "deathReason": "upperPipe",
+      "gameOverTick": 191,
+      "restartAllowedTick": 199,
+      "firstPipeX": 120,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        120,
+        415,
+        710,
+        1005,
+        1300,
+        1595,
+        1890
+      ],
+      "pipeGapCenters": [
+        300,
+        354,
+        300,
+        330,
+        250,
+        340,
+        280
+      ],
+      "pipePassed": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": true,
+      "consumedGapCenters": 7,
+      "flightTicks": 184,
+      "paused": true,
+      "accumulatedTicks": 0,
+      "objectCount": 35,
+      "render": {
+        "birdFrame": "bird.frame2",
+        "birdX": 350,
+        "birdY": 514,
+        "roundPixels": false,
+        "birdWorldY": 254,
+        "birdAngleDegrees": 0,
+        "birdSize": {
+          "width": 85,
+          "height": 60
+        },
+        "camera": {
+          "mode": 1,
+          "left": -512,
+          "right": 512,
+          "top": 384,
+          "bottom": -384
+        },
+        "texture": {
+          "samplingMode": 1,
+          "noMipmap": true,
+          "invertY": true,
+          "gammaSpace": false
+        },
+        "objectCount": 35,
+        "memory": {
+          "geometries": 1,
+          "textures": 9,
+          "materials": 10
+        },
+        "pipes": [
+          [
+            {
+              "x": 120,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 120,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 120,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 120,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 415,
+              "y": 87,
+              "width": 75,
+              "height": 174
+            },
+            {
+              "x": 415,
+              "y": 199,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 415,
+              "y": 539,
+              "width": 75,
+              "height": 10
+            },
+            {
+              "x": 415,
+              "y": 509,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 710,
+              "y": 60,
+              "width": 75,
+              "height": 120
+            },
+            {
+              "x": 710,
+              "y": 145,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 710,
+              "y": 512,
+              "width": 75,
+              "height": 64
+            },
+            {
+              "x": 710,
+              "y": 455,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1005,
+              "y": 75,
+              "width": 75,
+              "height": 150
+            },
+            {
+              "x": 1005,
+              "y": 175,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1005,
+              "y": 527,
+              "width": 75,
+              "height": 34
+            },
+            {
+              "x": 1005,
+              "y": 485,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1300,
+              "y": 35,
+              "width": 75,
+              "height": 70
+            },
+            {
+              "x": 1300,
+              "y": 95,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1300,
+              "y": 487,
+              "width": 75,
+              "height": 114
+            },
+            {
+              "x": 1300,
+              "y": 405,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1595,
+              "y": 80,
+              "width": 75,
+              "height": 160
+            },
+            {
+              "x": 1595,
+              "y": 185,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1595,
+              "y": 532,
+              "width": 75,
+              "height": 24
+            },
+            {
+              "x": 1595,
+              "y": 495,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1890,
+              "y": 50,
+              "width": 75,
+              "height": 100
+            },
+            {
+              "x": 1890,
+              "y": 125,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1890,
+              "y": 502,
+              "width": 75,
+              "height": 84
+            },
+            {
+              "x": 1890,
+              "y": 435,
+              "width": 75,
+              "height": 50
+            }
+          ]
+        ]
+      }
+    }
+  ],
+  "errors": []
+}

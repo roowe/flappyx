@@ -1,0 +1,339 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUnixMilliseconds": 1790955273497,
+  "browserVersion": "154.0.8037.93",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
+  "engine": "babylonjs",
+  "surface": {
+    "width": 1024,
+    "height": 768,
+    "antialias": false
+  },
+  "automatic": {
+    "tick": 210,
+    "state": "gameOver",
+    "y": 514,
+    "birdY": 514,
+    "velocityY": 0,
+    "score": 1,
+    "bestScore": 1,
+    "deathTick": 184,
+    "deathReason": "upperPipe",
+    "gameOverTick": 191,
+    "restartAllowedTick": 199,
+    "firstPipeX": 120,
+    "pipeCount": 7,
+    "pipeIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pipeXs": [
+      120,
+      415,
+      710,
+      1005,
+      1300,
+      1595,
+      1890
+    ],
+    "pipeGapCenters": [
+      300,
+      354,
+      300,
+      330,
+      250,
+      340,
+      280
+    ],
+    "pipePassed": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "pipesPassed": true,
+    "consumedGapCenters": 7,
+    "flightTicks": 184,
+    "paused": false,
+    "accumulatedTicks": 0.49800000000001116,
+    "objectCount": 35,
+    "render": {
+      "birdFrame": "bird.frame2",
+      "birdX": 350,
+      "birdY": 514,
+      "roundPixels": false,
+      "birdWorldY": 254,
+      "birdAngleDegrees": 0,
+      "birdSize": {
+        "width": 85,
+        "height": 60
+      },
+      "camera": {
+        "mode": 1,
+        "left": -512,
+        "right": 512,
+        "top": 384,
+        "bottom": -384
+      },
+      "texture": {
+        "samplingMode": 1,
+        "noMipmap": true,
+        "invertY": true,
+        "gammaSpace": false
+      },
+      "objectCount": 35,
+      "memory": {
+        "geometries": 1,
+        "textures": 9,
+        "materials": 10
+      },
+      "pipes": [
+        [
+          {
+            "x": 120,
+            "y": 60,
+            "width": 75,
+            "height": 120
+          },
+          {
+            "x": 120,
+            "y": 145,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 120,
+            "y": 512,
+            "width": 75,
+            "height": 64
+          },
+          {
+            "x": 120,
+            "y": 455,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 415,
+            "y": 87,
+            "width": 75,
+            "height": 174
+          },
+          {
+            "x": 415,
+            "y": 199,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 415,
+            "y": 539,
+            "width": 75,
+            "height": 10
+          },
+          {
+            "x": 415,
+            "y": 509,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 710,
+            "y": 60,
+            "width": 75,
+            "height": 120
+          },
+          {
+            "x": 710,
+            "y": 145,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 710,
+            "y": 512,
+            "width": 75,
+            "height": 64
+          },
+          {
+            "x": 710,
+            "y": 455,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 1005,
+            "y": 75,
+            "width": 75,
+            "height": 150
+          },
+          {
+            "x": 1005,
+            "y": 175,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 1005,
+            "y": 527,
+            "width": 75,
+            "height": 34
+          },
+          {
+            "x": 1005,
+            "y": 485,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 1300,
+            "y": 35,
+            "width": 75,
+            "height": 70
+          },
+          {
+            "x": 1300,
+            "y": 95,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 1300,
+            "y": 487,
+            "width": 75,
+            "height": 114
+          },
+          {
+            "x": 1300,
+            "y": 405,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 1595,
+            "y": 80,
+            "width": 75,
+            "height": 160
+          },
+          {
+            "x": 1595,
+            "y": 185,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 1595,
+            "y": 532,
+            "width": 75,
+            "height": 24
+          },
+          {
+            "x": 1595,
+            "y": 495,
+            "width": 75,
+            "height": 50
+          }
+        ],
+        [
+          {
+            "x": 1890,
+            "y": 50,
+            "width": 75,
+            "height": 100
+          },
+          {
+            "x": 1890,
+            "y": 125,
+            "width": 75,
+            "height": 50
+          },
+          {
+            "x": 1890,
+            "y": 502,
+            "width": 75,
+            "height": 84
+          },
+          {
+            "x": 1890,
+            "y": 435,
+            "width": 75,
+            "height": 50
+          }
+        ]
+      ]
+    }
+  },
+  "sizes": [
+    {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "width": 1024,
+      "height": 768,
+      "x": 0,
+      "y": 0,
+      "cssWidth": 1024,
+      "cssHeight": 768
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "width": 1024,
+      "height": 768,
+      "x": 160,
+      "y": 0,
+      "cssWidth": 960,
+      "cssHeight": 720
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "width": 1024,
+      "height": 768,
+      "x": 0,
+      "y": 275.75,
+      "cssWidth": 390,
+      "cssHeight": 292.5
+    }
+  ],
+  "checks": [
+    "production-assets/WebGL2",
+    "no-test-controls",
+    "RAF-button/space/start/death/restart",
+    "actual-window-focus/pause/no-auto-resume",
+    "paused-render-stable",
+    "RAF-baseline-replay",
+    "replay-label/model-best",
+    "replay-preserves-existing-best",
+    "three-release-window-sizes"
+  ],
+  "storage": {
+    "existingBestScore": 7,
+    "beforeReplay": "{\"schemaVersion\":1,\"bestScore\":7}",
+    "afterReplay": "{\"schemaVersion\":1,\"bestScore\":7}"
+  },
+  "errors": []
+}

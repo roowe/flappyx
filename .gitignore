@@ -6,6 +6,8 @@ __pycache__/
 /phaser/dist/
 /threejs/node_modules/
 /threejs/dist/
+/babylonjs/node_modules/
+/babylonjs/dist/
 /cocos/game/node_modules/
 /cocos/game/library/
 /cocos/game/temp/

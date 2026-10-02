@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#51c0c9" />
+    <title>FlappyX · Flappy Bird</title>
+  </head>
+  <body>
+    <main id="stage" aria-label="Flappy Bird 游戏">
+      <div id="game"></div>
+      <div class="hud">
+        <div class="brand">FlappyX<span>Flappy Bird</span></div>
+        <div class="scoreboard"><span id="score">0</span><small><span id="best-label">最高</span> <span id="best">0</span></small></div>
+        <button id="pause" class="quiet" aria-label="暂停游戏" disabled>暂停</button>
+      </div>
+      <section id="panel" class="panel" aria-live="polite">
+        <p id="eyebrow">准备好了吗？</p>
+        <h1 id="heading">向前飞吧</h1>
+        <p id="message">穿过水管，每次拍翅都更接近新纪录。</p>
+        <button id="action" class="primary" disabled>开始飞行</button>
+        <p id="hint" class="hint">空格 / 点击画面 / 轻触起飞</p>
+      </section>
+      <footer><span>空格 · 点击 · 轻触</span><span id="edition">Babylon.js 版</span></footer>
+      <p id="storage-status" role="status"></p>
+      <p id="load-error" role="alert" hidden></p>
+    </main>
+    <script type="module" src="./src/main.ts"></script>
+  </body>
+</html>

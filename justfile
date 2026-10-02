@@ -25,6 +25,16 @@ check-m3:
 preview-threejs:
     bun run --cwd threejs preview
 
+babylonjs:
+    bun run --cwd babylonjs dev
+
+check-babylonjs:
+    bun run --cwd babylonjs test
+    bun run --cwd babylonjs build
+
+preview-babylonjs:
+    bun run --cwd babylonjs preview
+
 cocos:
     bun run --cwd cocos/game editor
 

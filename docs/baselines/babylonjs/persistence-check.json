@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUnixMilliseconds": 1790955332383,
+  "browserVersion": "154.0.8037.93",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
+  "url": "http://127.0.0.1:5180",
+  "beforeRestart": {
+    "initialRaw": null,
+    "snapshot": {
+      "tick": 171,
+      "state": "gameOver",
+      "y": 514,
+      "birdY": 514,
+      "velocityY": 0,
+      "score": 1,
+      "bestScore": 1,
+      "deathTick": 171,
+      "deathReason": "ground",
+      "gameOverTick": 171,
+      "restartAllowedTick": 186,
+      "firstPipeX": 198,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        198,
+        493,
+        788,
+        1083,
+        1378,
+        1673,
+        1968
+      ],
+      "pipeGapCenters": [
+        271,
+        266,
+        316,
+        291,
+        336,
+        212,
+        345
+      ],
+      "pipePassed": [
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": true,
+      "consumedGapCenters": 7,
+      "flightTicks": 171,
+      "paused": false,
+      "accumulatedTicks": 0,
+      "objectCount": 35,
+      "render": {
+        "birdFrame": "bird.frame1",
+        "birdX": 350,
+        "birdY": 514,
+        "roundPixels": false,
+        "birdWorldY": 254,
+        "birdAngleDegrees": 0,
+        "birdSize": {
+          "width": 85,
+          "height": 60
+        },
+        "camera": {
+          "mode": 1,
+          "left": -512,
+          "right": 512,
+          "top": 384,
+          "bottom": -384
+        },
+        "texture": {
+          "samplingMode": 1,
+          "noMipmap": true,
+          "invertY": true,
+          "gammaSpace": false
+        },
+        "objectCount": 35,
+        "memory": {
+          "geometries": 1,
+          "textures": 9,
+          "materials": 10
+        },
+        "pipes": [
+          [
+            {
+              "x": 198,
+              "y": 45.5,
+              "width": 75,
+              "height": 91
+            },
+            {
+              "x": 198,
+              "y": 116,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 198,
+              "y": 497.5,
+              "width": 75,
+              "height": 93
+            },
+            {
+              "x": 198,
+              "y": 426,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 493,
+              "y": 43,
+              "width": 75,
+              "height": 86
+            },
+            {
+              "x": 493,
+              "y": 111,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 493,
+              "y": 495,
+              "width": 75,
+              "height": 98
+            },
+            {
+              "x": 493,
+              "y": 421,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 788,
+              "y": 68,
+              "width": 75,
+              "height": 136
+            },
+            {
+              "x": 788,
+              "y": 161,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 788,
+              "y": 520,
+              "width": 75,
+              "height": 48
+            },
+            {
+              "x": 788,
+              "y": 471,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1083,
+              "y": 55.5,
+              "width": 75,
+              "height": 111
+            },
+            {
+              "x": 1083,
+              "y": 136,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1083,
+              "y": 507.5,
+              "width": 75,
+              "height": 73
+            },
+            {
+              "x": 1083,
+              "y": 446,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1378,
+              "y": 78,
+              "width": 75,
+              "height": 156
+            },
+            {
+              "x": 1378,
+              "y": 181,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1378,
+              "y": 530,
+              "width": 75,
+              "height": 28
+            },
+            {
+              "x": 1378,
+              "y": 491,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1673,
+              "y": 16,
+              "width": 75,
+              "height": 32
+            },
+            {
+              "x": 1673,
+              "y": 57,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1673,
+              "y": 468,
+              "width": 75,
+              "height": 152
+            },
+            {
+              "x": 1673,
+              "y": 367,
+              "width": 75,
+              "height": 50
+            }
+          ],
+          [
+            {
+              "x": 1968,
+              "y": 82.5,
+              "width": 75,
+              "height": 165
+            },
+            {
+              "x": 1968,
+              "y": 190,
+              "width": 75,
+              "height": 50
+            },
+            {
+              "x": 1968,
+              "y": 534.5,
+              "width": 75,
+              "height": 19
+            },
+            {
+              "x": 1968,
+              "y": 500,
+              "width": 75,
+              "height": 50
+            }
+          ]
+        ]
+      }
+    },
+    "raw": "{\"schemaVersion\":1,\"bestScore\":1}"
+  },
+  "errors": [],
+  "afterProcessRestart": {
+    "checkedAtUnixMilliseconds": 1790955417803,
+    "bestScore": 1,
+    "raw": "{\"schemaVersion\":1,\"bestScore\":1}"
+  }
+}
