@@ -74,7 +74,7 @@ export class FlightGame {
 
   private step(flap: boolean) {
     for (const event of this.model.step(flap)) {
-      if (event.type === 'gameOver' && !replayMode) this.store.write(event.bestScore);
+      if (event.type === 'gameOver' && !replayMode) this.model.bestScore = this.store.write(event.bestScore);
     }
   }
 

@@ -6,6 +6,7 @@
     "test": "bun test ../shared/core-ts tests",
     "check:browser": "bun scripts/browser-check.ts",
     "check:production": "bun scripts/production-check.ts",
+    "check:review": "bun test scripts/review.test.ts",
     "build": "bun run check && vite build",
     "preview": "vite preview --host 127.0.0.1 --port 5175 --strictPort"
   },

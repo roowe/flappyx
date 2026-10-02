@@ -31,13 +31,14 @@ just preview-phaser
   --no-first-run --no-default-browser-check
 ```
 
-保持开发服务器与生产预览运行，依次执行两项检查（共享浏览器窗口，不能同时运行）：
+保持开发服务器与生产预览运行，依次执行检查（共享浏览器窗口，不能同时运行）：
 
 ```sh
 CHROME_CDP_URL=http://127.0.0.1:9224 bun run --cwd phaser check:browser
 CHROME_CDP_URL=http://127.0.0.1:9224 bun run --cwd phaser check:production
+CHROME_CDP_URL=http://127.0.0.1:9224 bun run --cwd phaser check:review
 ```
 
-两份脚本均在隔离的浏览器 context 中运行，不使用日常游戏页的存档。验收 context 预置 7 分纪录，验证刷新、重开和回放后仍保留 7 分；生产检查还比较回放前后存档的原始字符串。
+检查均在隔离的浏览器 context 中运行，不使用日常游戏页的存档。开发与生产验收 context 预置 7 分纪录，验证刷新、重开和回放后仍保留 7 分；生产检查还比较回放前后存档的原始字符串。`check:review` 验证图片加载失败时停止游戏，以及销毁游戏后移除浏览器事件监听器。
 
 生产检查需要可见 Chrome，以产生真实的窗口失焦事件。脚本关闭自己的验收页，不删除浏览器配置目录；退出这个独立 Chrome 后，macOS 清理使用 `/usr/bin/trash /private/tmp/flappyx-browser-check`。截图与 JSON 证据写入 `docs/baselines/phaser/`。

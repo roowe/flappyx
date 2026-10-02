@@ -30,6 +30,8 @@ export class BestScoreStore {
   }
 
   write(bestScore: number) {
+    // Another tab may have saved a higher score since this round started.
+    bestScore = Math.max(bestScore, this.read());
     try {
       this.storage.setItem(this.key, JSON.stringify({ schemaVersion: config.storage.schemaVersion, bestScore }));
       this.status = '';
@@ -37,5 +39,6 @@ export class BestScoreStore {
       if (!(error instanceof DOMException)) throw error;
       this.status = '最高分未能保存到本地，已保留在本次游戏。';
     }
+    return bestScore;
   }
 }

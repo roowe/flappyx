@@ -28,6 +28,7 @@ export class FlightScene extends Phaser.Scene {
   private pendingFlap = false;
   private lastTime: number | null = null;
   private lastUI = '';
+  private loadFailed = false;
   private replayFlaps = new Set(baseline.flapTicks);
 
   constructor() { super('flight'); }
@@ -35,12 +36,14 @@ export class FlightScene extends Phaser.Scene {
   preload() {
     for (const sprite of metadata.sprites) this.load.image(sprite.id, urls[`../../shared/assets/runtime/${sprite.file}`]);
     this.load.on('loaderror', (file: Phaser.Loader.File) => {
+      this.loadFailed = true;
       ui.loadError.hidden = false;
       ui.loadError.textContent = `图片加载失败：${file.key}。请刷新页面重试。`;
     });
   }
 
   create() {
+    if (this.loadFailed) { this.scene.stop(); return; }
     // Access to localStorage itself can raise SecurityError in restricted browser contexts.
     this.store = new BestScoreStore({ getItem: key => window.localStorage.getItem(key),
       setItem: (key, value) => window.localStorage.setItem(key, value) }, bestScoreKey);
@@ -60,14 +63,18 @@ export class FlightScene extends Phaser.Scene {
     document.addEventListener('visibilitychange', this.visibility);
     ui.pause.addEventListener('click', this.pause);
     ui.action.addEventListener('click', this.action);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+    const cleanup = () => {
       this.game.canvas.removeEventListener('pointerdown', this.pointerDown);
       window.removeEventListener('keydown', this.keyDown);
       window.removeEventListener('blur', this.pause);
       document.removeEventListener('visibilitychange', this.visibility);
       ui.pause.removeEventListener('click', this.pause);
       ui.action.removeEventListener('click', this.action);
-    });
+      this.events.off(Phaser.Scenes.Events.SHUTDOWN, cleanup);
+      this.events.off(Phaser.Scenes.Events.DESTROY, cleanup);
+    };
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, cleanup);
+    this.events.once(Phaser.Scenes.Events.DESTROY, cleanup);
     if (replayMode && query.has('tick')) {
       while (this.model.tick < requestedTick) this.step(this.replayFlaps.has(this.model.tick + 1));
       this.clock.pause();
@@ -126,7 +133,9 @@ export class FlightScene extends Phaser.Scene {
     this.consume(this.model.step(flap));
   }
   private consume(events: GameEvent[]) {
-    for (const event of events) if (event.type === 'gameOver' && !replayMode) this.store.write(event.bestScore);
+    for (const event of events) if (event.type === 'gameOver' && !replayMode) {
+      this.model.bestScore = this.store.write(event.bestScore);
+    }
   }
 
   update(time: number) {
