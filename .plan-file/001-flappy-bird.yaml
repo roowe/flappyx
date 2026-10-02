@@ -13,7 +13,7 @@ phases:
     status: done
   - id: 4
     content: M3 Three.js 版：复用 TS 内核，以正交相机渲染，完成浏览器玩法一致性验证。
-    status: pending
+    status: done
   - id: 5
     content: M4 Cocos 版：接入共享 TS、资源和场景适配，验证编辑器及 Web 构建。
     status: pending
@@ -27,7 +27,7 @@ phases:
     content: M7 统一验收：完成五引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
     status: pending
 notes:
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M2 已完成，下一阶段为 M3 Three.js 版。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M3 已完成，下一阶段为 M4 Cocos 版。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
@@ -46,4 +46,9 @@ notes:
   - content: Chrome 154.0.8037.93 验证输入去重、暂停/显式恢复、补 tick、最高分刷新与浏览器进程重启保留，以及十次重开七组水管和 35 个渲染对象有界；1024×768、1280×720、390×844 比例与逻辑位置一致。
   - content: M2 交付和限制见 docs/m2-phaser-baseline.md；docs/baselines/phaser 保存六张截图及浏览器、生产构建和进程重启存档 JSON。生产 RAF 闭环与真实窗口失焦检查通过；关闭 Playwright 默认焦点模拟后验证，后台轮询使用定时器，避免 RAF 冻结阻塞测试。
   - content: M2 review 修订：起飞首帧覆盖 flightTicks 1–3，保留小数显示坐标并关闭 Phaser 强制取整，最近邻采样不变；回放 HUD 标为「回放最高」。浏览器验收使用隔离 context 预置 7 分，锁定原存档保留及结算页失焦后的显式恢复。
+  - content: M3 已完成 threejs 独立 Bun 工程，Three.js 0.186.0 复用 shared/core-ts，以固定 1024×768 正交投影渲染，y 与倾角只在渲染层转换；just threejs 启动 5176，just preview-threejs 预览 5177，just check-m3 通过五项测试、606 个断言、类型检查和生产构建。
+  - content: Phaser 与 Three.js 的 DOM 节点、样式及存档格式共用 shared/web-ts，数值内核仍无 DOM；两个引擎指定独立存档键。Phaser 的 M2 测试和两项实际浏览器回归通过，旧样式副本已进入系统回收站。
+  - content: M3 浏览器从 tick 0 到 150 对照两版全部模型字段和鸟帧，得分 118、撞管 134、落地 141 一致；输入、暂停、补 tick、三种窗口、十次重开和存档隔离通过，35 个平面、1 份几何和 9 张 GPU 纹理有界。独立 Chrome 正常退出再启动后最高分仍为 1。
+  - content: M3 交付见 docs/m3-threejs.md；docs/baselines/threejs 保存六张截图、开发/生产浏览器、进程重启及像素比较 JSON。just compare-web-frames 对照 Phaser，玩法区域约 0.09%–0.10% 像素有差异；允许渲染器栅格化差异，逻辑与显示坐标一致。共享玩法配置和 fixtures 未改。
+  - content: M3 review 修订：加载错误按贴图文件、页面节点和 WebGL 初始化分别提示并保留异常；Three.js 读取 roundPixels，在逻辑坐标系取整显示中心，物理状态不变。共享 UI 通过 Vite 导入 favicon，修复开发端状态 200 却返回 HTML；生产原地址已正确打包。三项浏览器回归、24 个断言验证失败原因、取整往返及 PNG 内容，像素记录补充最大通道差 169/171/194。
 summary: null

@@ -2,7 +2,7 @@ import Phaser from 'phaser';
 import { config, FixedClock, Game, type GameEvent, type GameOptions } from '../../shared/core-ts';
 import metadata from '../../shared/assets/runtime/sprites.json';
 import baseline from '../../shared/fixtures/replay-baseline.json';
-import { BestScoreStore } from './storage';
+import { BestScoreStore, bestScoreKey } from './storage';
 import { ui } from './ui';
 
 type Image = Phaser.GameObjects.Image;
@@ -43,7 +43,7 @@ export class FlightScene extends Phaser.Scene {
   create() {
     // Access to localStorage itself can raise SecurityError in restricted browser contexts.
     this.store = new BestScoreStore({ getItem: key => window.localStorage.getItem(key),
-      setItem: (key, value) => window.localStorage.setItem(key, value) });
+      setItem: (key, value) => window.localStorage.setItem(key, value) }, bestScoreKey);
     this.model = new Game(config, replayMode ? {
       initial: { seed: baseline.seed, bestScore: baseline.initialBestScore }, pipeGapCenters: baseline.pipeGapCenters,
     } : { initial: { bestScore: this.store.read() } });

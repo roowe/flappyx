@@ -14,3 +14,16 @@ check-m2:
 
 preview-phaser:
     bun run --cwd phaser preview
+
+threejs:
+    bun run --cwd threejs dev
+
+check-m3:
+    bun run --cwd threejs test
+    bun run --cwd threejs build
+
+preview-threejs:
+    bun run --cwd threejs preview
+
+compare-web-frames:
+    uv run --project tools --locked python tools/compare_web_frames.py

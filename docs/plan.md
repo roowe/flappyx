@@ -2,7 +2,7 @@
 
 创建日期：2026-10-01  
 更新日期：2026-10-02
-状态：M0–M2 已完成，下一阶段为 Three.js 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)。
+状态：M0–M3 已完成，下一阶段为 Cocos 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，Three.js 对照见 [M3 记录](./m3-threejs.md)。
 
 ## 1. 目标与范围
 
@@ -53,6 +53,8 @@ flappyx/
 ├── docs/
 │   ├── plan.md                  # 本计划
 │   ├── m1-resources-and-rules.md # M1 环境、资源与数据契约
+│   ├── m2-phaser-baseline.md    # Phaser 可玩基准与验收
+│   ├── m3-threejs.md            # Three.js 正交渲染与对照验收
 │   └── acceptance.md            # 后续建立：五引擎验收结果
 ├── shared/
 │   ├── assets/
@@ -61,6 +63,7 @@ flappyx/
 │   ├── config/gameplay.json     # 画布、运动、碰撞和生成参数唯一编辑源
 │   ├── fixtures/               # 固定水管序列、输入 tick 与预期结果
 │   ├── core-ts/                # Phaser / Three.js / Cocos 共用玩法
+│   ├── web-ts/                 # Phaser / Three.js 共用 DOM、样式和存档格式
 │   └── core-csharp/            # Unity / Godot 共用玩法
 ├── tools/                      # 独立 Python 工具项目：素材转换、分发与核对
 │   ├── pyproject.toml
@@ -75,7 +78,7 @@ flappyx/
 └── u3d/
 ```
 
-M1 已建立共享资源、配置、fixtures 和转换工具；M2 已建立纯 TS 内核与 Phaser 工程，C# 内核及其他引擎工程随后续阶段建立。
+M1 已建立共享资源、配置、fixtures 和转换工具；M2–M3 已建立纯 TS 内核、Phaser 与 Three.js 工程，C# 内核及其他引擎工程随后续阶段建立。
 
 共享玩法只负责状态、鸟的运动、水管生成与回收、碰撞、分数和事件，不引用引擎 API。适配层负责输入、固定步长调度、贴图/UI、最高分存储及生命周期。TypeScript 和 C# 分别保留一份内核，通过同一组数据用例验证一致性。
 
@@ -149,7 +152,7 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2 已建立纯 T
 | M0：参考核对 | 本计划、资源定位、引擎与语言基线 | 已完成；待实施时确认本机编辑器可用版本 |
 | M1：资源与规则 | 转换工具、标准 PNG、资源来源、`gameplay.json`、首组验收数据 | 已完成；转换可重复，预览与数据检查通过 |
 | M2：Phaser 基准版 | TS 内核、Phaser 适配、准备→游戏→结算→重开闭环、最高分、缩放/暂停 | 已完成；本地可玩，配置冻结，基准截图与浏览器证据见 M2 记录 |
-| M3：Three.js 版 | 复用 TS 内核，正交相机/贴图渲染和 UI、浏览器启动 | 与 Phaser 的同输入结果一致，画面方向和层级正确 |
+| M3：Three.js 版 | 复用 TS 内核，正交相机/贴图渲染和 UI、浏览器启动 | 已完成；逐 tick 与 Phaser 一致，资源和浏览器闭环通过，证据见 M3 记录 |
 | M4：Cocos 版 | 复用 TS 内核，资源分发、场景、输入/存储适配 | 编辑器与 Web 构建均可玩；确认共享 TS 可被 Creator 工程导入 |
 | M5：Unity 版 | C# 内核、与 TS 共用的用例、2D 场景/UI、桌面构建 | TS/C# 用例一致，编辑器及构建闭环通过 |
 | M6：Godot 版 | 复用 C# 内核，Godot 节点/UI、存储和生命周期适配 | .NET 编辑器及桌面导出可玩，与 Unity 结果一致 |

@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { config } from '../../shared/core-ts';
 import { FlightScene } from './scene';
-import './style.css';
+import '../../shared/web-ts/style.css';
 
 const game = new Phaser.Game({
   type: Phaser.AUTO, parent: 'game', width: config.canvas.width, height: config.canvas.height,

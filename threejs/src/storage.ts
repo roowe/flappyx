@@ -1,4 +1,4 @@
 import { config } from '../../shared/core-ts';
 export { BestScoreStore } from '../../shared/web-ts/storage';
 
-export const bestScoreKey = `${config.storage.keyPrefix}:phaser:best`;
+export const bestScoreKey = `${config.storage.keyPrefix}:threejs:best`;

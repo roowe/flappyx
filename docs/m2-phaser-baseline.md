@@ -16,9 +16,11 @@ Phaser 版已完成准备、起飞、过管计分、死亡下落、结算、重�
 | [shared/core-ts](../shared/core-ts/index.ts) | 纯数值状态机、碰撞、计分、随机生成、七组队列、死亡与重开；无 Phaser、DOM 或 Bun 运行时依赖 |
 | [FixedClock](../shared/core-ts/clock.ts) | 30 Hz 固定逻辑步长、最多补五个 tick、丢弃过量整 tick 并保留小数、暂停与清空积累 |
 | [FlightScene](../phaser/src/scene.ts) | 加载共享 PNG、中心锚点布局、固定渲染对象、统一输入、实际 RAF 时间差、生命周期与 UI |
-| [BestScoreStore](../phaser/src/storage.ts) | 浏览器 localStorage 的共享存档字段、读取校验与保存结果提示 |
+| [BestScoreStore](../shared/web-ts/storage.ts) | 浏览器 localStorage 的共享存档字段、读取校验与保存结果提示；由 Phaser 指定独立存档键 |
 
 独立内核的 tsconfig 只包含 ES2022，类型检查不引入 DOM 或引擎类型。Phaser 直接引用共享配置、精灵元数据和 PNG；Vite 将资源纳入产物，无引擎目录里的手工资源副本。构建不清空 `dist/`，同名产物覆盖写入。
+
+M3 接入时，浏览器 DOM 节点、样式和存档实现提取到 `shared/web-ts/`，供两个 Web 版本共用；Phaser 的存档键、入口及基准行为保持一致，开发与生产浏览器回归检查均通过。
 
 ## 冻结的运动与显示
 

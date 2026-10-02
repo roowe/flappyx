@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "configSha256": "4e42ef1978a4f2b096450012137fd3006175e5d6514181eba85c5e6b09d8d433",
+  "region": [
+    0,
+    146,
+    1024,
+    704
+  ],
+  "frames": [
+    {
+      "tick": 118,
+      "comparedPixels": 571392,
+      "differentPixels": 516,
+      "differentFraction": 0.0009030577956989247,
+      "meanAbsoluteChannelDifference": 0.004456951911589008,
+      "maximumChannelDifference": 169,
+      "imageSha256": {
+        "phaser": "1a686b7b4c68b20be20d0d472367b71de33033fa553131a123ccfd491c0bdb0c",
+        "threejs": "d9f822c593e8214fca0bc773039b3bd41b3316ffe1432417e82334274143e90d"
+      }
+    },
+    {
+      "tick": 134,
+      "comparedPixels": 571392,
+      "differentPixels": 571,
+      "differentFraction": 0.00099931395609319,
+      "meanAbsoluteChannelDifference": 0.014321749925328555,
+      "maximumChannelDifference": 171,
+      "imageSha256": {
+        "phaser": "b77626c88e75ca49b84e43643df426bc3e8d4c066a2399b599942df24175ae09",
+        "threejs": "c7bf5865496c65c52c72575585e444e325641df42f90c65036d100c4634047d2"
+      }
+    },
+    {
+      "tick": 141,
+      "comparedPixels": 571392,
+      "differentPixels": 573,
+      "differentFraction": 0.0010028141801075269,
+      "meanAbsoluteChannelDifference": 0.01579942783004779,
+      "maximumChannelDifference": 194,
+      "imageSha256": {
+        "phaser": "a32d2cb4c1efa14e2dcac6f58ae080c8ba650603617682dce3b009d02faf8c1b",
+        "threejs": "252416c84d7662cc78b33eaee2c10c7f2a42a3c0cae7445070807137bf0de330"
+      }
+    }
+  ]
+}
