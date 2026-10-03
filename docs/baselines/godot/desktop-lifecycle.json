@@ -1,0 +1,9 @@
+{
+  "minimizedTick": 7200,
+  "restored": 7200,
+  "paused": true,
+  "explicitResume": {
+    "tick": 7579,
+    "paused": false
+  }
+}

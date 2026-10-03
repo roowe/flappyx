@@ -1,6 +1,6 @@
 goal: 使用 Cocos Creator、Godot、Phaser、Three.js、Babylon.js 和 Unity 实现玩法与资源一致的 Flappy Bird，完成六引擎可玩验收。
 created_at: '2026-10-01'
-updated_at: '2026-10-02'
+updated_at: '2026-10-03'
 phases:
   - id: 1
     content: M0 参考核对：检查 CrossGameEngine 结构和 ejoy2d 示例、定位资源并写入 docs/plan.md。
@@ -18,11 +18,11 @@ phases:
     content: M4 Cocos 版：接入共享 TS、资源和场景适配，验证编辑器及 Web 构建。
     status: done
   - id: 6
-    content: M5 Unity 版：实现纯 C# 内核和 Unity 适配，通过跨语言用例与桌面构建验证。
+    content: M5 Unity 版：复用 M6 建立的纯 C# 内核，实现 Unity 适配，通过跨语言用例与桌面构建验证。
     status: pending
   - id: 7
-    content: M6 Godot 版：使用 .NET 版 Godot 复用 C# 内核，完成节点适配和桌面导出验证。
-    status: pending
+    content: M6 Godot 版：建立共享纯 C# 内核，使用 .NET 版 Godot 完成节点适配、跨语言用例和桌面导出验证。
+    status: done
   - id: 8
     content: M7 统一验收：完成六引擎实机检查、同局面截图、启动文档和 docs/acceptance.md。
     status: pending
@@ -30,9 +30,10 @@ phases:
     content: M4b Babylon.js 版：复用共享 TS 内核、资源和 Web UI，完成可玩闭环与浏览器一致性验证。
     status: done
 notes:
+  - content: 用户指定先做 Godot C#；M5 的共享 C# 内核前移到 M6，Unity 随后复用。当前验收沿用 easyV1 和 210 tick 回放。
   - content: 用户新增 Babylon.js 版本，独立工程放在 babylonjs/；M4b 已完成，沿用当前 easyV1 的共享内核和 210 tick fixture，原 M5–M7 编号保留，下一阶段为 M5 Unity。
   - content: 当前共享难度为 easyV1：起点 y=420，拍翅 -12、重力 1，水管/地面速度 6、天空 1.5，开口 260、净间距 220、中心范围 210–354。共享回放改为 210 tick，158 得分、184 撞管、191 落地。以下 M2–M4 的 phaser-v1 数值属于历史验收记录。
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M4 已完成，下一阶段为 M5 Unity 版。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M4、M4b 和 M6 已完成，下一阶段为 M5 Unity 版。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
@@ -42,7 +43,7 @@ notes:
   - content: M1 交付见 docs/m1-resources-and-rules.md；shared/assets/runtime 含九张 upright straight-alpha RGBA 精灵及元数据，source 含六个原文件、MIT 声明、提交和 SHA-256 来源记录。
   - content: 原 PPM 为预乘 Alpha，转换已还原颜色并保持 PGM 的 Alpha；下方水管头和身体逆时针旋转 90 度。13 个派生输出可逐字节重现，源哈希未变。
   - content: shared/config/gameplay.json 和 shared/fixtures 的边界用例、150 tick 回放及随机向量已建立；review 修订后的 just check-m1 和五项测试通过，Bun 独立 uint32 随机向量一致。
-  - content: 本机已确认 Creator 3.8.8、Godot 4.7.2 .NET、Unity 6000.5.6f1；参考工程安装 Phaser 4.2.1、Three.js 0.186.0。Godot 导出模板目录为空，M6 补齐；实际引擎工程运行、构建与回放由 M2-M6 验证。
+  - content: 本机已确认 Creator 3.8.8、Godot 4.7.2 .NET、Unity 6000.5.6f1；参考工程安装 Phaser 4.2.1、Three.js 0.186.0。Godot 的 4.7.2 .NET macOS 导出模板已在 M6 安装；实际引擎工程运行、构建与回放由各阶段验证。
   - content: Python 工具为 tools/ 下的独立 uv 项目，pyproject.toml、uv.lock 和 .venv 均位于 tools/；根目录 justfile 通过 uv run --project tools 调用，供后续引擎项目并列组织。
   - content: M1 review 已收口：地面、顶部、上管、下管依次判碰撞，地面当 tick 直接结算；计分使用碰撞盒左边缘。共享 fixtures 覆盖全部快照、死亡事件、偏移、七组队列回收、暂停和补 tick，由真实 TS/C# 内核直接执行；早期 Python 玩法模型已移除。
   - content: 水管身体元数据必须传入边界求得的高度，位置统一表示中心锚点；资源布局用例锁定背景和身体的定位。入口直接调用 uv；重现检查在内存完成，先前四个校验临时目录已移入系统回收站。
@@ -65,4 +66,9 @@ notes:
   - content: M4b 实际开发页对照 Phaser 的 tick 0–210 共 211 个完整快照，158 得分、184 撞管、191 落地相同；鸟帧、正交坐标、头身接缝、主键/触摸/空格、合并输入、暂停、补 tick 和三种窗口通过，十局后仍为七管/35 个平面、一份几何、九张纹理和十份材质。
   - content: M4b 正式页真实 RAF、按钮/空格闭环、失焦及显式恢复、自动回放、存档隔离和连续缩放通过；普通随机局得一分，专用 Chrome 正常退出并重启后仍读取一分。入口用异步启动函数避免发布 shader chunk 与入口顶层 await 的循环等待。
   - content: M4b 交付见 babylonjs/README.md、docs/m4b-babylonjs.md 和 docs/baselines/babylonjs；当前配置 SHA-256 为 06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d，共享契约与已有暂存修改保留。主 JS 约 1.06 MB，Vite chunk 提示已记录。
+  - content: M6 已完成 shared/core-csharp 纯 C# 9 / .NET Standard 2.1 内核、contract-csharp JSON 边界及 godot/game 的 Node2D、Sprite2D 和 Control 适配；Godot 场景使用 .NET 10。just godot 启动，just editor-godot 打开编辑器，just check-godot 执行跨语言与原生场景检查。
+  - content: M6 的 677 个完整快照及事件与 TS 精确一致，257 个 fixture 字段通过，30/60/120 FPS 结果相同；原生开发场景和实际导出应用分别通过 211 个快照及鸟帧对照、输入去重、暂停与补 tick、七管/35 Sprite 接缝及十次重开有界检查，已有 7 分存档在回放前后不变。
+  - content: M6 开发窗口和发布窗口均经真实空格操作得 2 分；开发窗口正常关闭重启后仍读到 2 分。真实最小化及恢复保持同一 tick 暂停，显式继续生效；1024×768、1280×720、390×844 窗口已验收，竖向留边因整数视口存在不足 1 像素的缩放舍入。
+  - content: just export-godot 已生成含 ARM64/x86_64 的 FlappyX.app，以系统 codesign ad-hoc 签名并通过严格检查、发布包原生验收及 GUI 截图。实机为 Apple M4 Pro，未验证 Intel 硬件或移动触摸硬件，未做公证。构建器同时检查 Godot ERROR 日志以防退出码 0 的导出失败。
+  - content: M6 交付见 godot/README.md、docs/m6-godot.md 和 docs/baselines/godot；四张最终发布截图为 tick 0、134、184、191。共享 easyV1 配置 SHA-256 保持 06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d，Unity 随后复用 C# 内核。
 summary: null

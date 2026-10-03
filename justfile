@@ -49,3 +49,18 @@ check-m4:
 
 preview-cocos:
     bun run --cwd cocos/game preview
+
+godot:
+    bun godot/tools/project.ts play
+
+editor-godot:
+    bun godot/tools/project.ts editor
+
+assets-godot:
+    bun godot/tools/project.ts prepare
+
+check-godot:
+    bun godot/tools/project.ts check
+
+export-godot:
+    bun godot/tools/project.ts export

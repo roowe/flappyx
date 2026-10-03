@@ -1,8 +1,8 @@
 # FlappyX 多引擎 Flappy Bird 实施计划
 
 创建日期：2026-10-01  
-更新日期：2026-10-02
-状态：M0–M4 与新增 M4b Babylon.js 已完成，下一阶段为 Unity 版。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，引擎对照见 [M3 记录](./m3-threejs.md)、[M4 记录](./m4-cocos.md)与[M4b 记录](./m4b-babylonjs.md)。
+更新日期：2026-10-03
+状态：M0–M4、M4b Babylon.js 和 M6 Godot C# 已完成。按用户要求，Godot 先于 Unity 实施，共享 C# 内核已就绪；下一阶段为 M5 Unity。阶段进度记录在 [001-flappy-bird.yaml](../.plan-file/001-flappy-bird.yaml)，资源与数据交付见 [M1 记录](./m1-resources-and-rules.md)，可玩基准见 [M2 记录](./m2-phaser-baseline.md)，引擎对照见 [M3 记录](./m3-threejs.md)、[M4 记录](./m4-cocos.md)、[M4b 记录](./m4b-babylonjs.md)和[M6 记录](./m6-godot.md)。
 
 ## 1. 目标与范围
 
@@ -58,6 +58,7 @@ flappyx/
 │   ├── m3-threejs.md            # Three.js 正交渲染与对照验收
 │   ├── m4-cocos.md              # Creator 场景适配、预览和 Web 验收
 │   ├── m4b-babylonjs.md         # Babylon 正交渲染和 Web 验收
+│   ├── m6-godot.md             # Godot C# 适配、跨语言对照与桌面导出
 │   └── acceptance.md            # 后续建立：六引擎验收结果
 ├── shared/
 │   ├── assets/
@@ -67,7 +68,8 @@ flappyx/
 │   ├── fixtures/               # 固定水管序列、输入 tick 与预期结果
 │   ├── core-ts/                # Phaser / Three.js / Babylon / Cocos 共用玩法
 │   ├── web-ts/                 # 三版 Web 共用 DOM、样式；四版 TS 共用存档格式
-│   └── core-csharp/            # Unity / Godot 共用玩法
+│   ├── core-csharp/            # Godot 使用的纯 C# 内核，供 Unity 复用
+│   └── contract-csharp/        # JSON 边界与 TS/C# 对照数据导出
 ├── tools/                      # 独立 Python 工具项目：素材转换、分发与核对
 │   ├── pyproject.toml
 │   ├── uv.lock
@@ -82,7 +84,7 @@ flappyx/
 └── u3d/
 ```
 
-M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立纯 TS 内核以及 Phaser、Three.js、Cocos 工程，M4b 新增 Babylon.js 工程，C# 内核及 Unity、Godot 工程随后续阶段建立。Cocos 位于 `cocos/game/`，启动和构建前同步共享 TS、JSON 模块与九张 PNG。
+M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立纯 TS 内核以及 Phaser、Three.js、Cocos 工程，M4b 新增 Babylon.js 工程。M6 已建立 C# 9 / .NET Standard 2.1 纯内核及 `godot/game/` 工程，Unity 工程待 M5 建立。Cocos 位于 `cocos/game/`，启动和构建前同步共享 TS、JSON 模块与九张 PNG；Godot 同步九张 PNG 和三个 JSON，以项目引用使用共享 C# 内核。
 
 共享玩法只负责状态、鸟的运动、水管生成与回收、碰撞、分数和事件，不引用引擎 API。适配层负责输入、固定步长调度、贴图/UI、最高分存储及生命周期。TypeScript 和 C# 分别保留一份内核，通过同一组数据用例验证一致性。
 
@@ -159,8 +161,8 @@ M1 已建立共享资源、配置、fixtures 和转换工具；M2–M4 已建立
 | M3：Three.js 版 | 复用 TS 内核，正交相机/贴图渲染和 UI、浏览器启动 | 已完成；逐 tick 与 Phaser 一致，资源和浏览器闭环通过，证据见 M3 记录 |
 | M4：Cocos 版 | 复用 TS 内核，资源分发、场景、输入/存储适配 | 已完成；Creator 3.8.8 导入和浏览器预览、Web Release 可玩，151 tick 对照、存档和缩放通过，证据见 M4 记录 |
 | M4b：Babylon.js 版 | 复用 TS 内核、资源和 Web UI，正交相机渲染 | 已完成；211 个快照与 Phaser 一致，开发/发布闭环、缩放及存档通过，证据见 M4b 记录 |
-| M5：Unity 版 | C# 内核、与 TS 共用的用例、2D 场景/UI、桌面构建 | TS/C# 用例一致，编辑器及构建闭环通过 |
-| M6：Godot 版 | 复用 C# 内核，Godot 节点/UI、存储和生命周期适配 | .NET 编辑器及桌面导出可玩，与 Unity 结果一致 |
+| M5：Unity 版 | 复用 M6 建立的 C# 内核和对照用例，2D 场景/UI、桌面构建 | 与 TS/Godot 用例一致，编辑器及构建闭环通过 |
+| M6：Godot 版 | 建立共享 C# 内核，Godot 节点/UI、存储和生命周期适配 | 已完成；677 个 C#/TS 快照一致，原生场景与 macOS 导出均通过 211 帧对照，实机玩法、缩放和存档通过，证据见 M6 记录 |
 | M7：统一验收 | 六引擎结果表、同局面截图、启动文档、引擎差异记录 | 六版本均通过首版验收；剩余限制如实记录 |
 
 每完成一个引擎就验证后续版本所依赖的共享逻辑，不等六个工程全部完成才调手感。若编辑器版本不可用，先推进已具备环境的版本，在进度文件中记录环境差异。

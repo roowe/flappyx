@@ -1,0 +1,20 @@
+{
+  "success": true,
+  "date": "2026-10-03",
+  "godot": "4.7.2.stable.mono.official.ed1daf0bf",
+  "dotnetSdk": "10.0.401",
+  "targetFramework": "net10.0",
+  "coreTarget": "netstandard2.1",
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "testedArchitecture": "arm64",
+  "codesign": "/usr/bin/codesign (ad-hoc)",
+  "signatureVerification": "codesign --verify --deep --strict passed",
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
+  "nativeCheck": "export-check.json",
+  "interactiveCheck": "export-desktop-play.json",
+  "captures": "captures/",
+  "notarized": false
+}

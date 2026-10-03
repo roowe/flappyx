@@ -1,0 +1,374 @@
+{
+  "success": true,
+  "diagnostics": {
+    "snapshot": {
+      "tick": 809,
+      "state": "ready",
+      "y": 420,
+      "birdY": 420,
+      "velocityY": 0,
+      "score": 0,
+      "bestScore": 2,
+      "deathTick": null,
+      "deathReason": null,
+      "gameOverTick": null,
+      "restartAllowedTick": null,
+      "firstPipeX": 1224,
+      "pipeCount": 7,
+      "pipeIds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "pipeXs": [
+        1224,
+        1519,
+        1814,
+        2109,
+        2404,
+        2699,
+        2994
+      ],
+      "pipeGapCenters": [
+        271,
+        266,
+        316,
+        291,
+        336,
+        212,
+        345
+      ],
+      "pipePassed": [
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "pipesPassed": false,
+      "consumedGapCenters": 7,
+      "flightTicks": 0
+    },
+    "paused": false,
+    "accumulatedTicks": 0.7469100000001766,
+    "replaying": false,
+    "bestText": "最高  2",
+    "view": {
+      "spriteCount": 35,
+      "textureCount": 9,
+      "birdFrame": 1,
+      "birdPosition": {
+        "x": 350,
+        "y": 420
+      },
+      "birdTilt": 0,
+      "roundPixels": false,
+      "sprites": [
+        {
+          "name": "Sky0",
+          "x": 276,
+          "y": 439,
+          "width": 552,
+          "height": 210,
+          "nearest": true
+        },
+        {
+          "name": "Sky1",
+          "x": 828,
+          "y": 439,
+          "width": 552,
+          "height": 210,
+          "nearest": true
+        },
+        {
+          "name": "Sky2",
+          "x": 1380,
+          "y": 439,
+          "width": 552,
+          "height": 210,
+          "nearest": true
+        },
+        {
+          "name": "Land0",
+          "x": 336,
+          "y": 656,
+          "width": 672,
+          "height": 224,
+          "nearest": true
+        },
+        {
+          "name": "Land1",
+          "x": 1008,
+          "y": 656,
+          "width": 672,
+          "height": 224,
+          "nearest": true
+        },
+        {
+          "name": "Land2",
+          "x": 1680,
+          "y": 656,
+          "width": 672,
+          "height": 224,
+          "nearest": true
+        },
+        {
+          "name": "Pipe0Part0",
+          "x": 1224,
+          "y": 45.5,
+          "width": 75,
+          "height": 91,
+          "nearest": true
+        },
+        {
+          "name": "Pipe0Part1",
+          "x": 1224,
+          "y": 116,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe0Part2",
+          "x": 1224,
+          "y": 426,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe0Part3",
+          "x": 1224,
+          "y": 497.5,
+          "width": 75,
+          "height": 93,
+          "nearest": true
+        },
+        {
+          "name": "Pipe1Part0",
+          "x": 1519,
+          "y": 43,
+          "width": 75,
+          "height": 86,
+          "nearest": true
+        },
+        {
+          "name": "Pipe1Part1",
+          "x": 1519,
+          "y": 111,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe1Part2",
+          "x": 1519,
+          "y": 421,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe1Part3",
+          "x": 1519,
+          "y": 495,
+          "width": 75,
+          "height": 98,
+          "nearest": true
+        },
+        {
+          "name": "Pipe2Part0",
+          "x": 1814,
+          "y": 68,
+          "width": 75,
+          "height": 136,
+          "nearest": true
+        },
+        {
+          "name": "Pipe2Part1",
+          "x": 1814,
+          "y": 161,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe2Part2",
+          "x": 1814,
+          "y": 471,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe2Part3",
+          "x": 1814,
+          "y": 520,
+          "width": 75,
+          "height": 48,
+          "nearest": true
+        },
+        {
+          "name": "Pipe3Part0",
+          "x": 2109,
+          "y": 55.5,
+          "width": 75,
+          "height": 111,
+          "nearest": true
+        },
+        {
+          "name": "Pipe3Part1",
+          "x": 2109,
+          "y": 136,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe3Part2",
+          "x": 2109,
+          "y": 446,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe3Part3",
+          "x": 2109,
+          "y": 507.5,
+          "width": 75,
+          "height": 73,
+          "nearest": true
+        },
+        {
+          "name": "Pipe4Part0",
+          "x": 2404,
+          "y": 78,
+          "width": 75,
+          "height": 156,
+          "nearest": true
+        },
+        {
+          "name": "Pipe4Part1",
+          "x": 2404,
+          "y": 181,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe4Part2",
+          "x": 2404,
+          "y": 491,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe4Part3",
+          "x": 2404,
+          "y": 530,
+          "width": 75,
+          "height": 28,
+          "nearest": true
+        },
+        {
+          "name": "Pipe5Part0",
+          "x": 2699,
+          "y": 16,
+          "width": 75,
+          "height": 32,
+          "nearest": true
+        },
+        {
+          "name": "Pipe5Part1",
+          "x": 2699,
+          "y": 57,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe5Part2",
+          "x": 2699,
+          "y": 367,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe5Part3",
+          "x": 2699,
+          "y": 468,
+          "width": 75,
+          "height": 152,
+          "nearest": true
+        },
+        {
+          "name": "Pipe6Part0",
+          "x": 2994,
+          "y": 82.5,
+          "width": 75,
+          "height": 165,
+          "nearest": true
+        },
+        {
+          "name": "Pipe6Part1",
+          "x": 2994,
+          "y": 190,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe6Part2",
+          "x": 2994,
+          "y": 500,
+          "width": 75,
+          "height": 50,
+          "nearest": true
+        },
+        {
+          "name": "Pipe6Part3",
+          "x": 2994,
+          "y": 534.5,
+          "width": 75,
+          "height": 19,
+          "nearest": true
+        },
+        {
+          "name": "Bird",
+          "x": 350,
+          "y": 420,
+          "width": 85,
+          "height": 60,
+          "nearest": true
+        }
+      ]
+    },
+    "window": {
+      "width": 1024,
+      "height": 768
+    },
+    "logicalViewport": {
+      "width": 1024,
+      "height": 768
+    },
+    "transform": {
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0
+    }
+  },
+  "save": {
+    "schemaVersion": 1,
+    "bestScore": 2
+  }
+}

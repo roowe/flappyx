@@ -16,3 +16,15 @@ __pycache__/
 /cocos/game/build/
 /cocos/game/assets/scripts/shared/
 /cocos/game/assets/resources/images/
+/godot/.dotnet/
+/godot/.packages/
+/godot/.checks/
+/godot/.templates/
+/godot/NuGet.Config
+/godot/build/
+/godot/game/.godot/
+/godot/game/Content/
+/shared/core-csharp/bin/
+/shared/core-csharp/obj/
+/shared/contract-csharp/bin/
+/shared/contract-csharp/obj/
