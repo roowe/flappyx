@@ -2,6 +2,8 @@
 
 Unity **6000.5.6f1**，工程位于 `game/`。复用 `shared/core-csharp` 的 C# 9 / .NET Standard 2.1 内核；使用 Built-in 渲染、正交相机、SpriteRenderer、uGUI 和 Input System。
 
+本项目实际使用的 Unity API、场景关联和脚本分工见 [api.md](./api.md)。
+
 ## 启动
 
 在仓库根目录执行：
