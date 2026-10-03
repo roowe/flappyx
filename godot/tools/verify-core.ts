@@ -1,15 +1,19 @@
 import assert from 'node:assert/strict';
 import { resolve } from 'node:path';
+import { mkdir } from 'node:fs/promises';
 import { Game, FixedClock, config, pipeCollision, scoreDelta, xorshift32, type GameOptions, type GameState } from '../../shared/core-ts';
 import cases from '../../shared/fixtures/gameplay-cases.json';
 import replay from '../../shared/fixtures/replay-baseline.json';
 import lifecycle from '../../shared/fixtures/lifecycle-cases.json';
 
 const root = resolve(import.meta.dir, '../..');
-const output = resolve(root, 'godot/.checks/csharp-corpus.json');
+const engine = Bun.argv[2] ?? 'godot';
+assert.ok(['godot', 'u3d'].includes(engine));
+await mkdir(resolve(root, engine, '.checks'), { recursive: true });
+const output = resolve(root, engine, '.checks/csharp-corpus.json');
 const process = Bun.spawn(['dotnet', 'run', '--project', resolve(root, 'shared/contract-csharp'), '--', root, output], {
   cwd: root, stdout: 'inherit', stderr: 'inherit', env: { ...Bun.env,
-    DOTNET_CLI_HOME: resolve(root, 'godot/.dotnet'), NUGET_PACKAGES: resolve(root, 'godot/.packages'),
+    DOTNET_CLI_HOME: resolve(root, engine, '.dotnet'), NUGET_PACKAGES: resolve(root, engine, '.packages'),
     DOTNET_NOLOGO: '1', DOTNET_CLI_TELEMETRY_OPTOUT: '1' },
 });
 assert.equal(await process.exited, 0, 'C# verifier must execute');
@@ -94,5 +98,5 @@ assert.deepEqual(actual, expected);
 const traceTicks = Object.values(runs).reduce((n, trace) => n + trace.snapshots.length, 0);
 const report = { success: true, fixtureAssertions: assertions, fullSnapshots: traceTicks,
   renderFps: replay.renderFps, configSha256: new Bun.CryptoHasher('sha256').update(await Bun.file(resolve(root, 'shared/config/gameplay.json')).arrayBuffer()).digest('hex') };
-await Bun.write(resolve(root, 'docs/baselines/godot/core-check.json'), JSON.stringify(report, null, 2) + '\n');
+await Bun.write(resolve(root, 'docs/baselines', engine === 'u3d' ? 'unity' : engine, 'core-check.json'), JSON.stringify(report, null, 2) + '\n');
 console.log(`TS/C# identical: ${traceTicks} full snapshots + events; ${assertions} fixture fields; 10 restarts`);

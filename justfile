@@ -64,3 +64,17 @@ check-godot:
 
 export-godot:
     bun godot/tools/project.ts export
+unity:
+    bun u3d/tools/project.ts play
+
+editor-unity:
+    bun u3d/tools/project.ts editor
+
+assets-unity:
+    bun u3d/tools/project.ts prepare
+
+check-unity:
+    bun u3d/tools/project.ts check
+
+export-unity:
+    bun u3d/tools/project.ts export

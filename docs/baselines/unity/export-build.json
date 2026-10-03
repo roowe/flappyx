@@ -1,0 +1,22 @@
+{
+  "success": true,
+  "date": "2026-10-03",
+  "unity": "6000.5.6f1 (0e0577a1a2ac)",
+  "backend": "Mono",
+  "apiCompatibility": ".NET Standard 2.1",
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "testedArchitecture": "arm64",
+  "renderDevice": "Apple M4 Pro / Metal",
+  "buildReportedBytes": 110587684,
+  "signatureVerification": "codesign --verify --deep --strict passed",
+  "notarized": false,
+  "configSha256": "06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d",
+  "coreCheck": "core-check.json",
+  "editorCheck": "editor-check.json",
+  "exportCheck": "export-check.json",
+  "interactiveCheck": "desktop-play.json",
+  "captures": "captures/"
+}

@@ -19,7 +19,7 @@ phases:
     status: done
   - id: 6
     content: M5 Unity 版：复用 M6 建立的纯 C# 内核，实现 Unity 适配，通过跨语言用例与桌面构建验证。
-    status: pending
+    status: done
   - id: 7
     content: M6 Godot 版：建立共享纯 C# 内核，使用 .NET 版 Godot 完成节点适配、跨语言用例和桌面导出验证。
     status: done
@@ -30,10 +30,10 @@ phases:
     content: M4b Babylon.js 版：复用共享 TS 内核、资源和 Web UI，完成可玩闭环与浏览器一致性验证。
     status: done
 notes:
-  - content: 用户指定先做 Godot C#；M5 的共享 C# 内核前移到 M6，Unity 随后复用。当前验收沿用 easyV1 和 210 tick 回放。
-  - content: 用户新增 Babylon.js 版本，独立工程放在 babylonjs/；M4b 已完成，沿用当前 easyV1 的共享内核和 210 tick fixture，原 M5–M7 编号保留，下一阶段为 M5 Unity。
+  - content: 用户指定先做 Godot C#；M5 的共享 C# 内核前移到 M6，Unity 已在 M5 复用。当前验收沿用 easyV1 和 210 tick 回放。
+  - content: 用户新增 Babylon.js 版本，独立工程放在 babylonjs/；M4b 已完成，沿用当前 easyV1 的共享内核和 210 tick fixture，原 M5–M7 编号保留。
   - content: 当前共享难度为 easyV1：起点 y=420，拍翅 -12、重力 1，水管/地面速度 6、天空 1.5，开口 260、净间距 220、中心范围 210–354。共享回放改为 210 tick，158 得分、184 撞管、191 落地。以下 M2–M4 的 phaser-v1 数值属于历史验收记录。
-  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M4、M4b 和 M6 已完成，下一阶段为 M5 Unity 版。
+  - content: 详细范围、目录、资源方案、规则、里程碑和验收标准以 docs/plan.md 为准；M0-M6 与 M4b 已完成，六个引擎均有独立可玩实现，下一阶段为 M7 统一验收。
   - content: 参考工程位于 /Users/luoliwei/myproject/CrossGameEngine；五个目录为 cocos、godot、phaser、threejs、u3d。
   - content: 玩法参考 /Users/luoliwei/github/ejoy2d/examples/flappybird.lua；资源为 examples/asset 下的 birds.1.ppm、birds.1.pgm、birds.lua 和 bird_config.lua。
   - content: 已核实 PPM 与 PGM 均为 1024×1024；PGM 是 Alpha 通道。水管含旋转图块，转换必须恢复方向。
@@ -70,5 +70,10 @@ notes:
   - content: M6 的 677 个完整快照及事件与 TS 精确一致，257 个 fixture 字段通过，30/60/120 FPS 结果相同；原生开发场景和实际导出应用分别通过 211 个快照及鸟帧对照、输入去重、暂停与补 tick、七管/35 Sprite 接缝及十次重开有界检查，已有 7 分存档在回放前后不变。
   - content: M6 开发窗口和发布窗口均经真实空格操作得 2 分；开发窗口正常关闭重启后仍读到 2 分。真实最小化及恢复保持同一 tick 暂停，显式继续生效；1024×768、1280×720、390×844 窗口已验收，竖向留边因整数视口存在不足 1 像素的缩放舍入。
   - content: just export-godot 已生成含 ARM64/x86_64 的 FlappyX.app，以系统 codesign ad-hoc 签名并通过严格检查、发布包原生验收及 GUI 截图。实机为 Apple M4 Pro，未验证 Intel 硬件或移动触摸硬件，未做公证。构建器同时检查 Godot ERROR 日志以防退出码 0 的导出失败。
-  - content: M6 交付见 godot/README.md、docs/m6-godot.md 和 docs/baselines/godot；四张最终发布截图为 tick 0、134、184、191。共享 easyV1 配置 SHA-256 保持 06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d，Unity 随后复用 C# 内核。
+  - content: M6 交付见 godot/README.md、docs/m6-godot.md 和 docs/baselines/godot；四张最终发布截图为 tick 0、134、184、191。共享 easyV1 配置 SHA-256 保持 06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d，Unity 已在 M5 复用 C# 内核。
+  - content: M5 已完成 u3d/game 的 Unity 6000.5.6f1 工程，三个共享 C# 文件逐字节同步，SpriteRenderer、正交相机、uGUI 和 Input System 完成场景适配；just unity 运行发布应用，just editor-unity 打开 Main，just check-unity 和 just export-unity 验收。
+  - content: M5 的 677 个 C#/TS 完整快照及事件精确一致，257 个 fixture 字段通过；Unity 编辑器 Play Mode 与 macOS 发布应用分别通过 211 个快照及鸟帧对照，输入合并、主触摸、次键过滤、暂停、五 tick 上限、十次重开、接缝和存档隔离通过。GUI 编辑器实际进入 Play，准备画面正常。
+  - content: M5 发布窗口真实空格操作获得 2 分，正常关闭重启仍读到 2 分；回放、暂停、继续、返回、开始和重开按钮实际点击通过。最小化与通过 Window 菜单激活后停在同一 tick，必须显式继续；仅 AX Raise 恢复可见不会获取 Unity 焦点，验收记录已区分。
+  - content: M5 连续拖动验证 1024×768、1280×720、390×844，横向左右留边各 160，竖向相机视口为 390×292.5；留边点击不触发拍翅，竖向按钮命中与重开不拍翅通过。七管、35 个 SpriteRenderer 和九张玩法纹理有界。
+  - content: M5 Universal Mono 应用约 106 MB，含 ARM64/x86_64，通过严格签名检查和实际发布 QA；实机验证为 Apple M4 Pro，未验证 Intel、移动触摸硬件、WebGL 或 Apple 公证。交付见 u3d/README.md、docs/m5-unity.md 和 docs/baselines/unity；共享 easyV1 配置哈希未变。
 summary: null

@@ -5,13 +5,14 @@ import replay from '../../shared/fixtures/replay-baseline.json';
 import sprites from '../../shared/assets/runtime/sprites.json';
 
 const report = await Bun.file(Bun.argv[2]).json();
+const engine = report.syntheticUnityInput ? 'Unity' : 'Godot';
 assert.equal(report.success, true);
 const game = new Game(config, { initial: { seed: replay.seed, bestScore: replay.initialBestScore }, pipeGapCenters: replay.pipeGapCenters });
 const flaps = new Set(replay.flapTicks);
 assert.equal(report.snapshots.length, replay.totalTicks + 1);
 for (let tick = 0; tick <= replay.totalTicks; tick++) {
   if (tick) game.step(flaps.has(tick));
-  assert.deepEqual(report.snapshots[tick], game.snapshot(), `Godot/TS snapshot ${tick}`);
+  assert.deepEqual(report.snapshots[tick], game.snapshot(), `${engine}/TS snapshot ${tick}`);
   const animationTick = game.state === 'ready' ? game.tick : Math.max(0, game.flightTicks - 1);
   assert.equal(report.birdFrames[tick], Math.floor(animationTick / sprites.animations['bird.flap'].ticksPerFrame) % 4);
 }
@@ -34,4 +35,4 @@ for (const layer of ['Sky', 'Land']) for (let i = 0; i < 2; i++) {
 }
 const output = Bun.argv[3] ?? resolve(import.meta.dir, '../../docs/baselines/godot/native-check.json');
 await Bun.write(output, JSON.stringify({ ...report, comparedWithTs: true, checkedPipeSeams: 7, checkedTileSeams: 4 }, null, 2) + '\n');
-console.log('Godot/TS: all 211 snapshots and bird frames match; pipe and tile seams verified');
+console.log(`${engine}/TS: all 211 snapshots and bird frames match; pipe and tile seams verified`);

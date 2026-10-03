@@ -1,0 +1,17 @@
+{
+  "success": true,
+  "date": "2026-10-03",
+  "project": "u3d/game",
+  "scene": "Assets/Scenes/Main.unity",
+  "editor": "6000.5.6f1",
+  "observedUsing": "CUA native Unity editor",
+  "enteredPlayMode": "Command-P",
+  "visibleState": "ready",
+  "visibleAssets": [
+    "bird",
+    "sky",
+    "land",
+    "uGUI controls"
+  ],
+  "stoppedPlayModeAndClosedEditor": true
+}
