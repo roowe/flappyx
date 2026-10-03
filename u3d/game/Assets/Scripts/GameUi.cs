@@ -25,7 +25,12 @@ namespace FlappyX.UnityAdapter
             var canvas = root.GetComponent<Canvas>(); canvas.renderMode = RenderMode.WorldSpace;
             canvas.worldCamera = camera; canvas.sortingOrder = 100;
             var rect = root.GetComponent<RectTransform>(); rect.sizeDelta = new Vector2(1024, 768); rect.position = new Vector3(512, 384, -1);
+#if UNITY_WEBGL && !UNITY_EDITOR
+            var font = Resources.Load<Font>("Fonts/FlappyUI")
+                ?? throw new InvalidOperationException("Missing bundled Web UI font");
+#else
             var font = Font.CreateDynamicFontFromOSFont(new[] { "PingFang SC", "Heiti SC", "Arial" }, 32);
+#endif
             RectTransform Box(Transform parent, string name, float x, float y, float width, float height)
             {
                 var go = new GameObject(name, typeof(RectTransform)); var r = go.GetComponent<RectTransform>();
@@ -53,6 +58,8 @@ namespace FlappyX.UnityAdapter
             }
             Label(rect, "UNITY · C#", 24, 18, 210, 48, 26);
             _score = Label(rect, "0", 420, 54, 184, 72, 64);
+            // 中文 Web 字体的行高大于字号，允许分数字形超出布局框的行高限制。
+            _score.verticalOverflow = VerticalWrapMode.Overflow;
             _best = Label(rect, "最高  0", 714, 26, 182, 38, 22);
             Button(rect, "暂停", 902, 22, 94, 46, app.Pause);
             Label(rect, "30 Hz · EASY V1", 20, 714, 250, 38, 20);

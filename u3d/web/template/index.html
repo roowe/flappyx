@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>FlappyX · Unity</title>
+  <style>
+    html, body { margin: 0; width: 100%; height: 100%; background: #173c43; overflow: hidden; }
+    #unity-canvas { display: block; width: 100%; height: 100%; outline: none; touch-action: none; }
+    #loading { position: fixed; inset: 0; display: grid; place-content: center; gap: 16px; color: #fff8df;
+      background: #173c43; text-align: center; font: 18px system-ui, sans-serif; }
+    #loading[hidden] { display: none; }
+    progress { width: min(280px, 75vw); accent-color: #ffe49b; }
+  </style>
+</head>
+<body>
+  <canvas id="unity-canvas" width="1024" height="768" tabindex="0" aria-label="FlappyX 游戏，空格或点击拍翅"></canvas>
+  <div id="loading" role="status"><span id="status">正在加载游戏…</span><progress max="1" value="0"></progress></div>
+  <script>
+    const canvas = document.querySelector('#unity-canvas');
+    const loading = document.querySelector('#loading');
+    const status = document.querySelector('#status');
+    const progress = document.querySelector('progress');
+    const config = {
+      dataUrl: 'Build/{{{ DATA_FILENAME }}}',
+      frameworkUrl: 'Build/{{{ FRAMEWORK_FILENAME }}}',
+      codeUrl: 'Build/{{{ CODE_FILENAME }}}',
+      streamingAssetsUrl: 'StreamingAssets',
+      companyName: {{{ JSON.stringify(COMPANY_NAME) }}},
+      productName: {{{ JSON.stringify(PRODUCT_NAME) }}},
+      productVersion: {{{ JSON.stringify(PRODUCT_VERSION) }}},
+      autoSyncPersistentDataPath: true,
+      devicePixelRatio: Math.min(window.devicePixelRatio, 2),
+      showBanner(message, type) {
+        if (type === 'error') {
+          loading.hidden = false;
+          progress.hidden = true;
+          status.textContent = '游戏加载失败：' + message;
+        } else console.warn(message);
+      }
+    };
+    const script = document.createElement('script');
+    script.src = 'Build/{{{ LOADER_FILENAME }}}';
+    script.onerror = () => config.showBanner('无法下载游戏文件，请刷新重试。', 'error');
+    script.onload = async () => {
+      try {
+        await createUnityInstance(canvas, config, value => { progress.value = value; });
+        loading.hidden = true;
+        canvas.focus();
+      } catch (error) { config.showBanner(String(error), 'error'); }
+    };
+    document.body.appendChild(script);
+    canvas.addEventListener('pointerdown', () => canvas.focus());
+  </script>
+</body>
+</html>

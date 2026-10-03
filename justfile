@@ -78,3 +78,9 @@ check-unity:
 
 export-unity:
     bun u3d/tools/project.ts export
+
+build-unity-web:
+    bun u3d/tools/project.ts web
+
+preview-unity-web:
+    bun u3d/tools/serve-web.ts

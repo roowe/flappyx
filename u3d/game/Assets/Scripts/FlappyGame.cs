@@ -69,7 +69,9 @@ namespace FlappyX.UnityAdapter
         private void LateUpdate()
         {
             FitViewport();
-            var now = Time.realtimeSinceStartupAsDouble; var elapsed = now - _lastFrame; _lastFrame = now;
+            var now = Time.realtimeSinceStartupAsDouble;
+            // Web 实测遇到引擎计时值回退；该帧不推进玩法，下一帧从新读数继续计时。
+            var elapsed = Math.Max(0, now - _lastFrame); _lastFrame = now;
             if (!ManualMode)
             {
                 CollectInput();
@@ -139,17 +141,29 @@ namespace FlappyX.UnityAdapter
             var position = Mouse.current?.position.ReadValue() ?? Vector2.zero;
             var hits = new List<RaycastResult>();
             EventSystem.current.RaycastAll(new PointerEventData(EventSystem.current) { position = position }, hits);
-            return new { focused = Application.isFocused, x = position.x, y = position.y,
-                mouseEnabled = Mouse.current?.enabled, leftPressed = Mouse.current?.leftButton.isPressed,
+            return new
+            {
+                focused = Application.isFocused,
+                x = position.x,
+                y = position.y,
+                mouseEnabled = Mouse.current?.enabled,
+                leftPressed = Mouse.current?.leftButton.isPressed,
                 module = EventSystem.current.currentInputModule?.GetType().Name,
-                hits = hits.Select(h => h.gameObject.name).ToArray() };
+                hits = hits.Select(h => h.gameObject.name).ToArray()
+            };
         }
         internal object Diagnostics() => new
         {
-            snapshot = Model.Snapshot(), paused = Clock.Paused, accumulatedTicks = Clock.AccumulatedTicks, replaying = Replaying,
-            bestText = Ui.BestText, view = View.Diagnostics(), window = new { width = Screen.width, height = Screen.height },
+            snapshot = Model.Snapshot(),
+            paused = Clock.Paused,
+            accumulatedTicks = Clock.AccumulatedTicks,
+            replaying = Replaying,
+            bestText = Ui.BestText,
+            view = View.Diagnostics(),
+            window = new { width = Screen.width, height = Screen.height },
             viewport = new { x = Camera.pixelRect.x, y = Camera.pixelRect.y, width = Camera.pixelRect.width, height = Camera.pixelRect.height },
-            persistentDataPath = Application.persistentDataPath, unityVersion = Application.unityVersion,
+            persistentDataPath = Application.persistentDataPath,
+            unityVersion = Application.unityVersion,
             input = InputDiagnostics()
         };
     }

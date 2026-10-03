@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using FlappyX.UnityAdapter;
 using UnityEditor;
 using UnityEditor.Build;
@@ -65,5 +66,21 @@ public static class BuildProject
     public static void Check()
     {
         Prepare(); EditorApplication.EnterPlaymode();
+    }
+    public static void BuildWeb()
+    {
+        Prepare();
+        PlayerSettings.SetScriptingBackend(NamedBuildTarget.WebGL, ScriptingImplementation.IL2CPP);
+        PlayerSettings.SetApiCompatibilityLevel(NamedBuildTarget.WebGL, ApiCompatibilityLevel.NET_Standard);
+        PlayerSettings.SetManagedStrippingLevel(NamedBuildTarget.WebGL, ManagedStrippingLevel.Minimal);
+        PlayerSettings.WebGL.compressionFormat = WebGLCompressionFormat.Gzip;
+        PlayerSettings.WebGL.decompressionFallback = true;
+        PlayerSettings.WebGL.threadsSupport = false;
+        PlayerSettings.WebGL.template = "PROJECT:FlappyX";
+        var path = Environment.GetCommandLineArgs().Single(arg => arg.StartsWith("--web-output=", StringComparison.Ordinal)).Substring(13);
+        var result = BuildPipeline.BuildPlayer(new BuildPlayerOptions { scenes = new[] { Scene }, locationPathName = path,
+            target = BuildTarget.WebGL, options = BuildOptions.None });
+        if (result.summary.result != BuildResult.Succeeded) throw new InvalidOperationException("Unity Web build failed: " + result.summary.result);
+        Debug.Log("FlappyX Unity Web build succeeded: " + result.summary.totalSize + " bytes");
     }
 }

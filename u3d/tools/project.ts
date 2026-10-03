@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { mkdir, readdir } from 'node:fs/promises';
+import { cp, mkdir, readdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
 
@@ -11,6 +11,8 @@ const executable = resolve(application, 'Contents/MacOS/FlappyX Unity');
 const checks = resolve(root, 'u3d/.checks');
 const logs = resolve(project, 'Logs');
 const baselines = resolve(root, 'docs/baselines/unity');
+const webProject = resolve(root, 'u3d/.web-project');
+const webOutput = resolve(root, 'u3d/build/web');
 
 async function run(args: string[], timeout = 600_000) {
   const process = Bun.spawn(args, { cwd: root, stdout: 'inherit', stderr: 'inherit' });
@@ -38,11 +40,11 @@ async function prepare() {
     await copy(resolve(root, 'shared/core-csharp', file), resolve(core, file));
   console.log(`Unity synchronized ${sources.length} shared C# sources, 9 PNG and 3 JSON files`);
 }
-async function editorCommand(method: string, quit = true, extra: string[] = []) {
+async function editorCommand(method: string, quit = true, extra: string[] = [], projectPath = project) {
   const log = resolve(logs, method.toLowerCase() + '.log');
   try {
-    await run([unity, '-batchmode', '-nographics', '-projectPath', project, '-executeMethod', `BuildProject.${method}`,
-      '-logFile', log, ...(quit ? ['-quit'] : []), ...extra]);
+    await run([unity, '-batchmode', '-nographics', '-projectPath', projectPath, '-executeMethod', `BuildProject.${method}`,
+      '-logFile', log, ...(quit ? ['-quit'] : []), ...extra], method === 'BuildWeb' ? 1_800_000 : 600_000);
   } catch (error) {
     if (await Bun.file(log).exists()) console.error((await Bun.file(log).text()).slice(-18000));
     throw error;
@@ -66,6 +68,24 @@ async function build() {
   await editorCommand('Build');
   assert.ok(existsSync(executable), 'Player executable must exist');
   await run(['/usr/bin/codesign', '--verify', '--deep', '--strict', application]);
+}
+async function buildWeb() {
+  // 单独保留 Web 的 Library 缓存；不会切换正在打开的桌面工程的构建平台。
+  await mkdir(webProject, { recursive: true });
+  for (const name of ['Assets', 'Packages', 'ProjectSettings']) {
+    const destination = resolve(webProject, name);
+    if (existsSync(destination)) await run(['/usr/bin/trash', destination]);
+    await cp(resolve(project, name), destination, { recursive: true });
+  }
+  await mkdir(resolve(webProject, 'Assets/Resources/Fonts'), { recursive: true });
+  await cp(resolve(root, 'u3d/web/FlappyUI.otf'), resolve(webProject, 'Assets/Resources/Fonts/FlappyUI.otf'));
+  await cp(resolve(root, 'u3d/web/link.xml'), resolve(webProject, 'Assets/link.xml'));
+  await cp(resolve(root, 'u3d/web/template'), resolve(webProject, 'Assets/WebGLTemplates/FlappyX'), { recursive: true });
+  if (existsSync(webOutput)) await run(['/usr/bin/trash', webOutput]);
+  await editorCommand('BuildWeb', true, ['-buildTarget', 'WebGL', '--web-output=' + webOutput], webProject);
+  assert.ok(existsSync(resolve(webOutput, 'index.html')), 'Web index.html must exist');
+  await cp(resolve(root, 'u3d/web/fonts/OFL.txt'), resolve(webOutput, 'FONT-LICENSE.txt'));
+  console.log(`Web build ready: ${webOutput}`);
 }
 await prepare();
 switch (Bun.argv[2] ?? 'play') {
@@ -92,5 +112,6 @@ switch (Bun.argv[2] ?? 'play') {
     await build();
     await run([executable], 0);
     break;
-  default: throw new Error('Expected prepare, editor, check, export or play');
+  case 'web': await buildWeb(); break;
+  default: throw new Error('Expected prepare, editor, check, export, play or web');
 }

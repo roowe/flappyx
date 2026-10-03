@@ -1,0 +1,4 @@
+<linker>
+  <!-- 配置、存档和诊断通过 Newtonsoft.Json 反射访问项目中的类型。 -->
+  <assembly fullname="Assembly-CSharp" preserve="all" />
+</linker>

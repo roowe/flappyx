@@ -19,6 +19,27 @@ just export-unity   # 构建并验收 u3d/build/FlappyX.app
 
 `Assets/Editor/BuildProject.cs` 使用 Unity BuildPipeline 构建 macOS Universal、Mono 后端。再次导出时，旧应用先移入系统回收站；发布入口检查签名并实际启动应用执行隔离验收。
 
+## Web 构建与预览
+
+本机 Unity 已安装 **Web Build Support**，可以将同一套 C# 玩法与 Unity 画面构建为浏览器游戏。在仓库根目录执行：
+
+```sh
+just build-unity-web    # 构建 u3d/build/web/
+just preview-unity-web  # 启动 http://127.0.0.1:4175/ 本地预览
+```
+
+预览命令启动本地服务器，随后在浏览器访问输出的网址；可通过 `PORT` 修改端口。请通过 HTTP 访问，不能直接双击生成的 `index.html`。
+
+Web 构建将已保存的 `Assets`、`Packages`、`ProjectSettings` 复制到 `u3d/.web-project/`，使用独立的 Library 缓存，因此不需要关闭当前打开的桌面工程。编辑器中尚未保存的场景修改不会进入副本。首次构建需要导入资源并运行 IL2CPP，后续构建复用缓存。旧构建产物和被替换的副本源目录先进入系统回收站。
+
+构建使用 IL2CPP、单线程和 Gzip 压缩，并启用 JavaScript 解压回退。将 **`u3d/build/web/` 整个目录** 上传到支持多文件的静态托管即可；这些设置不要求服务器提供线程隔离头或压缩响应头。子目录和文件名需要保持不变。
+
+网页沿用原有 `best.json` 格式，通过模板的 `autoSyncPersistentDataPath` 将文件自动同步到浏览器 IndexedDB。网页存档与 macOS 存档分开；域名或部署路径变化会影响存档位置，浏览器清理网站数据也会清除纪录。
+
+Web 平台使用随包提供的中文字体，桌面版继续使用系统字体。字体来源、许可和增补字符的方法见 [web/fonts/README.md](./web/fonts/README.md)。`web/link.xml` 保留项目类型，防止 IL2CPP 裁剪 Newtonsoft.Json 反射所需的配置、存档和诊断成员。
+
+2026-10-03 已实际完成 Web 构建，并在本机 Chromium 浏览器验证中文界面、点击/空格、暂停/继续、重开、基准回放，以及 IndexedDB 最高分的刷新读取和结算保留。共享 C#/TS 的 677 个快照和 Unity 场景的 211 个快照均通过对照。网页产物约 13 MB；手机实机和外部托管尚未验证。
+
 ## 操作
 
 - 空格、鼠标主键、主触摸拍翅，同一 tick 多次输入合并；按住空格不会连发。
