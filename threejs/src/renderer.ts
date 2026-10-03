@@ -48,7 +48,7 @@ export class FlightRenderer {
     this.scene.background = new Color(config.render.clearColor);
     this.camera.position.z = 10;
     container.append(this.renderer.domElement);
-    // 预先上传三张鸟帧，重开和换帧都只复用现有 GPU 资源。
+    // 预先上传全部精灵贴图，换帧和重开都只复用现有 GPU 资源。
     for (const material of materials.values()) this.renderer.initTexture(material.map!);
     this.sky = this.tiles(config.sky.spriteId);
     this.pipes = Array.from({ length: config.pipes.activeCount }, () => [
