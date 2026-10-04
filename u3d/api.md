@@ -4,7 +4,7 @@
 
 Unity 负责场景生命周期、输入、相机、精灵和 UI。重力、拍翅、碰撞、计分与固定步长由 [共享 C# 内核](../shared/core-csharp/) 中的 `Game`、`FixedClock` 实现。工具脚本将共享源码、图片和 JSON 同步到 Unity 工程；修改玩法时应修改共享源。
 
-当前使用的官方包见 [manifest.json](./game/Packages/manifest.json)：Input System 1.20.0、uGUI 2.5.0、Newtonsoft JSON 3.2.2，以及用于编辑器集成的 Visual Studio Editor 2.0.28。Newtonsoft.Json 的序列化接口属于该 JSON 库，下面会与 Unity API 区分。
+当前使用的官方包见 [manifest.json](./game/Packages/manifest.json)：URP 17.5.0、Input System 1.20.0、uGUI 2.5.0、Newtonsoft JSON 3.2.2，以及用于编辑器集成的 Visual Studio Editor 2.0.28。渲染使用 URP 的 2D Renderer；Newtonsoft.Json 的序列化接口属于该 JSON 库，下面会与 Unity API 区分。
 
 ## 1. 场景入口与脚本分工
 
@@ -18,6 +18,7 @@ Unity 负责场景生命周期、输入、相机、精灵和 UI。重力、拍�
 | [BestScoreStore.cs](./game/Assets/Scripts/BestScoreStore.cs) | 普通 C# 类，使用 .NET 文件 API 与 JSON 库保存最高分。 |
 | [QaRunner.cs](./game/Assets/Scripts/QaRunner.cs) | 静态验收辅助类，模拟输入、检查回放与存档、截图并退出验收进程。 |
 | [BuildProject.cs](./game/Assets/Editor/BuildProject.cs) | 编辑器静态类，准备纹理与场景、设置 Player、进入 Play Mode、构建 macOS 和 Web。 |
+| [FlappyURP.asset](./game/Assets/Settings/FlappyURP.asset)、[FlappyRenderer2D.asset](./game/Assets/Settings/FlappyRenderer2D.asset) | URP 管线及 2D Renderer 配置，由项目默认设置和全部画质档引用。 |
 
 场景中的 `MonoBehaviour.m_Script` 引用 [FlappyGame.cs.meta](./game/Assets/Scripts/FlappyGame.cs.meta) 的 GUID；公开字段 `SpriteMaterial` 保存材质引用。编辑器中打开 `Main` 场景并选中 **Flappy Bird**，就能看到这个组件。
 
@@ -73,7 +74,9 @@ Flappy Bird（Transform + FlappyGame）
 | `Camera.nearClipPlane`、`farClipPlane` | 设置相机可见深度范围，当前为 0.1 到 30。 |
 | `Camera.clearFlags`、`backgroundColor` | 游戏相机用共享配置的背景色清屏；留边相机使用深色背景。 |
 | `Camera.depth = -10`、`cullingMask = 0` | 留边相机先绘制背景，并且不绘制场景对象。 |
-| `Camera.allowHDR = false`、`allowMSAA = false` | 设置当前游戏相机的渲染选项。 |
+| `Camera.allowHDR = false`、`allowMSAA = false` | 关闭两台相机的 HDR 和 MSAA。 |
+| `Camera.GetUniversalAdditionalCameraData()` | URP 扩展方法，取得或添加相机的 `UniversalAdditionalCameraData` 组件。 |
+| `UniversalAdditionalCameraData.renderType = CameraRenderType.Base` | 留边相机与游戏相机各自使用 Base 类型，保留独立的视口。 |
 | `Screen.width`、`Screen.height` | 获取当前输出宽高，计算画面等比适配尺寸。 |
 | `Camera.rect`、`new Rect(...)` | 用归一化视口把游戏居中，剩余区域显示留边。 |
 | `Camera.aspect` | 显式保持逻辑宽高比 `1024 / 768`。 |
@@ -87,7 +90,7 @@ Flappy Bird（Transform + FlappyGame）
 worldY = config.Canvas.Height - logicalY;
 ```
 
-窗口缩放通过相机视口实现，模型的逻辑坐标和碰撞范围保持原值。
+窗口缩放通过相机视口实现，模型的逻辑坐标和碰撞范围保持原值。URP 先执行深度为 -10 的全屏留边相机，再执行深度为 0 的游戏相机；两台 Base Camera 绘制到同一个屏幕目标。
 
 ## 4. 资源加载与精灵更新
 
@@ -186,6 +189,9 @@ sprite.transform.localScale = new Vector3(
 | `Application.persistentDataPath` | 提供普通游戏的持久化目录，项目在其下保存 `best.json`。 |
 | `Application.unityVersion` | 将运行中的引擎版本写入诊断结果。 |
 | `Application.isFocused` | 记录当前应用是否有焦点。 |
+| `GraphicsSettings.currentRenderPipeline` | 记录当前实际管线的类型，预期为 `UniversalRenderPipelineAsset`。 |
+| `UniversalAdditionalCameraData.scriptableRenderer` | 记录游戏相机实际渲染器的类型名，预期为 `Renderer2D`。 |
+| `Material.shader.name` | 记录共享精灵材质的着色器名称。 |
 | `InputDevice.enabled`、`leftButton.isPressed` | 记录鼠标设备是否启用、主键是否按下。 |
 | `EventSystem.current.currentInputModule` | 记录实际使用的 UI 输入模块。 |
 | `Camera.pixelRect`、`Screen.width`、`Screen.height` | 记录游戏视口和输出尺寸。 |
@@ -212,14 +218,27 @@ sprite.transform.localScale = new Vector3(
 | `TextureImporterSettings`、`ReadTextureSettings()`、`SetTextureSettings()` | 将精灵网格设为 `SpriteMeshType.FullRect`，轴心设为 `(0.5, 0.5)`。 |
 | `TextureImporter.SaveAndReimport()` | 应用设置并重新导入纹理。 |
 | `AssetDatabase.LoadAssetAtPath<Material>()` | 读取已有精灵材质。 |
-| `Shader.Find("Sprites/Default")`、`new Material(shader)`、`AssetDatabase.CreateAsset()` | 材质缺失时创建并保存默认 Sprite 材质。 |
+| `Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default")`、`new Material(shader)`、`AssetDatabase.CreateAsset()` | 查找 URP 2D 无光照精灵着色器，材质缺失时创建并保存；着色器缺失时终止准备。 |
+| `Material.shader`、`EditorUtility.SetDirty()` | 将已有精灵材质切换到 URP 着色器并标记保存，保留材质 GUID 和场景引用。 |
 | `EditorSceneManager.NewScene()`、`NewSceneSetup.EmptyScene`、`NewSceneMode.Single` | 主场景缺失时创建空场景，并添加 `FlappyGame` 入口。 |
 | `EditorSceneManager.SaveScene()`、`OpenScene()` | 保存首次创建的场景，并打开 Main 场景。 |
 | `EditorBuildSettings.scenes`、`EditorBuildSettingsScene` | 将 Main 场景设为启用的构建场景。 |
 | `AssetDatabase.SaveAssets()` | 保存资源修改。 |
-| `SerializedObject`、`FindProperty()`、`ApplyModifiedPropertiesWithoutUndo()` | 修改 Player 设置里的序列化字段 `activeInputHandler = 1`，选择 Input System；该字段名是当前实现直接访问的编辑器设置。 |
+| `SerializedObject`、`FindProperty()`、`ApplyModifiedPropertiesWithoutUndo()` | 修改 `activeInputHandler = 1` 选择 Input System；修改 2D Renderer 的 `m_DefaultMaterialType = 1`，使新建精灵默认使用 Unlit。这些字段名与枚举值来自当前版本的编辑器实现。 |
 
-`Prepare()` 会更新导入和 Player 设置，但仅在场景文件不存在时新建场景。运行时加载的是这些资源的导入结果。
+`PrepareRenderPipeline()` 使用以下 API 创建并配置渲染管线：
+
+| API / 属性 | 本项目的用法 |
+| --- | --- |
+| `AssetDatabase.LoadAssetAtPath<Renderer2DData>()`、`LoadAssetAtPath<UniversalRenderPipelineAsset>()` | 读取 `Assets/Settings` 下的已有渲染配置。 |
+| `ScriptableObject.CreateInstance<Renderer2DData>()` | 创建缺失的 2D Renderer 配置。 |
+| `UniversalRenderPipelineAsset.Create(renderer)` | 在编辑器中创建 URP 管线，并指定上述 2D Renderer。 |
+| `supportsHDR = false`、`msaaSampleCount = 1`、`renderScale = 1` | 关闭 HDR 和 MSAA，保持原始渲染分辨率比例。 |
+| `supportsCameraDepthTexture = false`、`supportsCameraOpaqueTexture = false` | 不要求相机额外生成深度或不透明颜色纹理。 |
+| `GraphicsSettings.defaultRenderPipeline` | 将项目默认渲染管线绑定到 `FlappyURP.asset`。 |
+| `QualitySettings.names`、`GetQualityLevel()`、`SetQualityLevel()`、`renderPipeline` | 遍历所有画质档，绑定同一 URP 配置，然后恢复原来选中的画质档。 |
+
+`Prepare()` 会更新渲染、导入和 Player 设置，仅在场景文件不存在时新建场景。`UniversalRenderPipelineGlobalSettings.asset` 由 Unity 自动生成并保存；这些渲染资源及其 `.meta` 随工程一起提交。
 
 ## 10. Player 设置、构建与命令行
 
@@ -291,6 +310,7 @@ Web 字体由构建工具复制到 `Assets/Resources/Fonts/FlappyUI.otf`，字�
 
 | API / 类型 | 验收用途 |
 | --- | --- |
+| `UniversalRenderPipelineAsset.rendererDataList`、`Renderer2DData` | 检查当前管线使用 2D Renderer 配置，并检查共享材质的 URP Unlit 着色器名称。 |
 | `InputSystem.settings.updateMode`、`ProcessEventsManually` | 验收时手动推进输入事件处理。 |
 | `InputSystem.settings.backgroundBehavior`、`IgnoreFocus` | 让批处理验收不依赖窗口焦点。 |
 | `editorInputBehaviorInPlayMode`、`AllDeviceInputAlwaysGoesToGameView` | 编辑器验收中把设备输入送到 Game View 路径。 |

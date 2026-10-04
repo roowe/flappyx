@@ -7,6 +7,8 @@ using FlappyX.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace FlappyX.UnityAdapter
 {
@@ -20,6 +22,10 @@ namespace FlappyX.UnityAdapter
             var directory = app.QaDirectory!;
             try
             {
+                Check(GraphicsSettings.currentRenderPipeline is UniversalRenderPipelineAsset pipeline
+                    && pipeline.rendererDataList[0] is Renderer2DData
+                    && app.SpriteMaterial.shader.name == "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+                    "URP 2D renderer and unlit sprite material");
                 InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsManually;
                 InputSystem.settings.backgroundBehavior = InputSettings.BackgroundBehavior.IgnoreFocus;
 #if UNITY_EDITOR

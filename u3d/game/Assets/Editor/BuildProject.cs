@@ -8,12 +8,50 @@ using UnityEditor.Build.Reporting;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public static class BuildProject
 {
     private const string Scene = "Assets/Scenes/Main.unity";
+    private static void PrepareRenderPipeline()
+    {
+        const string rendererPath = "Assets/Settings/FlappyRenderer2D.asset";
+        const string pipelinePath = "Assets/Settings/FlappyURP.asset";
+        Directory.CreateDirectory("Assets/Settings");
+        var renderer = AssetDatabase.LoadAssetAtPath<Renderer2DData>(rendererPath);
+        if (renderer == null)
+        {
+            renderer = ScriptableObject.CreateInstance<Renderer2DData>();
+            AssetDatabase.CreateAsset(renderer, rendererPath);
+        }
+        // 无光照精灵保留共享 PNG 的颜色，也作为编辑器中新建 Sprite 的默认材质。
+        var rendererSettings = new SerializedObject(renderer);
+        rendererSettings.FindProperty("m_DefaultMaterialType").intValue = 1;
+        rendererSettings.ApplyModifiedPropertiesWithoutUndo();
+        var pipeline = AssetDatabase.LoadAssetAtPath<UniversalRenderPipelineAsset>(pipelinePath);
+        if (pipeline == null)
+        {
+            pipeline = UniversalRenderPipelineAsset.Create(renderer);
+            AssetDatabase.CreateAsset(pipeline, pipelinePath);
+        }
+        pipeline.supportsHDR = false;
+        pipeline.msaaSampleCount = 1;
+        pipeline.renderScale = 1;
+        pipeline.supportsCameraDepthTexture = false;
+        pipeline.supportsCameraOpaqueTexture = false;
+        EditorUtility.SetDirty(pipeline);
+        GraphicsSettings.defaultRenderPipeline = pipeline;
+        var quality = QualitySettings.GetQualityLevel();
+        for (var i = 0; i < QualitySettings.names.Length; i++)
+        {
+            QualitySettings.SetQualityLevel(i, false);
+            QualitySettings.renderPipeline = pipeline;
+        }
+        QualitySettings.SetQualityLevel(quality, false);
+    }
     public static void Prepare()
     {
+        PrepareRenderPipeline();
         PlayerSettings.companyName = "FlappyX"; PlayerSettings.productName = "FlappyX Unity";
         PlayerSettings.SetApplicationIdentifier(NamedBuildTarget.Standalone, "local.flappyx.unity");
         PlayerSettings.defaultScreenWidth = 1024; PlayerSettings.defaultScreenHeight = 768;
@@ -39,11 +77,15 @@ public static class BuildProject
             importer.SetTextureSettings(textureSettings); importer.SaveAndReimport();
         }
         Directory.CreateDirectory("Assets/Scenes"); Directory.CreateDirectory("Assets/Materials");
+        var shader = Shader.Find("Universal Render Pipeline/2D/Sprite-Unlit-Default")
+            ?? throw new InvalidOperationException("Missing URP 2D sprite shader");
         var material = AssetDatabase.LoadAssetAtPath<Material>("Assets/Materials/Sprites.mat");
         if (material == null)
         {
-            material = new Material(Shader.Find("Sprites/Default")); AssetDatabase.CreateAsset(material, "Assets/Materials/Sprites.mat");
+            material = new Material(shader); AssetDatabase.CreateAsset(material, "Assets/Materials/Sprites.mat");
         }
+        material.shader = shader;
+        EditorUtility.SetDirty(material);
         if (!File.Exists(Scene))
         {
             var scene = EditorSceneManager.NewScene(NewSceneSetup.EmptyScene, NewSceneMode.Single);

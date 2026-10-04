@@ -6,6 +6,8 @@ using FlappyX.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 namespace FlappyX.UnityAdapter
 {
@@ -36,7 +38,11 @@ namespace FlappyX.UnityAdapter
             Config = Content.LoadConfig(); Clock = new FixedClock(Config.Simulation);
             var clear = new GameObject("Letterbox").AddComponent<Camera>(); clear.transform.SetParent(transform, false);
             clear.depth = -10; clear.cullingMask = 0; clear.clearFlags = CameraClearFlags.SolidColor; clear.backgroundColor = new Color32(23, 60, 67, 255);
+            clear.allowHDR = false; clear.allowMSAA = false;
+            clear.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Base;
             Camera = new GameObject("Game camera").AddComponent<Camera>(); Camera.transform.SetParent(transform, false);
+            // 两台 Base Camera 各用自己的视口，游戏相机只覆盖居中的画面区域。
+            Camera.GetUniversalAdditionalCameraData().renderType = CameraRenderType.Base;
             Camera.transform.position = new Vector3((float)Config.Canvas.Width / 2, (float)Config.Canvas.Height / 2, -10);
             Camera.orthographic = true; Camera.orthographicSize = (float)Config.Canvas.Height / 2;
             Camera.nearClipPlane = .1f; Camera.farClipPlane = 30; Camera.allowHDR = false; Camera.allowMSAA = false;
@@ -164,6 +170,9 @@ namespace FlappyX.UnityAdapter
             viewport = new { x = Camera.pixelRect.x, y = Camera.pixelRect.y, width = Camera.pixelRect.width, height = Camera.pixelRect.height },
             persistentDataPath = Application.persistentDataPath,
             unityVersion = Application.unityVersion,
+            renderPipeline = GraphicsSettings.currentRenderPipeline.GetType().Name,
+            renderer = Camera.GetUniversalAdditionalCameraData().scriptableRenderer.GetType().Name,
+            spriteShader = SpriteMaterial.shader.name,
             input = InputDiagnostics()
         };
     }

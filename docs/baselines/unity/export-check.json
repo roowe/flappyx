@@ -11976,6 +11976,9 @@
     },
     "persistentDataPath": "/Users/luoliwei/Library/Application Support/FlappyX/FlappyX Unity",
     "unityVersion": "6000.5.6f1",
+    "renderPipeline": "UniversalRenderPipelineAsset",
+    "renderer": "Renderer2D",
+    "spriteShader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
     "input": {
       "focused": true,
       "x": 0,

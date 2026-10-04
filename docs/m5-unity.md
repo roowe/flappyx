@@ -62,3 +62,21 @@ just export-unity   # 构建并验收 u3d/build/FlappyX.app
 产物约 **106 MB**，可执行文件包含 **x86_64、arm64**；通过 `codesign --verify --deep --strict`。[构建记录](./baselines/unity/export-build.json)。实机仅验证 ARM64，未验证 Intel 硬件、移动端触摸硬件或 WebGL 导出，未做 Apple 公证。
 
 共享配置 SHA-256：`06e77fe3bdaff75b34f20d41d4efc5ae8502e4b3f77154357fab60744e52312d`。六个引擎的独立实现阶段已完成，统一验收表和统一启动整理仍留在 M7。
+
+## URP 迁移：2026-10-04
+
+Unity 版本保持 6000.5.6f1，渲染管线由 Built-in 切换为 **URP 17.5.0 / 2D Renderer**。项目默认设置与六个画质档引用同一 `FlappyURP.asset`；共享精灵材质改用 `Universal Render Pipeline/2D/Sprite-Unlit-Default`。保留原来的材质 GUID、Gamma 色彩空间、Point 采样和 35 个 SpriteRenderer。
+
+留边相机和游戏相机均使用独立 Base Camera，按相机深度先后绘制，各自保留视口。HDR、MSAA、相机深度纹理和不透明颜色纹理关闭，Render Scale 为 1。共享内核、玩法参数、输入与存档格式没有改动。
+
+| 检查 | 本次结果 |
+| --- | --- |
+| `just check-unity` | 677 个 C#/TS 快照与事件、257 个 fixture 字段通过；Unity Play Mode 的 211 个快照与鸟帧通过。运行诊断确认管线为 `UniversalRenderPipelineAsset`、渲染器为 `Renderer2D`、材质为 URP Unlit。[编辑器记录](./baselines/unity/editor-check.json) |
+| `just export-unity` | macOS 构建、严格签名检查、实际 Player 的 211 个快照与输入/暂停/存档/十次重开检查通过。[发布记录](./baselines/unity/export-check.json)。本次 BuildReport 大小为 116,059,684 字节。 |
+| Metal 实际渲染 | 生成 tick 0、134、184、191 四张 1024×768 截图，确认天空、地面、水管、小鸟与中文 UI 正常。[截图与诊断](./baselines/unity/urp-captures/) |
+| `just build-unity-web` | IL2CPP Web 构建成功，网页目录约 16 MiB。本机浏览器回放结算为 1 分，暂停/继续、重新开始与中文显示通过；验收时未捕获到控制台 warning/error。 |
+| Web 视口 | 1280×720 显示左右留边，390×844 显示上下留边；竖屏重开及暂停按钮可点击，点击留边不触发起飞。[横向截图](./baselines/unity/urp-captures/web-ready.png)、[竖向截图](./baselines/unity/urp-captures/web-portrait.png)、[回放结算](./baselines/unity/urp-captures/web-replay.png) |
+
+图像对照保留迁移前的基线，没有宣称像素完全一致：tick 134、184、191 分别有 1,443、1,748、2,339 个 RGB 像素不同，占各帧约 0.18%、0.22%、0.30%。tick 0 有大面积单通道 1 级色差；超过 1 级差异的像素为 620 个。两组截图的布局与玩法时刻一致，统计见 [comparison.json](./baselines/unity/urp-captures/comparison.json)。
+
+本次 Web 检查使用桌面浏览器调整视口，不等于手机实机验收；外部托管、Intel 硬件和 Apple 公证仍未验证。上文 2026-10-03 的桌面窗口操作记录及约 106 MB 构建大小属于迁移前结果。

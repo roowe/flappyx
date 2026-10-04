@@ -11975,7 +11975,19 @@
       "height": 480
     },
     "persistentDataPath": "/Users/luoliwei/Library/Application Support/FlappyX/FlappyX Unity",
-    "unityVersion": "6000.5.6f1"
+    "unityVersion": "6000.5.6f1",
+    "renderPipeline": "UniversalRenderPipelineAsset",
+    "renderer": "Renderer2D",
+    "spriteShader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+    "input": {
+      "focused": false,
+      "x": 0,
+      "y": 0,
+      "mouseEnabled": null,
+      "leftPressed": null,
+      "module": "InputSystemUIInputModule",
+      "hits": []
+    }
   },
   "comparedWithTs": true,
   "checkedPipeSeams": 7,

@@ -1,0 +1,376 @@
+{
+  "snapshot": {
+    "tick": 184,
+    "state": "dying",
+    "y": 224.0,
+    "birdY": 224.0,
+    "velocityY": 0.0,
+    "score": 1,
+    "bestScore": 0,
+    "deathTick": 184,
+    "deathReason": "upperPipe",
+    "gameOverTick": null,
+    "restartAllowedTick": 199,
+    "firstPipeX": 120.0,
+    "pipeCount": 7,
+    "pipeIds": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "pipeXs": [
+      120.0,
+      415.0,
+      710.0,
+      1005.0,
+      1300.0,
+      1595.0,
+      1890.0
+    ],
+    "pipeGapCenters": [
+      300.0,
+      354.0,
+      300.0,
+      330.0,
+      250.0,
+      340.0,
+      280.0
+    ],
+    "pipePassed": [
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "pipesPassed": true,
+    "consumedGapCenters": 7,
+    "flightTicks": 184
+  },
+  "paused": false,
+  "accumulatedTicks": 0.0,
+  "replaying": true,
+  "bestText": "回放最高  0",
+  "view": {
+    "spriteCount": 35,
+    "textureCount": 9,
+    "birdFrame": 1,
+    "birdPosition": {
+      "x": 350.0,
+      "y": 224.0
+    },
+    "roundPixels": false,
+    "sprites": [
+      {
+        "name": "Sky0",
+        "x": 0.0,
+        "y": 439.0,
+        "width": 552.0,
+        "height": 210.0,
+        "nearest": true
+      },
+      {
+        "name": "Sky1",
+        "x": 552.0,
+        "y": 439.0,
+        "width": 552.0,
+        "height": 210.0,
+        "nearest": true
+      },
+      {
+        "name": "Sky2",
+        "x": 1104.0,
+        "y": 439.0,
+        "width": 552.0,
+        "height": 210.0,
+        "nearest": true
+      },
+      {
+        "name": "Land0",
+        "x": -96.0,
+        "y": 656.0,
+        "width": 672.0,
+        "height": 224.0,
+        "nearest": true
+      },
+      {
+        "name": "Land1",
+        "x": 576.0,
+        "y": 656.0,
+        "width": 672.0,
+        "height": 224.0,
+        "nearest": true
+      },
+      {
+        "name": "Land2",
+        "x": 1248.0,
+        "y": 656.0,
+        "width": 672.0,
+        "height": 224.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe0Part0",
+        "x": 120.0,
+        "y": 60.0,
+        "width": 75.0,
+        "height": 120.000008,
+        "nearest": true
+      },
+      {
+        "name": "Pipe0Part1",
+        "x": 120.0,
+        "y": 145.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe0Part2",
+        "x": 120.0,
+        "y": 455.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe0Part3",
+        "x": 120.0,
+        "y": 512.0,
+        "width": 75.0,
+        "height": 64.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe1Part0",
+        "x": 415.0,
+        "y": 87.0,
+        "width": 75.0,
+        "height": 174.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe1Part1",
+        "x": 415.0,
+        "y": 199.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe1Part2",
+        "x": 415.0,
+        "y": 509.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe1Part3",
+        "x": 415.0,
+        "y": 539.0,
+        "width": 75.0,
+        "height": 10.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe2Part0",
+        "x": 710.0,
+        "y": 60.0,
+        "width": 75.0,
+        "height": 120.000008,
+        "nearest": true
+      },
+      {
+        "name": "Pipe2Part1",
+        "x": 710.0,
+        "y": 145.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe2Part2",
+        "x": 710.0,
+        "y": 455.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe2Part3",
+        "x": 710.0,
+        "y": 512.0,
+        "width": 75.0,
+        "height": 64.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe3Part0",
+        "x": 1005.0,
+        "y": 75.0,
+        "width": 75.0,
+        "height": 150.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe3Part1",
+        "x": 1005.0,
+        "y": 175.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe3Part2",
+        "x": 1005.0,
+        "y": 485.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe3Part3",
+        "x": 1005.0,
+        "y": 527.0,
+        "width": 75.0,
+        "height": 34.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe4Part0",
+        "x": 1300.0,
+        "y": 35.0,
+        "width": 75.0,
+        "height": 70.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe4Part1",
+        "x": 1300.0,
+        "y": 95.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe4Part2",
+        "x": 1300.0,
+        "y": 405.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe4Part3",
+        "x": 1300.0,
+        "y": 487.0,
+        "width": 75.0,
+        "height": 114.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe5Part0",
+        "x": 1595.0,
+        "y": 80.0,
+        "width": 75.0,
+        "height": 160.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe5Part1",
+        "x": 1595.0,
+        "y": 185.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe5Part2",
+        "x": 1595.0,
+        "y": 495.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe5Part3",
+        "x": 1595.0,
+        "y": 532.0,
+        "width": 75.0,
+        "height": 24.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe6Part0",
+        "x": 1890.0,
+        "y": 50.0,
+        "width": 75.0,
+        "height": 100.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe6Part1",
+        "x": 1890.0,
+        "y": 125.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe6Part2",
+        "x": 1890.0,
+        "y": 435.0,
+        "width": 75.0,
+        "height": 50.0,
+        "nearest": true
+      },
+      {
+        "name": "Pipe6Part3",
+        "x": 1890.0,
+        "y": 502.0,
+        "width": 75.0,
+        "height": 84.0,
+        "nearest": true
+      },
+      {
+        "name": "Bird",
+        "x": 350.0,
+        "y": 224.0,
+        "width": 85.0,
+        "height": 60.0,
+        "nearest": true
+      }
+    ]
+  },
+  "window": {
+    "width": 1024,
+    "height": 768
+  },
+  "viewport": {
+    "x": 0.0,
+    "y": 0.0,
+    "width": 1024.0,
+    "height": 768.0
+  },
+  "persistentDataPath": "/Users/luoliwei/Library/Application Support/FlappyX/FlappyX Unity",
+  "unityVersion": "6000.5.6f1",
+  "renderPipeline": "UniversalRenderPipelineAsset",
+  "renderer": "Renderer2D",
+  "spriteShader": "Universal Render Pipeline/2D/Sprite-Unlit-Default",
+  "input": {
+    "focused": true,
+    "x": 708.0,
+    "y": -423.0,
+    "mouseEnabled": true,
+    "leftPressed": false,
+    "module": "InputSystemUIInputModule",
+    "hits": []
+  }
+}

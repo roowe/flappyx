@@ -1,0 +1,106 @@
+[
+  {
+    "tick": 0,
+    "size": [
+      1024,
+      768
+    ],
+    "changedPixels": 771113,
+    "pixelsAboveOneLevel": 620,
+    "totalPixels": 786432,
+    "meanAbsoluteChannelError": [
+      0.4667345682779948,
+      0.9756685892740885,
+      0.5663592020670573
+    ],
+    "maxChannelError": 185,
+    "backgroundBefore": [
+      81,
+      191,
+      200
+    ],
+    "backgroundAfter": [
+      81,
+      192,
+      201
+    ]
+  },
+  {
+    "tick": 134,
+    "size": [
+      1024,
+      768
+    ],
+    "changedPixels": 1443,
+    "pixelsAboveOneLevel": 366,
+    "totalPixels": 786432,
+    "meanAbsoluteChannelError": [
+      0.022571563720703125,
+      0.035858154296875,
+      0.016672770182291668
+    ],
+    "maxChannelError": 194,
+    "backgroundBefore": [
+      81,
+      192,
+      201
+    ],
+    "backgroundAfter": [
+      81,
+      192,
+      201
+    ]
+  },
+  {
+    "tick": 184,
+    "size": [
+      1024,
+      768
+    ],
+    "changedPixels": 1748,
+    "pixelsAboveOneLevel": 698,
+    "totalPixels": 786432,
+    "meanAbsoluteChannelError": [
+      0.04671478271484375,
+      0.0722058614095052,
+      0.032427469889322914
+    ],
+    "maxChannelError": 194,
+    "backgroundBefore": [
+      81,
+      192,
+      201
+    ],
+    "backgroundAfter": [
+      81,
+      192,
+      201
+    ]
+  },
+  {
+    "tick": 191,
+    "size": [
+      1024,
+      768
+    ],
+    "changedPixels": 2339,
+    "pixelsAboveOneLevel": 695,
+    "totalPixels": 786432,
+    "meanAbsoluteChannelError": [
+      0.04942194620768229,
+      0.07324727376302083,
+      0.03094482421875
+    ],
+    "maxChannelError": 196,
+    "backgroundBefore": [
+      81,
+      192,
+      201
+    ],
+    "backgroundAfter": [
+      81,
+      192,
+      201
+    ]
+  }
+]
